@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>专业占星学运势分析 - 天体运行预测 | 星象玄学网</title>
+    <meta name="description" content="基于传统占星学和现代天体力学的专业运势分析平台。提供精确的行星位置计算、十二宫位分析、相位解读和个人星盘咨询。专业占星师团队，准确的每日运势预测。">
+    <meta name="keywords" content="专业占星学,天体运行,行星位置,星盘分析,占星师,天象预测,十二宫位,相位分析,逆行影响,月相周期,星座配对,占星咨询,玄学运势,天文占星,传统占星">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="author" content="星象玄学网专业占星师团队">
+    <meta name="generator" content="专业占星学算法系统 v2.0">
+    
+    <!-- 地理位置和语言 -->
+    <meta name="geo.region" content="CN">
+    <meta name="geo.placename" content="中国">
+    <meta name="language" content="Chinese">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="专业占星学运势分析 - 精确天体预测">
+    <meta property="og:description" content="运用传统占星学智慧结合现代天体力学，为您提供专业的个人运势分析和星象指导。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://astrology-constellation.com">
+    <meta property="og:image" content="https://astrology-constellation.com/images/astrology-banner.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="星象玄学网">
+    <meta property="og:locale" content="zh_CN">
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="专业占星学运势分析">
+    <meta name="twitter:description" content="精确的天体运行分析，专业的占星学指导">
+    <meta name="twitter:image" content="https://astrology-constellation.com/images/astrology-banner.jpg">
+    
+    <!-- 结构化数据 -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "星象玄学网",
+        "alternateName": "专业占星学运势分析平台",
+        "description": "基于传统占星学的专业天体运势分析网站，提供个人星盘、运势预测和占星咨询服务",
+        "url": "https://astrology-constellation.com",
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "https://astrology-constellation.com/search?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+        },
+        "publisher": {
+            "@type": "Organization",
+            "name": "星象玄学网",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://astrology-constellation.com/logo.png"
+            }
+        },
+        "sameAs": [
+            "https://weibo.com/astrologysite",
+            "https://space.bilibili.com/astrology"
+        ]
+    }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Service",
+        "serviceType": "占星学咨询",
+        "provider": {
+            "@type": "Organization",
+            "name": "星象玄学网专业占星师团队"
+        },
+        "description": "专业的占星学运势分析、个人星盘解读、天体运行预测服务",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "CNY",
+            "description": "免费基础运势查询"
+        }
+    }
+    </script>
+
+    <!-- 预加载关键资源 -->
+    <link rel="preload" href="css/style.css" as="style">
+    <link rel="preload" href="js/script.js" as="script">
+    
+    <!-- 图标和主题 -->
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+    <link rel="icon" type="image/x-icon" href="images/favicon.svg">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/favicon.svg">
+    <meta name="theme-color" content="#6441a5">
+    <meta name="msapplication-TileColor" content="#6441a5">
+    
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/mobile-fix.css">
+    
+    <!-- 天文数据API配置 -->
+    <script src="config/astronomical-apis.js"></script>
+    <script src="utils/astronomical-api.js"></script>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <img src="images/constellation-logo.svg" alt="星辰占卜" class="logo-icon">
+                <h1>星辰占卜
+                    <span class="tagline">传承千年的占星智慧</span>
+                </h1>
+            </div>
+            <div class="nav-links">
+                <a href="index.html">首页</a>
+                <a href="pages/about.html">关于占星</a>
+                <a href="pages/guide.html">使用指南</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- 主头部区域 -->
+        <header id="home" class="hero-section" role="banner">
+            <div class="hero-content">
+                <h1 class="hero-title">你的专属星座指南</h1>
+                <p class="hero-subtitle">
+                    基于千年占星学传统，融合现代天文学精确计算，为您提供专业的个人星象分析。
+                    通过解读天体运行的奥秘，洞察性格特质，指引人生方向，发现内在潜能。
+                </p>
+                <div class="hero-features">
+                    <span class="feature-tag">精准天文计算</span>
+                    <span class="feature-tag">个性化深度分析</span>
+                    <span class="feature-tag">实时行星影响</span>
+                    <span class="feature-tag">星座配对指导</span>
+                    <span class="feature-tag">专业占星建议</span>
+                </div>
+                <div class="current-date-display">
+                    <div class="date-item">
+                        <span class="date-label">今日日期</span>
+                        <span class="date-value" id="currentDate">加载中...</span>
+                    </div>
+                    <div class="date-item">
+                        <span class="date-label">农历</span>
+                        <span class="date-value" id="lunarDate">计算中...</span>
+                    </div>
+                    <div class="date-item">
+                        <span class="date-label">星期</span>
+                        <span class="date-value" id="weekDay">--</span>
+                    </div>
+                </div>
+                <div class="current-cosmic-info">
+                    <div class="cosmic-item">
+                        <span class="cosmic-label">当前月相</span>
+                        <span class="cosmic-value" id="currentMoonPhase">计算中...</span>
+                    </div>
+                    <div class="cosmic-item">
+                        <span class="cosmic-label">主导行星</span>
+                        <span class="cosmic-value" id="dominantPlanet">计算中...</span>
+                    </div>
+                    <div class="cosmic-item">
+                        <span class="cosmic-label">能量指数</span>
+                        <span class="cosmic-value" id="cosmicEnergy">计算中...</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- 主要查询功能 -->
+        <main role="main">
+            <section id="daily-horoscope" class="query-section">
+                <h2>获取您本日的星座运势</h2>
+                <p class="section-description" style="margin-top: 1%;">
+                    选择您的星座，获得基于当前天象的专业占星分析。
+                    我们的系统会为您计算行星位置、月相影响、幸运元素等多维度信息。
+                </p>
+                
+                <div class="horoscope-form">
+                    <label for="zodiacSelect">请选择您的星座：</label>
+                    <div style="display: flex; align-items: center; justify-content: center; gap: 15px; flex-wrap: wrap;">
+                        <select id="zodiacSelect">
+                            <option value="">-- 选择星座 --</option>
+                            <option value="aries">♈ 白羊座 (3.21-4.19)</option>
+                            <option value="taurus">♉ 金牛座 (4.20-5.20)</option>
+                            <option value="gemini">♊ 双子座 (5.21-6.21)</option>
+                            <option value="cancer">♋ 巨蟹座 (6.22-7.22)</option>
+                            <option value="leo">♌ 狮子座 (7.23-8.22)</option>
+                            <option value="virgo">♍ 处女座 (8.23-9.22)</option>
+                            <option value="libra">♎ 天秤座 (9.23-10.23)</option>
+                            <option value="scorpio">♏ 天蝎座 (10.24-11.22)</option>
+                            <option value="sagittarius">♐ 射手座 (11.23-12.21)</option>
+                            <option value="capricorn">♑ 摩羯座 (12.22-1.19)</option>
+                            <option value="aquarius">♒ 水瓶座 (1.20-2.18)</option>
+                            <option value="pisces">♓ 双鱼座 (2.19-3.20)</option>
+                        </select>
+                        <button onclick="getHoroscope()" class="submit-btn">🔮 计算运势</button>
+                    </div>
+                    <small class="help-text">系统将基于当前天象为您生成个性化的运势分析</small>
+                </div>
+            </section>
+
+            <!-- 运势结果显示区域 -->
+            <section id="result" class="result hidden" role="region" aria-label="运势分析结果" aria-live="polite"></section>
+
+            <!-- 占星学知识区域 -->
+            <section id="astrology-knowledge" class="knowledge-section">
+                <h2>占星学知识宝库</h2>
+                <div class="knowledge-grid">
+                    <article class="knowledge-card">
+                        <div class="card-icon">🌟</div>
+                        <h3>十二星座解析</h3>
+                        <p>深入了解十二星座的天文背景、神话起源、性格特质和生命主题。每个星座都承载着独特的宇宙能量和人生使命。</p>
+                        <div class="card-keywords">
+                            <span class="keyword">性格特质</span>
+                            <span class="keyword">神话起源</span>
+                            <span class="keyword">元素属性</span>
+                        </div>
+                    </article>
+                    
+                    <article class="knowledge-card">
+                        <div class="card-icon">🪐</div>
+                        <h3>行星影响系统</h3>
+                        <p>探索太阳系各大行星的占星学意义，从内行星的个人影响到外行星的世代效应，理解天体运行对人生的深远影响。</p>
+                        <div class="card-keywords">
+                            <span class="keyword">行星逆行</span>
+                            <span class="keyword">相位关系</span>
+                            <span class="keyword">宫位系统</span>
+                        </div>
+                    </article>
+                    
+                    <article class="knowledge-card">
+                        <div class="card-icon">🏛️</div>
+                        <h3>十二宫位详解</h3>
+                        <p>十二宫位代表人生的不同领域，从个人身份到精神成长，每个宫位都揭示着生命经验的特定主题和发展方向。</p>
+                        <div class="card-keywords">
+                            <span class="keyword">人生领域</span>
+                            <span class="keyword">成长主题</span>
+                            <span class="keyword">经验模式</span>
+                        </div>
+                    </article>
+                    
+                    <article class="knowledge-card">
+                        <div class="card-icon">🌙</div>
+                        <h3>月相周期奥秘</h3>
+                        <p>月相变化影响着地球上所有生命的节律，了解月相周期可以帮助我们把握最佳的行动时机和能量状态。</p>
+                        <div class="card-keywords">
+                            <span class="keyword">能量节律</span>
+                            <span class="keyword">行动时机</span>
+                            <span class="keyword">情绪波动</span>
+                        </div>
+                    </article>
+                    
+                    <article class="knowledge-card">
+                        <div class="card-icon">🔺</div>
+                        <h3>相位角度解读</h3>
+                        <p>行星间的相位关系揭示了能量的互动模式，从和谐的三分相到挑战性的四分相，每种相位都有其独特的作用机制。</p>
+                        <div class="card-keywords">
+                            <span class="keyword">能量流动</span>
+                            <span class="keyword">挑战机遇</span>
+                            <span class="keyword">天赋显现</span>
+                        </div>
+                    </article>
+                    
+                    <article class="knowledge-card">
+                        <div class="card-icon">🎭</div>
+                        <h3>星座配对奥义</h3>
+                        <p>探索不同星座间的相互关系，从元素相性到质量互补，理解人际关系中的占星学原理和和谐法则。</p>
+                        <div class="card-keywords">
+                            <span class="keyword">元素和谐</span>
+                            <span class="keyword">质量互补</span>
+                            <span class="keyword">关系模式</span>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- 常见问题 -->
+            <section class="faq-section">
+                <h2>常见问题解答</h2>
+                <div class="faq-container">
+                    <details class="faq-item">
+                        <summary>占星学的科学性如何？</summary>
+                        <div class="faq-answer">
+                            <p>占星学虽然不是现代意义上的科学，但它基于精确的天体观测和数千年的经验总结。我们使用现代天体力学进行精确计算，确保行星位置的准确性。占星学更多是一门关于时间质量和心理原型的学问。</p>
+                        </div>
+                    </details>
+                    
+                    <details class="faq-item">
+                        <summary>为什么不同网站的运势会有差异？</summary>
+                        <div class="faq-answer">
+                            <p>不同占星师的解读风格和侧重点会有差异。我们采用传统占星学方法结合现代心理占星学，注重个人成长和自我认知，而非简单的吉凶预测。</p>
+                        </div>
+                    </details>
+                    
+                    <details class="faq-item">
+                        <summary>逆行行星对我们有什么影响？</summary>
+                        <div class="faq-answer">
+                            <p>行星逆行是视觉效应，但在占星学中代表内省和重新评估的时期。不同行星逆行有不同影响：水星逆行影响沟通，金星逆行影响关系，火星逆行影响行动力等。</p>
+                        </div>
+                    </details>
+                    
+                    <details class="faq-item">
+                        <summary>上升星座和太阳星座有什么区别？</summary>
+                        <div class="faq-answer">
+                            <p>太阳星座反映核心个性和人生目标，上升星座反映外在表现和他人对你的第一印象。上升星座需要准确的出生时间计算，而太阳星座只需要出生日期。</p>
+                        </div>
+                    </details>
+                </div>
+            </section>
+        </main>
+
+        <!-- 页脚 -->
+        <footer role="contentinfo">
+            <div class="footer-content">
+                <div class="footer-main">
+                    <div class="footer-section">
+                        <h3>星辰占卜</h3>
+                        <p>专业的占星学知识平台，传承古老智慧，应用现代科技，为您提供准确的星象指导。</p>
+                        <div class="social-links">
+                            <a href="#" aria-label="联系邮箱">📧</a>
+                        </div>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h4>快速链接</h4>
+                        <ul>
+                            <li><a href="index.html">首页</a></li>
+                            <li><a href="pages/about.html">关于占星</a></li>
+                            <li><a href="pages/guide.html">使用指南</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h4>联系方式</h4>
+                        <ul>
+                            <li>邮箱: info@astrology.com</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="footer-bottom">
+                    <p>&copy; 2025 星辰占卜. 保留所有权利.</p>
+                    <p><a href="#privacy">隐私政策</a> | <a href="#terms">使用条款</a></p>
+                    <p class="disclaimer">
+                        本网站提供的占星信息仅供娱乐和自我了解参考，不构成专业建议。
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="js/script.js"></script>
+    
+    <!-- 性能监控 -->
+    <script>
+        // 页面加载性能监控
+        window.addEventListener('load', function() {
+            const loadTime = performance.timing.loadEventEnd - performance.timing.navigationStart;
+            if (loadTime > 3000) {
+                console.warn('页面加载时间较长:', loadTime + 'ms');
+            }
+        });
+    </script>
+</body>
+</html>

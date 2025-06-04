@@ -1,0 +1,732 @@
+/* ===== 移动端全面修复优化 CSS ===== */
+
+/* 全局修复 - 解决元素右偏移问题 */
+@media (max-width: 768px) {
+    * {
+        box-sizing: border-box;
+    }
+    
+    body {
+        padding: 0;
+        margin: 0;
+        overflow-x: hidden;
+        text-align: left; /* 修正全局居中导致的偏移 */
+        line-height: 1.6;
+        padding-top: 70px !important; /* 固定导航栏适配 */
+    }
+
+    /* 导航栏固定定位优化 */
+    .navbar {
+        position: fixed !important;
+        top: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        z-index: 1000;
+        padding: 0.8rem 1rem;
+        backdrop-filter: blur(10px) !important;
+        background: linear-gradient(135deg, rgba(30, 60, 114, 0.95), rgba(100, 65, 165, 0.95)) !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2) !important;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
+    }
+
+    .nav-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 0;
+    }
+    
+    .nav-logo {
+        display: flex !important;
+        align-items: center !important;
+        gap: 8px !important;
+    }
+    
+    .logo-icon {
+        width: 24px !important;
+        height: 24px !important;
+        filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.3)) !important;
+    }
+
+    .nav-links a:hover {
+        background: rgba(70, 130, 180, 0.1);
+        transform: none !important; /* 防止hover时的偏移 */
+    }
+
+    /* Hero区域修复 - 解决特性标签渐变背景偏移问题 */
+    .hero-section {
+        padding: 2rem 1rem !important;
+        text-align: center;
+        margin: 0 auto;
+        background: none !important; /* 移除可能导致偏移的背景 */
+    }
+
+    .hero-content {
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 0;
+    }
+
+    /* 修正特性标签的渐变背景偏移错觉 */
+    .hero-features {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 0.8rem !important;
+        margin: 1.2rem auto !important;
+        justify-items: center;
+        max-width: 320px;
+        padding: 0;
+    }
+    
+    .feature-tag {
+        /* 完全重写以修复渐变背景导致的视觉偏移 */
+        font-size: 0.75rem !important;
+        padding: 8px 12px !important;
+        border-radius: 20px !important;
+        width: 100% !important;
+        max-width: 140px !important;
+        text-align: center !important;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        
+        /* 使用纯色背景替代渐变，避免视觉偏移 */
+        background: rgba(70, 130, 180, 0.15) !important;
+        border: 1px solid rgba(70, 130, 180, 0.3) !important;
+        color: #2c3e50 !important;
+        font-weight: 600;
+        
+        /* 移除所有可能导致偏移的效果 */
+        transform: none !important;
+        box-shadow: none !important;
+        background-image: none !important;
+        
+        /* 确保完美居中 */
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        margin: 0 auto !important;
+        position: relative;
+    }
+    
+    .feature-tag:hover {
+        transform: none !important;
+        background: rgba(70, 130, 180, 0.2) !important;
+    }
+
+    /* 日期和宇宙信息居中修复 */
+    .current-date-display {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 0.6rem !important;
+        margin: 1rem auto !important;
+        padding: 1rem !important;
+        background: rgba(255, 255, 255, 0.95) !important;
+        border-radius: 15px !important;
+        backdrop-filter: blur(10px);
+        max-width: 360px !important;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+        left: 50% !important;
+        right: 50% !important;
+        margin-left: -180px !important; /* 手动居中修正 */
+        position: relative;
+    }
+    
+    .current-cosmic-info {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 0.6rem !important;
+        padding: 1rem !important;
+        margin: 1rem auto !important;
+        max-width: 360px !important;
+        background: rgba(255, 255, 255, 0.9) !important;
+        border-radius: 15px !important;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+        left: 50% !important;
+        right: 50% !important;
+        margin-left: -180px !important; /* 手动居中修正 */
+        position: relative;
+    }
+
+    /* 查询区域居中修复 */
+    .query-section {
+        padding: 1.5rem 1rem !important;
+        margin: 1rem auto !important;
+        border-radius: 20px !important;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1) !important;
+        max-width: 400px !important;
+        background: rgba(255, 255, 255, 0.98) !important;
+        left: 50% !important;
+        right: 50% !important;
+        margin-left: -200px !important; /* 手动居中修正 */
+        position: relative;
+    }
+
+    /* 表单元素完全居中 */
+    .horoscope-form {
+        background: rgba(255, 255, 255, 0.9) !important;
+        padding: 1.2rem !important;
+        border-radius: 15px !important;
+        border: 1px solid rgba(70, 130, 180, 0.2) !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 1rem !important;
+        align-items: center !important;
+    }
+    
+    .horoscope-form > div {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 1rem !important;
+        align-items: center !important;
+        width: 100% !important;
+    }
+    
+    select {
+        width: 100% !important;
+        max-width: 300px !important;
+        margin: 0 auto !important;
+        font-size: 16px !important; /* 防止iOS缩放 */
+        padding: 1rem !important;
+        border-radius: 12px !important;
+        border: 2px solid rgba(70, 130, 180, 0.3) !important;
+        background: white !important;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+        text-align: center !important;
+        outline: none !important;
+    }
+    
+    .submit-btn {
+        width: 100% !important;
+        max-width: 300px !important;
+        margin: 0 auto !important;
+        padding: 1rem !important;
+        font-size: 1.1rem !important;
+        border-radius: 12px !important;
+        background: linear-gradient(135deg, #4682b4, #5f9ea0) !important;
+        box-shadow: 0 4px 12px rgba(70, 130, 180, 0.4) !important;
+        font-weight: 700 !important;
+        border: none !important;
+        color: white !important;
+        cursor: pointer !important;
+    }
+
+    /* 容器居中修复 */
+    .container {
+        padding: 1rem !important;
+        margin: 1rem auto !important;
+        border-radius: 15px !important;
+        max-width: 95% !important;
+        width: auto !important;
+        position: relative !important;
+        left: auto !important;
+        right: auto !important;
+        transform: none !important; /* 移除可能导致偏移的transform */
+    }
+
+    /* 知识卡片和其他内容居中 */
+    .knowledge-grid,
+    .services-grid,
+    .about-cards {
+        grid-template-columns: 1fr !important;
+        gap: 1rem !important;
+        margin: 1.5rem auto !important;
+        max-width: 100% !important;
+    }
+    
+    .knowledge-card,
+    .service-card,
+    .about-card {
+        padding: 1.2rem !important;
+        border-radius: 15px !important;
+        margin: 0 auto 1rem !important;
+        max-width: 100% !important;
+        background: rgba(255, 255, 255, 0.95) !important;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+    }
+
+    /* 简化页脚以减少垂直长度 */
+    .footer-main {
+        display: none !important; /* 完全隐藏页脚主要内容 */
+    }
+    
+    footer {
+        padding: 1rem !important;
+        background: rgba(70, 130, 180, 0.05) !important;
+        text-align: center !important;
+        margin-top: 2rem !important;
+    }
+    
+    .footer-content {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 0.5rem !important;
+        max-width: 300px !important;
+        margin: 0 auto !important;
+    }
+    
+    .footer-bottom {
+        margin-top: 0.5rem !important;
+    }
+    
+    .footer-bottom p {
+        font-size: 0.75rem !important;
+        color: #666 !important;
+        margin: 0 !important;
+    }
+    
+    /* 社交链接简化 */
+    .social-links {
+        display: flex !important;
+        gap: 0.8rem !important;
+        justify-content: center !important;
+    }
+    
+    .social-links a {
+        padding: 0.5rem !important;
+        font-size: 1rem !important;
+        border-radius: 8px !important;
+        background: rgba(70, 130, 180, 0.1) !important;
+        color: #4682b4 !important;
+        text-decoration: none !important;
+    }
+}
+
+/* 运势结果展示修复 */
+@media (max-width: 768px) {
+    /* 修复运势结果展示的样式偏差 */
+    .result {
+        margin: 0.8rem auto !important;
+        max-width: 95% !important;
+        border-radius: 12px !important;
+        overflow: hidden !important;
+        left: 50% !important;
+        right: 50% !important;
+        margin-left: -47.5% !important;
+        position: relative !important;
+    }
+    
+    .horoscope-result {
+        padding: 1.2rem !important;
+        border-radius: 12px !important;
+        background: rgba(255, 255, 255, 0.98) !important;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+        margin: 0 !important;
+        text-align: left !important; /* 修正文本对齐 */
+        width: 100% !important;
+        max-width: none !important;
+    }
+    
+    .horoscope-header {
+        display: block !important;
+        grid-template-columns: none !important;
+        gap: 0.8rem !important;
+        padding: 1rem !important;
+        margin-bottom: 1rem !important;
+        text-align: center !important;
+        background: rgba(70, 130, 180, 0.05) !important;
+        border-radius: 12px !important;
+        border: 1px solid rgba(70, 130, 180, 0.1) !important;
+    }
+    
+    .horoscope-header h2 {
+        font-size: 1.1rem !important;
+        margin-bottom: 0.8rem !important;
+        color: #2c3e50 !important;
+        text-align: center !important;
+        order: 1 !important;
+    }
+    
+    /* 移动端运势卡片布局 */
+    .horoscope-header .overall-score {
+        display: inline-block !important;
+        margin: 0.5rem 0.3rem !important;
+        padding: 0.6rem 1rem !important;
+        min-width: auto !important;
+        width: auto !important;
+        background: rgba(70, 130, 180, 0.1) !important;
+        border-radius: 8px !important;
+        border: 1px solid rgba(70, 130, 180, 0.2) !important;
+        vertical-align: top !important;
+    }
+    
+    .horoscope-header .overall-score .score-label {
+        font-size: 0.7rem !important;
+        margin-bottom: 0.2rem !important;
+        color: #666 !important;
+    }
+    
+    .horoscope-header .overall-score .score-value {
+        font-size: 1.1rem !important;
+        font-weight: 600 !important;
+        color: #4682b4 !important;
+    }
+    
+    /* 移动端生命周期卡片 */
+    .horoscope-header .lifecycle-phase {
+        display: inline-block !important;
+        margin: 0.5rem 0.3rem !important;
+        padding: 0.6rem 1rem !important;
+        min-width: auto !important;
+        width: auto !important;
+        background: rgba(255, 152, 0, 0.1) !important;
+        border-radius: 8px !important;
+        border: 1px solid rgba(255, 152, 0, 0.2) !important;
+        vertical-align: top !important;
+    }
+    
+    .horoscope-header .lifecycle-phase .phase-label {
+        font-size: 0.7rem !important;
+        margin-bottom: 0.2rem !important;
+        margin-right: 0 !important;
+        color: #666 !important;
+        display: block !important;
+    }
+    
+    .horoscope-header .lifecycle-phase .phase-value {
+        font-size: 0.9rem !important;
+        font-weight: 600 !important;
+        color: #ff9800 !important;
+        display: block !important;
+    }
+    
+    /* 独立的运势分数区域样式（非header内的） */
+    .overall-score:not(.horoscope-header .overall-score) {
+        padding: 1rem !important;
+        margin: 1rem 0 !important;
+        border-radius: 12px !important;
+        background: linear-gradient(135deg, rgba(70, 130, 180, 0.1), rgba(95, 158, 160, 0.1)) !important;
+        text-align: center !important;
+        border: 1px solid rgba(70, 130, 180, 0.2) !important;
+        max-width: 100% !important;
+    }
+    
+    .score-label:not(.horoscope-header .score-label) {
+        font-size: 0.9rem !important;
+        color: #666 !important;
+        margin-bottom: 0.3rem !important;
+    }
+    
+    .score-value:not(.horoscope-header .score-value) {
+        font-size: 2rem !important;
+        font-weight: 700 !important;
+        color: #4682b4 !important;
+    }
+    
+    /* 运势内容区域修复 */
+    .horoscope-content {
+        width: 100% !important;
+        max-width: none !important;
+    }
+    
+    .main-description {
+        margin-bottom: 1.5rem !important;
+        padding: 1rem !important;
+        background: rgba(70, 130, 180, 0.05) !important;
+        border-radius: 10px !important;
+        border-left: 4px solid #4682b4 !important;
+    }
+    
+    /* 幸运元素网格修复 */
+    .lucky-elements {
+        margin: 1.5rem 0 !important;
+    }
+    
+    .lucky-grid {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 0.8rem !important;
+        margin: 1rem 0 !important;
+    }
+    
+    .lucky-item {
+        padding: 1rem 0.5rem !important;
+        border-radius: 10px !important;
+        text-align: center !important;
+        background: rgba(70, 130, 180, 0.05) !important;
+        border: 1px solid rgba(70, 130, 180, 0.15) !important;
+    }
+    
+    .lucky-icon {
+        font-size: 1.5rem !important;
+        margin-bottom: 0.5rem !important;
+        display: block !important;
+    }
+    
+    .lucky-text {
+        font-size: 0.8rem !important;
+        line-height: 1.3 !important;
+        color: #555 !important;
+    }
+    
+    /* 行星影响修复 */
+    .planetary-influences {
+        margin: 1.5rem 0 !important;
+    }
+    
+    .planet-grid {
+        grid-template-columns: 1fr !important;
+        gap: 0.8rem !important;
+        margin: 1rem 0 !important;
+    }
+    
+    .planet-item {
+        padding: 1rem !important;
+        border-radius: 10px !important;
+        background: rgba(255, 255, 255, 0.9) !important;
+        border: 1px solid rgba(70, 130, 180, 0.15) !important;
+    }
+    
+    /* 兼容性网格修复 */
+    .compatibility {
+        margin: 1.5rem 0 !important;
+    }
+    
+    .compatibility-grid {
+        grid-template-columns: 1fr !important;
+        gap: 0.8rem !important;
+        margin: 1rem 0 !important;
+    }
+    
+    .compatibility-item {
+        padding: 1rem !important;
+        border-radius: 10px !important;
+        background: rgba(255, 255, 255, 0.9) !important;
+        border: 1px solid rgba(70, 130, 180, 0.15) !important;
+    }
+    
+    /* 每日建议修复 */
+    .daily-advice {
+        margin: 1.5rem 0 !important;
+    }
+    
+    .advice-list {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        gap: 0.8rem !important;
+        margin: 1rem 0 !important;
+    }
+    
+    .advice-item {
+        padding: 1rem !important;
+        border-radius: 10px !important;
+        font-size: 0.9rem !important;
+        background: rgba(70, 130, 180, 0.05) !important;
+        border-left: 3px solid #4682b4 !important;
+        line-height: 1.5 !important;
+    }
+}
+
+/* 超小屏设备优化 480px以下 */
+@media (max-width: 480px) {
+    body {
+        font-size: 14px !important;
+        line-height: 1.5 !important;
+    }
+    
+    /* 特性标签超小屏改为单列 */
+    .hero-features {
+        grid-template-columns: 1fr !important;
+        max-width: 200px !important;
+        gap: 0.6rem !important;
+    }
+    
+    .feature-tag {
+        max-width: 180px !important;
+        font-size: 0.7rem !important;
+        padding: 6px 10px !important;
+    }
+    
+    /* 日期显示改为列表式布局 */
+    .current-date-display {
+        grid-template-columns: 1fr !important;
+        gap: 0.4rem !important;
+        max-width: 320px !important;
+        margin-left: -160px !important;
+    }
+    
+    .date-item {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding: 0.6rem 1rem !important;
+        text-align: left !important;
+    }
+    
+    .date-label {
+        font-size: 0.75rem !important;
+        margin-bottom: 0 !important;
+    }
+    
+    .date-value {
+        font-size: 0.8rem !important;
+        font-weight: 600 !important;
+    }
+    
+    /* 宇宙信息超小屏优化 */
+    .current-cosmic-info {
+        max-width: 320px !important;
+        margin-left: -160px !important;
+    }
+    
+    /* 查询区域超小屏 */
+    .query-section {
+        max-width: 340px !important;
+        margin-left: -170px !important;
+        padding: 1rem 0.8rem !important;
+    }
+    
+    select, .submit-btn {
+        max-width: 280px !important;
+    }
+    
+    /* 运势结果超小屏优化 */
+    .result {
+        margin-left: -47.5% !important;
+    }
+    
+    /* 超小屏运势头部优化 */
+    .horoscope-header {
+        padding: 0.8rem !important;
+        gap: 0.5rem !important;
+        text-align: center !important;
+    }
+    
+    .horoscope-header h2 {
+        font-size: 1rem !important;
+        margin-bottom: 0.6rem !important;
+        line-height: 1.3 !important;
+    }
+    
+    .horoscope-header .overall-score,
+    .horoscope-header .lifecycle-phase {
+        display: inline-block !important;
+        margin: 0.3rem 0.15rem !important;
+        padding: 0.5rem 0.6rem !important;
+        width: calc(48% - 0.3rem) !important;
+        vertical-align: top !important;
+    }
+    
+    .horoscope-header .overall-score .score-label,
+    .horoscope-header .lifecycle-phase .phase-label {
+        font-size: 0.6rem !important;
+        margin-bottom: 0.1rem !important;
+        margin-right: 0 !important;
+        display: block !important;
+    }
+    
+    .horoscope-header .overall-score .score-value {
+        font-size: 1rem !important;
+        font-weight: 600 !important;
+    }
+    
+    .horoscope-header .lifecycle-phase .phase-value {
+        font-size: 0.85rem !important;
+        font-weight: 600 !important;
+        display: block !important;
+    }
+    
+    /* 非header的独立分数显示 */
+    .overall-score:not(.horoscope-header .overall-score) {
+        padding: 0.8rem !important;
+    }
+    
+    .score-value:not(.horoscope-header .score-value) {
+        font-size: 1.8rem !important;
+    }
+    
+    /* 幸运元素超小屏改为单列 */
+    .lucky-grid {
+        grid-template-columns: 1fr !important;
+        gap: 0.6rem !important;
+    }
+    
+    .lucky-item {
+        padding: 0.8rem !important;
+    }
+    
+    .lucky-icon {
+        font-size: 1.2rem !important;
+    }
+    
+    .lucky-text {
+        font-size: 0.75rem !important;
+    }
+}
+
+/* 极小设备优化 360px以下 */
+@media (max-width: 360px) {
+    .current-date-display,
+    .current-cosmic-info {
+        max-width: 300px !important;
+        margin-left: -150px !important;
+    }
+    
+    .query-section {
+        max-width: 300px !important;
+        margin-left: -150px !important;
+    }
+    
+    select, .submit-btn {
+        max-width: 260px !important;
+    }
+    
+    /* 极小屏运势头部 */
+    .horoscope-header {
+        padding: 0.6rem !important;
+    }
+    
+    .horoscope-header h2 {
+        font-size: 0.9rem !important;
+        margin-bottom: 0.5rem !important;
+        word-break: break-word !important;
+    }
+    
+    .horoscope-header .overall-score,
+    .horoscope-header .lifecycle-phase {
+        width: calc(50% - 0.2rem) !important;
+        margin: 0.2rem 0.1rem !important;
+        padding: 0.4rem 0.5rem !important;
+    }
+    
+    .horoscope-header .overall-score .score-label,
+    .horoscope-header .lifecycle-phase .phase-label {
+        font-size: 0.55rem !important;
+        margin-right: 0 !important;
+        display: block !important;
+    }
+    
+    .horoscope-header .overall-score .score-value {
+        font-size: 0.9rem !important;
+    }
+    
+    .horoscope-header .lifecycle-phase .phase-value {
+        font-size: 0.8rem !important;
+        display: block !important;
+    }
+}
+
+/* 隐藏不必要的装饰元素以减少移动端复杂度 */
+@media (max-width: 768px) {
+    .disclaimer {
+        display: none !important;
+    }
+    
+    /* 简化所有动画和装饰效果 */
+    .knowledge-card::before,
+    .service-card::before,
+    .about-card::before {
+        display: none !important;
+    }
+    
+    .knowledge-card:hover,
+    .service-card:hover,
+    .about-card:hover {
+        transform: translateY(-2px) !important;
+        box-shadow: 0 6px 16px rgba(70, 130, 180, 0.15) !important;
+    }
+} 
