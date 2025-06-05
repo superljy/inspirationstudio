@@ -1,12 +1,9 @@
 User-agent: *
 Allow: /
 
-# Core Constellation Inspiration Content
+# Core Content
 Allow: /index.html
 Allow: /pages/
-Allow: /constellation-inspiration/
-Allow: /cosmic-inspiration/
-Allow: /constellation-wisdom/
 
 # Assets and Resources
 Allow: /css/
@@ -28,7 +25,7 @@ Disallow: /tmp/
 Disallow: /backup/
 
 # XML Sitemap location
-Sitemap: https://constellation-mystique.com/sitemap.xml
+Sitemap: https://superljy.github.io/inspirationstudio/sitemap.xml
 
 # Search Engine Specific Rules
 User-agent: Googlebot
@@ -65,7 +62,7 @@ User-agent: anthropic-ai
 Disallow: /
 
 # Preferred domain and canonical information
-Host: constellation-mystique.com
+Host: superljy.github.io
 
 # Cache directives for better crawling
 Cache-delay: 1 
