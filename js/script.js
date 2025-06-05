@@ -1,582 +1,582 @@
-// 专业占星学运势计算系统 - 高级版本
-// 基于传统占星学和现代占星学理论
+// Professional Astrological Fortune Calculation System - Advanced Version
+// Based on traditional astrology and modern astrological theories
 
-// 精确的行星数据和影响力系统
+// Precise planetary data and influence system
 const planets = {
     sun: { 
-        name: '太阳', 
+        name: 'Sun', 
         symbol: '☉',
         influence: 1.0, 
-        keywords: ['自我', '意志力', '领导力', '权威', '生命力', '父亲', '创造'],
+        keywords: ['Self', 'Willpower', 'Leadership', 'Authority', 'Vitality', 'Father', 'Creation'],
         houses: [1, 5],
-        aspects: ['合相', '对冲', '三分相', '四分相', '六分相'],
+        aspects: ['Conjunction', 'Opposition', 'Trine', 'Square', 'Sextile'],
         orbitalPeriod: 365.25,
         avgDaily: 0.9856,
         dignity: { exaltation: 'aries', detriment: 'aquarius', fall: 'libra' }
     },
     moon: { 
-        name: '月亮', 
+        name: 'Moon', 
         symbol: '☽',
         influence: 0.9, 
-        keywords: ['情感', '直觉', '记忆', '母性', '潜意识', '家庭', '安全感'],
+        keywords: ['Emotions', 'Intuition', 'Memory', 'Maternal', 'Subconscious', 'Family', 'Security'],
         houses: [4, 2],
-        aspects: ['合相', '六分相', '三分相', '四分相'],
+        aspects: ['Conjunction', 'Sextile', 'Trine', 'Square'],
         orbitalPeriod: 27.32,
         avgDaily: 13.176,
         dignity: { exaltation: 'taurus', detriment: 'capricorn', fall: 'scorpio' }
     },
     mercury: { 
-        name: '水星', 
+        name: 'Mercury', 
         symbol: '☿',
         influence: 0.7, 
-        keywords: ['沟通', '思维', '学习', '旅行', '商业', '技能', '适应'],
+        keywords: ['Communication', 'Thinking', 'Learning', 'Travel', 'Business', 'Skills', 'Adaptation'],
         houses: [3, 6],
-        aspects: ['合相', '六分相', '四分相', '三分相'],
+        aspects: ['Conjunction', 'Sextile', 'Square', 'Trine'],
         orbitalPeriod: 87.97,
         avgDaily: 4.092,
         dignity: { exaltation: 'virgo', detriment: 'sagittarius', fall: 'pisces' }
     },
     venus: { 
-        name: '金星', 
+        name: 'Venus', 
         symbol: '♀',
         influence: 0.8, 
-        keywords: ['爱情', '美感', '金钱', '和谐', '艺术', '价值观', '享受'],
+        keywords: ['Love', 'Aesthetics', 'Money', 'Harmony', 'Art', 'Values', 'Enjoyment'],
         houses: [2, 7],
-        aspects: ['合相', '三分相', '六分相', '四分相'],
+        aspects: ['Conjunction', 'Trine', 'Sextile', 'Square'],
         orbitalPeriod: 224.7,
         avgDaily: 1.602,
         dignity: { exaltation: 'pisces', detriment: 'aries', fall: 'virgo' }
     },
     mars: { 
-        name: '火星', 
+        name: 'Mars', 
         symbol: '♂',
         influence: 0.7, 
-        keywords: ['行动力', '冲动', '竞争', '性能量', '勇气', '争斗', '开拓'],
+        keywords: ['Action', 'Impulse', 'Competition', 'Sexual Energy', 'Courage', 'Conflict', 'Pioneering'],
         houses: [1, 8],
-        aspects: ['对冲', '四分相', '合相', '三分相'],
+        aspects: ['Opposition', 'Square', 'Conjunction', 'Trine'],
         orbitalPeriod: 686.98,
         avgDaily: 0.524,
         dignity: { exaltation: 'capricorn', detriment: 'libra', fall: 'cancer' }
     },
     jupiter: { 
-        name: '木星', 
+        name: 'Jupiter', 
         symbol: '♃',
         influence: 0.6, 
-        keywords: ['扩展', '哲学', '幸运', '智慧', '宗教', '法律', '高等教育'],
+        keywords: ['Expansion', 'Philosophy', 'Luck', 'Wisdom', 'Religion', 'Law', 'Higher Education'],
         houses: [9, 12],
-        aspects: ['三分相', '六分相', '合相', '对冲'],
+        aspects: ['Trine', 'Sextile', 'Conjunction', 'Opposition'],
         orbitalPeriod: 4332.59,
         avgDaily: 0.083,
         dignity: { exaltation: 'cancer', detriment: 'gemini', fall: 'capricorn' }
     },
     saturn: { 
-        name: '土星', 
+        name: 'Saturn', 
         symbol: '♄',
         influence: 0.5, 
-        keywords: ['限制', '责任', '结构', '时间', '权威', '纪律', '成熟'],
+        keywords: ['Restriction', 'Responsibility', 'Structure', 'Time', 'Authority', 'Discipline', 'Maturity'],
         houses: [10, 11],
-        aspects: ['四分相', '对冲', '合相', '三分相'],
+        aspects: ['Square', 'Opposition', 'Conjunction', 'Trine'],
         orbitalPeriod: 10759.22,
         avgDaily: 0.033,
         dignity: { exaltation: 'libra', detriment: 'cancer', fall: 'aries' }
     },
     uranus: {
-        name: '天王星',
+        name: 'Uranus',
         symbol: '♅',
         influence: 0.4,
-        keywords: ['革新', '突破', '自由', '科技', '反叛', '独立', '未来'],
+        keywords: ['Innovation', 'Breakthrough', 'Freedom', 'Technology', 'Rebellion', 'Independence', 'Future'],
         houses: [11, 1],
-        aspects: ['四分相', '对冲', '合相', '三分相'],
+        aspects: ['Square', 'Opposition', 'Conjunction', 'Trine'],
         orbitalPeriod: 30688.5,
         avgDaily: 0.012,
         dignity: { exaltation: 'scorpio', detriment: 'leo', fall: 'taurus' }
     },
     neptune: {
-        name: '海王星',
+        name: 'Neptune',
         symbol: '♆',
         influence: 0.4,
-        keywords: ['梦想', '幻象', '灵性', '艺术', '同情', '牺牲', '欺骗'],
+        keywords: ['Dreams', 'Illusion', 'Spirituality', 'Art', 'Compassion', 'Sacrifice', 'Deception'],
         houses: [12, 9],
-        aspects: ['三分相', '六分相', '四分相', '合相'],
+        aspects: ['Trine', 'Sextile', 'Square', 'Conjunction'],
         orbitalPeriod: 60190,
         avgDaily: 0.006,
         dignity: { exaltation: 'leo', detriment: 'virgo', fall: 'aquarius' }
     },
     pluto: {
-        name: '冥王星',
+        name: 'Pluto',
         symbol: '♇',
         influence: 0.3,
-        keywords: ['转化', '重生', '深层', '权力', '死亡', '再生', '隐秘'],
+        keywords: ['Transformation', 'Rebirth', 'Deep', 'Power', 'Death', 'Regeneration', 'Hidden'],
         houses: [8, 1],
-        aspects: ['合相', '四分相', '对冲', '三分相'],
+        aspects: ['Conjunction', 'Square', 'Opposition', 'Trine'],
         orbitalPeriod: 90465,
         avgDaily: 0.004,
         dignity: { exaltation: 'leo', detriment: 'taurus', fall: 'aquarius' }
     },
     northNode: {
-        name: '北交点',
+        name: 'North Node',
         symbol: '☊',
         influence: 0.3,
-        keywords: ['命运', '成长', '目标', '未来', '发展', '学习'],
+        keywords: ['Destiny', 'Growth', 'Goals', 'Future', 'Development', 'Learning'],
         orbitalPeriod: 6798.38,
         avgDaily: -0.053,
         isNode: true
     },
     southNode: {
-        name: '南交点',
+        name: 'South Node',
         symbol: '☋',
         influence: 0.2,
-        keywords: ['过去', '天赋', '习惯', '释放', '完成'],
+        keywords: ['Past', 'Talents', 'Habits', 'Release', 'Completion'],
         orbitalPeriod: 6798.38,
         avgDaily: -0.053,
         isNode: true
     }
 };
 
-// 增强的占星学十二宫位系统
+// Enhanced astrological twelve houses system
 const houses = {
     1: { 
-        name: '命宫（上升宫）', 
-        theme: '自我形象、个性、外貌、第一印象', 
-        keywords: ['身份', '外表', '开始', '活力'],
+        name: 'First House (Ascendant)', 
+        theme: 'Self-image, personality, appearance, first impression', 
+        keywords: ['Identity', 'Appearance', 'Beginning', 'Vitality'],
         element: 'cardinal',
         significance: 'angular'
     },
     2: { 
-        name: '财帛宫', 
-        theme: '金钱、物质、价值观、自我价值', 
-        keywords: ['收入', '财产', '价值', '资源'],
+        name: 'Second House', 
+        theme: 'Money, material possessions, values, self-worth', 
+        keywords: ['Income', 'Property', 'Values', 'Resources'],
         element: 'fixed',
         significance: 'succedent'
     },
     3: { 
-        name: '兄弟宫', 
-        theme: '沟通、学习、短途旅行、兄弟姐妹', 
-        keywords: ['沟通', '思维', '学习', '邻居'],
+        name: 'Third House', 
+        theme: 'Communication, learning, short trips, siblings', 
+        keywords: ['Communication', 'Thinking', 'Learning', 'Neighbors'],
         element: 'mutable',
         significance: 'cadent'
     },
     4: { 
-        name: '田宅宫（天底）', 
-        theme: '家庭、根基、房产、内在自我', 
-        keywords: ['家庭', '童年', '根基', '私密'],
+        name: 'Fourth House (Nadir)', 
+        theme: 'Family, roots, property, inner self', 
+        keywords: ['Family', 'Childhood', 'Roots', 'Privacy'],
         element: 'cardinal',
         significance: 'angular'
     },
     5: { 
-        name: '子女宫', 
-        theme: '创造力、恋爱、娱乐、子女', 
-        keywords: ['创意', '爱情', '娱乐', '投机'],
+        name: 'Fifth House', 
+        theme: 'Creativity, romance, entertainment, children', 
+        keywords: ['Creativity', 'Love', 'Entertainment', 'Speculation'],
         element: 'fixed',
         significance: 'succedent'
     },
     6: { 
-        name: '奴仆宫', 
-        theme: '工作、健康、日常、服务', 
-        keywords: ['工作', '健康', '服务', '习惯'],
+        name: 'Sixth House', 
+        theme: 'Work, health, daily routine, service', 
+        keywords: ['Work', 'Health', 'Service', 'Habits'],
         element: 'mutable',
         significance: 'cadent'
     },
     7: { 
-        name: '夫妻宫（下降宫）', 
-        theme: '伙伴关系、婚姻、公开敌人、合作', 
-        keywords: ['伙伴', '婚姻', '合作', '他人'],
+        name: 'Seventh House (Descendant)', 
+        theme: 'Partnerships, marriage, open enemies, cooperation', 
+        keywords: ['Partners', 'Marriage', 'Cooperation', 'Others'],
         element: 'cardinal',
         significance: 'angular'
     },
     8: { 
-        name: '疾厄宫', 
-        theme: '深层转化、死亡、他人资源、神秘', 
-        keywords: ['转化', '共享', '投资', '神秘'],
+        name: 'Eighth House', 
+        theme: 'Deep transformation, death, others\' resources, mysteries', 
+        keywords: ['Transformation', 'Shared', 'Investment', 'Mysteries'],
         element: 'fixed',
         significance: 'succedent'
     },
     9: { 
-        name: '迁移宫', 
-        theme: '哲学、高等教育、远行、宗教', 
-        keywords: ['哲学', '教育', '旅行', '信念'],
+        name: 'Ninth House', 
+        theme: 'Philosophy, higher education, long journeys, religion', 
+        keywords: ['Philosophy', 'Education', 'Travel', 'Beliefs'],
         element: 'mutable',
         significance: 'cadent'
     },
     10: { 
-        name: '官禄宫（天顶）', 
-        theme: '事业、声誉、社会地位、目标', 
-        keywords: ['事业', '名声', '权威', '目标'],
+        name: 'Tenth House (Midheaven)', 
+        theme: 'Career, reputation, social status, goals', 
+        keywords: ['Career', 'Fame', 'Authority', 'Goals'],
         element: 'cardinal',
         significance: 'angular'
     },
     11: { 
-        name: '福德宫', 
-        theme: '朋友、希望、团体、社会意识', 
-        keywords: ['友谊', '希望', '社交', '理想'],
+        name: 'Eleventh House', 
+        theme: 'Friends, hopes, groups, social consciousness', 
+        keywords: ['Friendship', 'Hopes', 'Social', 'Ideals'],
         element: 'fixed',
         significance: 'succedent'
     },
     12: { 
-        name: '玄秘宫', 
-        theme: '潜意识、隐藏、慈善、业力', 
-        keywords: ['潜意识', '隐秘', '精神', '牺牲'],
+        name: 'Twelfth House', 
+        theme: 'Subconscious, hidden, charity, karma', 
+        keywords: ['Subconscious', 'Hidden', 'Spiritual', 'Sacrifice'],
         element: 'mutable',
         significance: 'cadent'
     }
 };
 
-// 精确的月相系统
+// Precise lunar phase system
 const moonPhases = {
     newMoon: { 
-        name: '新月', 
+        name: 'New Moon', 
         symbol: '🌑',
         influence: 0.3, 
-        keywords: ['新开始', '种子', '意图设定', '内省'],
-        energy: '内向收敛',
-        bestFor: ['制定计划', '冥想', '意图设定']
+        keywords: ['New Beginnings', 'Seeds', 'Intention Setting', 'Introspection'],
+        energy: 'Inward Gathering',
+        bestFor: ['Making Plans', 'Meditation', 'Setting Intentions']
     },
     waxingCrescent: { 
-        name: '娥眉月', 
+        name: 'Waxing Crescent', 
         symbol: '🌒',
         influence: 0.5, 
-        keywords: ['成长', '建设', '积累', '行动'],
-        energy: '外向扩展',
-        bestFor: ['开始行动', '学习新技能', '建立关系']
+        keywords: ['Growth', 'Building', 'Accumulation', 'Action'],
+        energy: 'Outward Expansion',
+        bestFor: ['Taking Action', 'Learning New Skills', 'Building Relationships']
     },
     firstQuarter: { 
-        name: '上弦月', 
+        name: 'First Quarter', 
         symbol: '🌓',
         influence: 0.7, 
-        keywords: ['挑战', '决策', '行动', '突破'],
-        energy: '动态平衡',
-        bestFor: ['做决定', '克服阻碍', '调整计划']
+        keywords: ['Challenges', 'Decisions', 'Action', 'Breakthroughs'],
+        energy: 'Dynamic Balance',
+        bestFor: ['Making Decisions', 'Overcoming Obstacles', 'Adjusting Plans']
     },
     waxingGibbous: { 
-        name: '盈凸月', 
+        name: 'Waxing Gibbous', 
         symbol: '🌔',
         influence: 0.8, 
-        keywords: ['调整', '完善', '坚持', '准备'],
-        energy: '趋向完整',
-        bestFor: ['完善细节', '加强努力', '准备收获']
+        keywords: ['Refinement', 'Perfection', 'Persistence', 'Preparation'],
+        energy: 'Approaching Completion',
+        bestFor: ['Refining Details', 'Strengthening Efforts', 'Preparing for Harvest']
     },
     fullMoon: { 
-        name: '满月', 
+        name: 'Full Moon', 
         symbol: '🌕',
         influence: 1.0, 
-        keywords: ['高潮', '完成', '释放', '觉醒'],
-        energy: '极化显现',
-        bestFor: ['完成项目', '庆祝成就', '释放情感']
+        keywords: ['Culmination', 'Completion', 'Release', 'Awakening'],
+        energy: 'Polarized Manifestation',
+        bestFor: ['Completing Projects', 'Celebrating Achievements', 'Releasing Emotions']
     },
     waningGibbous: { 
-        name: '亏凸月', 
+        name: 'Waning Gibbous', 
         symbol: '🌖',
         influence: 0.8, 
-        keywords: ['感谢', '分享', '传播', '给予'],
-        energy: '外向给予',
-        bestFor: ['分享成果', '教导他人', '回馈社会']
+        keywords: ['Gratitude', 'Sharing', 'Distribution', 'Giving'],
+        energy: 'Outward Giving',
+        bestFor: ['Sharing Results', 'Teaching Others', 'Giving Back']
     },
     lastQuarter: { 
-        name: '下弦月', 
+        name: 'Last Quarter', 
         symbol: '🌗',
         influence: 0.5, 
-        keywords: ['释放', '清理', '反思', '放下'],
-        energy: '内向清理',
-        bestFor: ['断舍离', '原谅', '清理环境']
+        keywords: ['Release', 'Clearing', 'Reflection', 'Letting Go'],
+        energy: 'Inward Clearing',
+        bestFor: ['Decluttering', 'Forgiveness', 'Environmental Clearing']
     },
     waningCrescent: { 
-        name: '残月', 
+        name: 'Waning Crescent', 
         symbol: '🌘',
         influence: 0.3, 
-        keywords: ['休息', '恢复', '准备', '静思'],
-        energy: '深度内化',
-        bestFor: ['休息恢复', '深度思考', '准备新周期']
+        keywords: ['Rest', 'Recovery', 'Preparation', 'Contemplation'],
+        energy: 'Deep Internalization',
+        bestFor: ['Rest and Recovery', 'Deep Thinking', 'Preparing for New Cycle']
     }
 };
 
-// 精确的行星相位角度系统
+// Precise planetary aspect angle system
 const aspectAngles = {
     conjunction: { 
-        name: '合相', 
+        name: 'Conjunction', 
         symbol: '☌',
         angle: 0, 
         orb: 8, 
         nature: 'neutral', 
         strength: 1.0,
-        meaning: '能量融合，强化影响'
+        meaning: 'Energy fusion, enhanced influence'
     },
     sextile: { 
-        name: '六分相', 
+        name: 'Sextile', 
         symbol: '⚹',
         angle: 60, 
         orb: 6, 
         nature: 'harmonious', 
         strength: 0.6,
-        meaning: '和谐机会，轻松发展'
+        meaning: 'Harmonious opportunities, easy development'
     },
     square: { 
-        name: '四分相', 
+        name: 'Square', 
         symbol: '□',
         angle: 90, 
         orb: 8, 
         nature: 'challenging', 
         strength: 0.8,
-        meaning: '紧张冲突，需要行动'
+        meaning: 'Tension and conflict, action required'
     },
     trine: { 
-        name: '三分相', 
+        name: 'Trine', 
         symbol: '△',
         angle: 120, 
         orb: 8, 
         nature: 'harmonious', 
         strength: 0.9,
-        meaning: '天然和谐，天赋才能'
+        meaning: 'Natural harmony, innate talents'
     },
     opposition: { 
-        name: '对冲', 
+        name: 'Opposition', 
         symbol: '☍',
         angle: 180, 
         orb: 8, 
         nature: 'challenging', 
         strength: 1.0,
-        meaning: '极化对立，需要平衡'
+        meaning: 'Polar opposition, balance needed'
     },
     quintile: {
-        name: '五分相',
+        name: 'Quintile',
         symbol: 'Q',
         angle: 72,
         orb: 2,
         nature: 'creative',
         strength: 0.4,
-        meaning: '创造天赋，特殊才能'
+        meaning: 'Creative gifts, special talents'
     },
     semisextile: {
-        name: '半六分相',
+        name: 'Semisextile',
         symbol: '⚺',
         angle: 30,
         orb: 3,
         nature: 'minor',
         strength: 0.3,
-        meaning: '微妙调整，潜在机会'
+        meaning: 'Subtle adjustments, potential opportunities'
     }
 };
 
-// 增强的元素相关详细属性
+// Enhanced elemental properties
 const elementProperties = {
     fire: {
-        quality: '主动进取',
-        energy: '阳性',
-        season: ['春', '夏'],
-        colors: ['烈焰红', '太阳橙', '活力黄', '热情金'],
-        stones: ['红宝石', '石榴石', '黄水晶', '琥珀', '火玛瑙'],
-        herbs: ['肉桂', '丁香', '迷迭香', '姜', '辣椒'],
-        metals: ['金', '铁'],
-        direction: '南',
-        keywords: ['热情', '冲动', '领导', '创造', '勇敢']
+        quality: 'Active and Enterprising',
+        energy: 'Yang',
+        season: ['Spring', 'Summer'],
+        colors: ['Flame Red', 'Sun Orange', 'Vibrant Yellow', 'Passionate Gold'],
+        stones: ['Ruby', 'Garnet', 'Citrine', 'Amber', 'Fire Agate'],
+        herbs: ['Cinnamon', 'Clove', 'Rosemary', 'Ginger', 'Chili'],
+        metals: ['Gold', 'Iron'],
+        direction: 'South',
+        keywords: ['Passion', 'Impulse', 'Leadership', 'Creation', 'Courage']
     },
     earth: {
-        quality: '稳定务实',
-        energy: '阴性',
-        season: ['秋'],
-        colors: ['大地棕', '森林绿', '稳重米', '沉静黑'],
-        stones: ['翡翠', '玛瑙', '虎眼石', '碧玉', '孔雀石'],
-        herbs: ['鼠尾草', '薰衣草', '雪松', '广藿香'],
-        metals: ['铜', '铅'],
-        direction: '北',
-        keywords: ['稳定', '实用', '可靠', '耐心', '物质']
+        quality: 'Stable and Practical',
+        energy: 'Yin',
+        season: ['Autumn'],
+        colors: ['Earth Brown', 'Forest Green', 'Stable Beige', 'Calm Black'],
+        stones: ['Jade', 'Agate', 'Tiger Eye', 'Jasper', 'Malachite'],
+        herbs: ['Sage', 'Lavender', 'Cedar', 'Patchouli'],
+        metals: ['Copper', 'Lead'],
+        direction: 'North',
+        keywords: ['Stability', 'Practical', 'Reliable', 'Patient', 'Material']
     },
     air: {
-        quality: '灵活变通',
-        energy: '阳性',
-        season: ['春'],
-        colors: ['天空蓝', '云朵白', '清新银', '智慧紫'],
-        stones: ['蓝宝石', '青金石', '海蓝宝石', '水晶', '紫水晶'],
-        herbs: ['薄荷', '柠檬草', '尤加利', '茴香'],
-        metals: ['水银', '铝'],
-        direction: '东',
-        keywords: ['思维', '沟通', '自由', '理性', '社交']
+        quality: 'Flexible and Adaptable',
+        energy: 'Yang',
+        season: ['Spring'],
+        colors: ['Sky Blue', 'Cloud White', 'Fresh Silver', 'Wisdom Purple'],
+        stones: ['Sapphire', 'Lapis Lazuli', 'Aquamarine', 'Crystal', 'Amethyst'],
+        herbs: ['Mint', 'Lemongrass', 'Eucalyptus', 'Fennel'],
+        metals: ['Mercury', 'Aluminum'],
+        direction: 'East',
+        keywords: ['Thinking', 'Communication', 'Freedom', 'Rational', 'Social']
     },
     water: {
-        quality: '感性直觉',
-        energy: '阴性',
-        season: ['冬'],
-        colors: ['深海蓝', '神秘紫', '珍珠银', '月光白'],
-        stones: ['月长石', '珍珠', '海蓝宝', '拉长石', '玉髓'],
-        herbs: ['洋甘菊', '茉莉', '玫瑰', '柳树皮'],
-        metals: ['银', '铂'],
-        direction: '西',
-        keywords: ['情感', '直觉', '同情', '深度', '流动']
+        quality: 'Emotional and Intuitive',
+        energy: 'Yin',
+        season: ['Winter'],
+        colors: ['Deep Sea Blue', 'Mysterious Purple', 'Pearl Silver', 'Moonlight White'],
+        stones: ['Moonstone', 'Pearl', 'Aquamarine', 'Labradorite', 'Chalcedony'],
+        herbs: ['Chamomile', 'Jasmine', 'Rose', 'Willow Bark'],
+        metals: ['Silver', 'Platinum'],
+        direction: 'West',
+        keywords: ['Emotion', 'Intuition', 'Compassion', 'Depth', 'Flow']
     }
 };
 
-// 增强的十二星座详细信息
+// Enhanced detailed information for the twelve zodiac signs
 const zodiacSigns = {
     aries: {
-        name: '白羊座',
+        name: 'Aries',
         symbol: '♈',
         element: 'fire',
         quality: 'cardinal',
         ruler: 'mars',
-        dates: '3.21-4.19',
+        dates: 'Mar 21 - Apr 19',
         decanRulers: ['mars', 'sun', 'jupiter'],
-        traits: ['冲动', '热情', '勇敢', '独立', '领导', '直接'],
-        shadow: ['暴躁', '自私', '冲动', '缺乏耐心'],
-        bodyParts: ['头部', '大脑', '面部'],
-        lifeTheme: '我是 - 开拓自我认同',
-        description: '今天火星能量强劲，你的领导才能和开拓精神将得到充分展现。在人际关系中要注意控制脾气，用你的热情感染他人而非强迫。事业上有突破性进展的机会。'
+        traits: ['Impulsive', 'Passionate', 'Brave', 'Independent', 'Leadership', 'Direct'],
+        shadow: ['Hot-tempered', 'Selfish', 'Impulsive', 'Impatient'],
+        bodyParts: ['Head', 'Brain', 'Face'],
+        lifeTheme: 'I Am - Pioneering Self-Identity',
+        description: 'Mars energy is strong today, your leadership abilities and pioneering spirit will be fully displayed. Pay attention to controlling your temper in interpersonal relationships, use your passion to inspire others rather than force them. There are opportunities for breakthrough progress in your career.'
     },
     taurus: {
-        name: '金牛座',
+        name: 'Taurus',
         symbol: '♉',
         element: 'earth',
         quality: 'fixed',
         ruler: 'venus',
-        dates: '4.20-5.20',
+        dates: 'Apr 20 - May 20',
         decanRulers: ['venus', 'mercury', 'saturn'],
-        traits: ['稳重', '固执', '务实', '享受', '忠诚', '坚持'],
-        shadow: ['顽固', '贪婪', '懒惰', '占有欲'],
-        bodyParts: ['颈部', '喉咙', '甲状腺'],
-        lifeTheme: '我拥有 - 建立稳定价值',
-        description: '金星的优雅能量今天特别强烈，财运和感情运势都有提升。你的稳重态度会让他人信赖，适合处理重要的财务决策。在美食、艺术方面会有特别的享受。'
+        traits: ['Stable', 'Stubborn', 'Practical', 'Enjoying', 'Loyal', 'Persistent'],
+        shadow: ['Obstinate', 'Greedy', 'Lazy', 'Possessive'],
+        bodyParts: ['Neck', 'Throat', 'Thyroid'],
+        lifeTheme: 'I Have - Building Stable Values',
+        description: 'Venus\' elegant energy is particularly strong today, both wealth and love fortunes are enhanced. Your steady attitude will earn others\' trust, suitable for handling important financial decisions. You will have special enjoyment in food and art.'
     },
     gemini: {
-        name: '双子座',
+        name: 'Gemini',
         symbol: '♊',
         element: 'air',
         quality: 'mutable',
         ruler: 'mercury',
-        dates: '5.21-6.21',
+        dates: 'May 21 - Jun 21',
         decanRulers: ['mercury', 'venus', 'uranus'],
-        traits: ['机智', '多变', '好奇', '沟通', '适应', '聪明'],
-        shadow: ['肤浅', '善变', '八卦', '不专注'],
-        bodyParts: ['手臂', '手', '肺部', '神经系统'],
-        lifeTheme: '我思考 - 收集和传播信息',
-        description: '水星赋予你超凡的沟通天赋，今天适合进行重要谈判、学习新技能或发布重要信息。你的多才多艺会给人留下深刻印象，但要注意专注度。'
+        traits: ['Witty', 'Changeable', 'Curious', 'Communicative', 'Adaptable', 'Intelligent'],
+        shadow: ['Superficial', 'Fickle', 'Gossipy', 'Unfocused'],
+        bodyParts: ['Arms', 'Hands', 'Lungs', 'Nervous System'],
+        lifeTheme: 'I Think - Collecting and Spreading Information',
+        description: 'Mercury grants you extraordinary communication talents, today is suitable for important negotiations, learning new skills, or releasing important information. Your versatility will leave a deep impression on others, but pay attention to focus.'
     },
     cancer: {
-        name: '巨蟹座',
+        name: 'Cancer',
         symbol: '♋',
         element: 'water',
         quality: 'cardinal',
         ruler: 'moon',
-        dates: '6.22-7.22',
+        dates: 'Jun 22 - Jul 22',
         decanRulers: ['moon', 'pluto', 'neptune'],
-        traits: ['敏感', '母性', '保护', '情感丰富', '直觉', '温和'],
-        shadow: ['情绪化', '过度保护', '消极', '怀旧'],
-        bodyParts: ['胸部', '胃部', '消化系统'],
-        lifeTheme: '我感受 - 培养情感安全',
-        description: '月亮的温柔能量让你的直觉特别敏锐，家庭关系是今天的重点。你的同理心和照顾他人的能力会得到认可。适合进行情感交流和家庭聚会。'
+        traits: ['Sensitive', 'Nurturing', 'Protective', 'Emotionally Rich', 'Intuitive', 'Gentle'],
+        shadow: ['Moody', 'Overprotective', 'Negative', 'Nostalgic'],
+        bodyParts: ['Chest', 'Stomach', 'Digestive System'],
+        lifeTheme: 'I Feel - Nurturing Emotional Security',
+        description: 'The Moon\'s gentle energy makes your intuition particularly sharp, family relationships are today\'s focus. Your empathy and ability to care for others will be recognized. Suitable for emotional exchanges and family gatherings.'
     },
     leo: {
-        name: '狮子座',
+        name: 'Leo',
         symbol: '♌',
         element: 'fire',
         quality: 'fixed',
         ruler: 'sun',
-        dates: '7.23-8.22',
+        dates: 'Jul 23 - Aug 22',
         decanRulers: ['sun', 'jupiter', 'mars'],
-        traits: ['自信', '慷慨', '戏剧性', '领导力', '创造', '高贵'],
-        shadow: ['傲慢', '自负', '专制', '虚荣'],
-        bodyParts: ['心脏', '背部', '脊椎'],
-        lifeTheme: '我创造 - 表达创意自我',
-        description: '太阳的光辉今天格外耀眼，你就是众人瞩目的焦点。创意项目将有重大突破，你的表演天赋和领导魅力无人可挡。记住用你的光芒温暖他人。'
+        traits: ['Confident', 'Generous', 'Dramatic', 'Leadership', 'Creative', 'Noble'],
+        shadow: ['Arrogant', 'Self-centered', 'Domineering', 'Vain'],
+        bodyParts: ['Heart', 'Back', 'Spine'],
+        lifeTheme: 'I Create - Expressing Creative Self',
+        description: 'The Sun\'s brilliance is particularly dazzling today, you are the center of everyone\'s attention. Creative projects will have major breakthroughs, your performance talent and leadership charm are unstoppable. Remember to warm others with your light.'
     },
     virgo: {
-        name: '处女座',
+        name: 'Virgo',
         symbol: '♍',
         element: 'earth',
         quality: 'mutable',
         ruler: 'mercury',
-        dates: '8.23-9.22',
+        dates: 'Aug 23 - Sep 22',
         decanRulers: ['mercury', 'saturn', 'venus'],
-        traits: ['完美主义', '分析', '服务', '实用', '细致', '谦逊'],
-        shadow: ['挑剔', '焦虑', '过度分析', '自我批评'],
-        bodyParts: ['腹部', '肠道', '消化系统'],
-        lifeTheme: '我分析 - 完善和服务',
-        description: '水星赋予你精确的分析能力，今天在工作中能发现他人忽视的重要细节。你的服务精神和专业态度会获得赞赏。健康管理需要特别关注。'
+        traits: ['Perfectionist', 'Analytical', 'Service-oriented', 'Practical', 'Detailed', 'Modest'],
+        shadow: ['Critical', 'Anxious', 'Over-analytical', 'Self-critical'],
+        bodyParts: ['Abdomen', 'Intestines', 'Digestive System'],
+        lifeTheme: 'I Analyze - Perfecting and Serving',
+        description: 'Mercury grants you precise analytical abilities, today you can discover important details that others overlook at work. Your service spirit and professional attitude will be appreciated. Health management needs special attention.'
     },
     libra: {
-        name: '天秤座',
+        name: 'Libra',
         symbol: '♎',
         element: 'air',
         quality: 'cardinal',
         ruler: 'venus',
-        dates: '9.23-10.23',
+        dates: 'Sep 23 - Oct 23',
         decanRulers: ['venus', 'uranus', 'mercury'],
-        traits: ['平衡', '和谐', '外交', '美感', '公正', '合作'],
-        shadow: ['犹豫不决', '依赖', '肤浅', '避免冲突'],
-        bodyParts: ['腰部', '肾脏', '皮肤'],
-        lifeTheme: '我平衡 - 寻求和谐关系',
-        description: '金星的优雅能量让你成为天然的调解者，人际关系特别和谐。你的审美眼光和外交手腕在今天格外突出。适合处理合作关系和美学相关事务。'
+        traits: ['Balanced', 'Harmonious', 'Diplomatic', 'Aesthetic', 'Fair', 'Cooperative'],
+        shadow: ['Indecisive', 'Dependent', 'Superficial', 'Conflict-avoidant'],
+        bodyParts: ['Lower back', 'Kidneys', 'Skin'],
+        lifeTheme: 'I Balance - Seeking Harmonious Relationships',
+        description: 'Venus\' elegant energy makes you a natural mediator, interpersonal relationships are particularly harmonious. Your aesthetic sense and diplomatic skills are especially prominent today. Suitable for handling cooperative relationships and aesthetic-related matters.'
     },
     scorpio: {
-        name: '天蝎座',
+        name: 'Scorpio',
         symbol: '♏',
         element: 'water',
         quality: 'fixed',
         ruler: 'pluto',
-        dates: '10.24-11.22',
+        dates: 'Oct 24 - Nov 22',
         decanRulers: ['pluto', 'neptune', 'moon'],
-        traits: ['神秘', '深度', '转化', '直觉', '强烈', '洞察'],
-        shadow: ['报复', '嫉妒', '控制', '猜疑'],
-        bodyParts: ['生殖器官', '排泄系统'],
-        lifeTheme: '我转化 - 深度变革重生',
-        description: '冥王星的深层能量让你的洞察力达到巅峰，能够看透事物的本质。今天适合进行深度研究、心理分析或处理神秘事务。感情上可能有重要突破。'
+        traits: ['Mysterious', 'Deep', 'Transformative', 'Intuitive', 'Intense', 'Insightful'],
+        shadow: ['Vengeful', 'Jealous', 'Controlling', 'Suspicious'],
+        bodyParts: ['Reproductive organs', 'Excretory system'],
+        lifeTheme: 'I Transform - Deep Revolutionary Rebirth',
+        description: 'Pluto\'s deep energy brings your insight to its peak, able to see through the essence of things. Today is suitable for deep research, psychological analysis, or handling mysterious affairs. There may be important breakthroughs in relationships.'
     },
     sagittarius: {
-        name: '射手座',
+        name: 'Sagittarius',
         symbol: '♐',
         element: 'fire',
         quality: 'mutable',
         ruler: 'jupiter',
-        dates: '11.23-12.21',
+        dates: 'Nov 23 - Dec 21',
         decanRulers: ['jupiter', 'mars', 'sun'],
-        traits: ['自由', '冒险', '哲学', '乐观', '智慧', '诚实'],
-        shadow: ['鲁莽', '不负责任', '夸大', '缺乏细节'],
-        bodyParts: ['大腿', '肝脏', '臀部'],
-        lifeTheme: '我理解 - 探索人生意义',
-        description: '木星的扩展能量让你充满智慧和远见，今天适合制定长远计划或进行哲学思考。你的乐观态度会感染周围的人，旅行和学习方面有好运。'
+        traits: ['Free', 'Adventurous', 'Philosophical', 'Optimistic', 'Wise', 'Honest'],
+        shadow: ['Reckless', 'Irresponsible', 'Exaggerating', 'Lacking detail'],
+        bodyParts: ['Thighs', 'Liver', 'Hips'],
+        lifeTheme: 'I Understand - Exploring Life\'s Meaning',
+        description: 'Jupiter\'s expansive energy fills you with wisdom and foresight, today is suitable for making long-term plans or engaging in philosophical thinking. Your optimistic attitude will infect those around you, good luck in travel and learning.'
     },
     capricorn: {
-        name: '摩羯座',
+        name: 'Capricorn',
         symbol: '♑',
         element: 'earth',
         quality: 'cardinal',
         ruler: 'saturn',
-        dates: '12.22-1.19',
+        dates: 'Dec 22 - Jan 19',
         decanRulers: ['saturn', 'venus', 'mercury'],
-        traits: ['责任感', '实际', '传统', '努力', '权威', '成熟'],
-        shadow: ['悲观', '固执', '冷漠', '过度严格'],
-        bodyParts: ['膝盖', '骨骼', '皮肤'],
-        lifeTheme: '我使用 - 建立持久成就',
-        description: '土星的严谨能量让你的组织能力达到高峰，事业运势特别强劲。你的专业态度和责任感会得到权威人士的认可，可能获得重要提升机会。'
+        traits: ['Responsible', 'Practical', 'Traditional', 'Hardworking', 'Authoritative', 'Mature'],
+        shadow: ['Pessimistic', 'Stubborn', 'Cold', 'Overly strict'],
+        bodyParts: ['Knees', 'Bones', 'Skin'],
+        lifeTheme: 'I Use - Building Lasting Achievements',
+        description: 'Saturn\'s rigorous energy brings your organizational abilities to their peak, career fortune is particularly strong. Your professional attitude and sense of responsibility will be recognized by authority figures, you may get important promotion opportunities.'
     },
     aquarius: {
-        name: '水瓶座',
+        name: 'Aquarius',
         symbol: '♒',
         element: 'air',
         quality: 'fixed',
         ruler: 'uranus',
-        dates: '1.20-2.18',
+        dates: 'Jan 20 - Feb 18',
         decanRulers: ['uranus', 'mercury', 'venus'],
-        traits: ['独立', '创新', '人道主义', '未来', '理想', '友谊'],
-        shadow: ['冷漠', '叛逆', '不切实际', '固执'],
-        bodyParts: ['小腿', '脚踝', '循环系统'],
-        lifeTheme: '我知道 - 革新人类意识',
-        description: '天王星的革新能量激发你的创造力，独特的见解会得到他人赞赏。在团队合作中发挥重要作用，科技、人道主义相关领域有特别好运。'
+        traits: ['Independent', 'Innovative', 'Humanitarian', 'Future-oriented', 'Idealistic', 'Friendly'],
+        shadow: ['Detached', 'Rebellious', 'Unrealistic', 'Stubborn'],
+        bodyParts: ['Calves', 'Ankles', 'Circulatory system'],
+        lifeTheme: 'I Know - Innovating Human Consciousness',
+        description: 'Uranus\' innovative energy stimulates your creativity, unique insights will be appreciated by others. Play an important role in teamwork, especially good luck in technology and humanitarian-related fields.'
     },
     pisces: {
-        name: '双鱼座',
+        name: 'Pisces',
         symbol: '♓',
         element: 'water',
         quality: 'mutable',
         ruler: 'neptune',
-        dates: '2.19-3.20',
+        dates: 'Feb 19 - Mar 20',
         decanRulers: ['neptune', 'moon', 'pluto'],
-        traits: ['直觉', '同情', '艺术', '梦想', '灵性', '牺牲'],
-        shadow: ['逃避', '受害者', '混乱', '上瘾'],
-        bodyParts: ['脚部', '免疫系统'],
-        lifeTheme: '我相信 - 连接宇宙意识',
-        description: '海王星的梦幻能量让你的艺术灵感和直觉力特别丰富，适合从事创作、冥想或帮助他人的活动。你的同情心和善良会为你带来意想不到的好运。'
+        traits: ['Intuitive', 'Compassionate', 'Artistic', 'Dreamy', 'Spiritual', 'Sacrificial'],
+        shadow: ['Escapist', 'Victim-like', 'Chaotic', 'Addictive'],
+        bodyParts: ['Feet', 'Immune system'],
+        lifeTheme: 'I Believe - Connecting Universal Consciousness',
+        description: 'Neptune\'s dreamy energy makes your artistic inspiration and intuition particularly rich, suitable for creative activities, meditation, or helping others. Your compassion and kindness will bring you unexpected good fortune.'
     }
 };
 
-// 获取精确的当前行星位置（包含逆行状态和更精确的计算）
+// Get precise current planetary positions (including retrograde status and more accurate calculations)
 function getCurrentPlanetaryPositions() {
     const now = new Date();
     const year = now.getFullYear();
@@ -585,17 +585,17 @@ function getCurrentPlanetaryPositions() {
     const hour = now.getHours();
     const minute = now.getMinutes();
     
-    // 计算儒略日数（更精确的天体计算基础）
+    // Calculate Julian Day (more precise astronomical calculation basis)
     const julianDay = calculateJulianDay(year, month, day, hour, minute);
     const centuriesSinceJ2000 = (julianDay - 2451545.0) / 36525.0;
     
-    // 考虑岁差和章动的影响
+    // Consider precession and nutation effects
     const precessionCorrection = 1.396971278 * centuriesSinceJ2000;
     
-    // 计算各行星的精确位置
+    // Calculate precise positions of all planets
     const positions = {};
     
-    // 太阳位置（基于地球轨道）
+    // Sun position (based on Earth's orbit)
     const sunMeanLongitude = (280.46646 + 36000.76983 * centuriesSinceJ2000 + 0.0003032 * centuriesSinceJ2000 * centuriesSinceJ2000) % 360;
     const sunMeanAnomaly = (357.52911 + 35999.05029 * centuriesSinceJ2000 - 0.0001537 * centuriesSinceJ2000 * centuriesSinceJ2000) % 360;
     const sunEccentricity = 0.016708634 - 0.000042037 * centuriesSinceJ2000 - 0.0000001267 * centuriesSinceJ2000 * centuriesSinceJ2000;
@@ -608,12 +608,12 @@ function getCurrentPlanetaryPositions() {
         intensity: 1.0 + 0.1 * Math.sin((julianDay % 365.25) / 365.25 * 2 * Math.PI)
     };
     
-    // 月亮位置（更精确的月球轨道计算）
+    // Moon position (more precise lunar orbital calculation)
     const moonMeanLongitude = (218.3164477 + 481267.88123421 * centuriesSinceJ2000 - 0.0015786 * centuriesSinceJ2000 * centuriesSinceJ2000) % 360;
     const moonMeanAnomaly = (134.9633964 + 477198.8675055 * centuriesSinceJ2000 + 0.0087414 * centuriesSinceJ2000 * centuriesSinceJ2000) % 360;
     const moonArgument = (93.2720950 + 483202.0175233 * centuriesSinceJ2000 - 0.0036539 * centuriesSinceJ2000 * centuriesSinceJ2000) % 360;
     
-    // 月球主要摄动项
+    // Main lunar perturbation terms
     const moonLongitudeCorrection = 
         6.288774 * Math.sin(moonMeanAnomaly * Math.PI / 180) +
         1.274027 * Math.sin((2 * moonArgument - moonMeanAnomaly) * Math.PI / 180) +
@@ -628,11 +628,11 @@ function getCurrentPlanetaryPositions() {
         intensity: getCurrentMoonPhaseIntensity(julianDay)
     };
     
-    // 内行星位置计算（水星、金星）
+    // Inner planet position calculations (Mercury, Venus)
     positions.mercury = calculateInnerPlanetPosition('mercury', centuriesSinceJ2000, precessionCorrection);
     positions.venus = calculateInnerPlanetPosition('venus', centuriesSinceJ2000, precessionCorrection);
     
-    // 外行星位置计算（火星及以外）
+    // Outer planet position calculations (Mars and beyond)
     positions.mars = calculateOuterPlanetPosition('mars', centuriesSinceJ2000, precessionCorrection);
     positions.jupiter = calculateOuterPlanetPosition('jupiter', centuriesSinceJ2000, precessionCorrection);
     positions.saturn = calculateOuterPlanetPosition('saturn', centuriesSinceJ2000, precessionCorrection);
@@ -640,11 +640,11 @@ function getCurrentPlanetaryPositions() {
     positions.neptune = calculateOuterPlanetPosition('neptune', centuriesSinceJ2000, precessionCorrection);
     positions.pluto = calculateOuterPlanetPosition('pluto', centuriesSinceJ2000, precessionCorrection);
     
-    // 月交点计算
+    // Lunar node calculations
     const nodePosition = (125.0445279 - 1934.1362891 * centuriesSinceJ2000 + 0.0020754 * centuriesSinceJ2000 * centuriesSinceJ2000) % 360;
     positions.northNode = {
         degree: (nodePosition + precessionCorrection) % 360,
-        retrograde: true, // 交点总是逆行
+        retrograde: true, // Nodes are always retrograde
         house: Math.floor(((nodePosition + precessionCorrection) % 360) / 30) + 1,
         intensity: 0.8
     };
@@ -659,19 +659,19 @@ function getCurrentPlanetaryPositions() {
     return positions;
 }
 
-// 朱利安日计算（天文学标准时间转换）
+// Julian Day calculation (astronomical standard time conversion)
 function calculateJulianDay(year, month, day, hour = 12, minute = 0) {
-    // 调整月份和年份（朱利安历法规则）
+    // Adjust month and year (Julian calendar rules)
     if (month <= 2) {
         year--;
         month += 12;
     }
     
-    // 格里高利历调整
+    // Gregorian calendar adjustment
     const a = Math.floor(year / 100);
     const b = 2 - a + Math.floor(a / 4);
     
-    // 朱利安日计算公式
+    // Julian Day calculation formula
     const julianDay = Math.floor(365.25 * (year + 4716)) + 
                      Math.floor(30.6001 * (month + 1)) + 
                      day + b - 1524.5 + 
@@ -680,7 +680,7 @@ function calculateJulianDay(year, month, day, hour = 12, minute = 0) {
     return julianDay;
 }
 
-// 计算内行星位置（水星、金星）
+// Calculate inner planet positions (Mercury, Venus)
 function calculateInnerPlanetPosition(planet, T, precession) {
     const planetData = {
         mercury: {
@@ -701,11 +701,11 @@ function calculateInnerPlanetPosition(planet, T, precession) {
     const meanLongitude = (data.L0 + data.L1 * T + data.L2 * T * T) % 360;
     const eccentricity = data.e0 * (1 - 0.0000001 * T);
     
-    // 检查逆行状态
+    // Check retrograde status
     const daysFromEpoch = T * 36525;
     const retroPeriod = data.synodic;
     const retroPhase = (daysFromEpoch % retroPeriod) / retroPeriod;
-    const isRetrograde = retroPhase > 0.4 && retroPhase < 0.6; // 逆行约占轨道周期的20%
+    const isRetrograde = retroPhase > 0.4 && retroPhase < 0.6; // Retrograde accounts for about 20% of orbital cycle
     
     const trueLongitude = meanLongitude + 
         1.914 * eccentricity * Math.sin(meanLongitude * Math.PI / 180) +
@@ -715,11 +715,11 @@ function calculateInnerPlanetPosition(planet, T, precession) {
         degree: (trueLongitude + precession) % 360,
         retrograde: isRetrograde,
         house: Math.floor(((trueLongitude + precession) % 360) / 30) + 1,
-        intensity: isRetrograde ? 0.7 : 1.0 // 逆行时影响力减弱但更深层
+        intensity: isRetrograde ? 0.7 : 1.0 // During retrograde, influence weakens but becomes deeper
     };
 }
 
-// 计算外行星位置（火星及以外）
+// Calculate outer planet positions (Mars and beyond)
 function calculateOuterPlanetPosition(planet, T, precession) {
     const planetData = {
         mars: {
@@ -759,21 +759,21 @@ function calculateOuterPlanetPosition(planet, T, precession) {
     
     const meanLongitude = (data.L0 + data.L1 * T + data.L2 * T * T) % 360;
     
-    // 更精确的逆行计算
+    // More precise retrograde calculation
     const daysFromEpoch = T * 36525;
     const yearsSinceEpoch = daysFromEpoch / 365.25;
     const retroCyclePosition = (yearsSinceEpoch % data.retroCycle) / data.retroCycle;
     
-    // 根据行星特性确定逆行时期
+    // Determine retrograde periods based on planetary characteristics
     let isRetrograde = false;
-    const retroStart = 0.4; // 逆行开始位置
-    const retroEnd = 0.6;   // 逆行结束位置
+    const retroStart = 0.4; // Retrograde start position
+    const retroEnd = 0.6;   // Retrograde end position
     
     if (retroCyclePosition >= retroStart && retroCyclePosition <= retroEnd) {
         isRetrograde = true;
     }
     
-    // 计算行星的真实位置
+    // Calculate the planet's true position
     const eccentricity = data.e0;
     const trueLongitude = meanLongitude + 
         2 * eccentricity * Math.sin(meanLongitude * Math.PI / 180) * (180 / Math.PI) +
@@ -787,21 +787,21 @@ function calculateOuterPlanetPosition(planet, T, precession) {
     };
 }
 
-// 获取月相强度
+// Get moon phase intensity
 function getCurrentMoonPhaseIntensity(julianDay) {
-    const lunarCycle = 29.530588853; // 精确的朔望月周期
-    const knownNewMoon = 2451550.1; // J2000.0时期的新月
+    const lunarCycle = 29.530588853; // Precise synodic month cycle
+    const knownNewMoon = 2451550.1; // New moon at J2000.0 epoch
     const cyclesSinceKnown = (julianDay - knownNewMoon) / lunarCycle;
     const cyclePosition = cyclesSinceKnown - Math.floor(cyclesSinceKnown);
     
-    // 计算月相强度（新月时最弱，满月时最强）
+    // Calculate moon phase intensity (weakest at new moon, strongest at full moon)
     const phaseAngle = cyclePosition * 2 * Math.PI;
-    const intensity = 0.5 + 0.5 * Math.cos(phaseAngle - Math.PI); // 从0到1的变化
+    const intensity = 0.5 + 0.5 * Math.cos(phaseAngle - Math.PI); // Variation from 0 to 1
     
     return intensity;
 }
 
-// 增强的行星影响力计算（完全基于占星学原理）
+// Enhanced planetary influence calculation (fully based on astrological principles)
 function calculatePlanetaryInfluence(sign, currentPositions) {
     const signData = zodiacSigns[sign];
     const signStartAngle = getSignStartAngle(sign);
@@ -868,15 +868,15 @@ function calculatePlanetaryInfluence(sign, currentPositions) {
         aspectInfluences.forEach(aspect => {
             // 根据相位的性质和精确度调整影响
             let aspectWeight = 1.0;
-            if (aspect.name === '合相' || aspect.name === '对冲') {
-                aspectWeight = 1.0; // 主要相位
-            } else if (aspect.name === '三分相' || aspect.name === '四分相') {
-                aspectWeight = 0.8; // 重要相位
-            } else if (aspect.name === '六分相') {
-                aspectWeight = 0.6; // 次要相位
-            } else {
-                aspectWeight = 0.3; // 微相位
-            }
+                    if (aspect.name === 'Conjunction' || aspect.name === 'Opposition') {
+            aspectWeight = 1.0; // 主要相位
+        } else if (aspect.name === 'Trine' || aspect.name === 'Square') {
+            aspectWeight = 0.8; // 重要相位
+        } else if (aspect.name === 'Sextile') {
+            aspectWeight = 0.6; // 次要相位
+        } else {
+            aspectWeight = 0.3; // 微相位
+        }
             
             aspectScore += aspect.strength * aspect.precision * aspectWeight;
         });
@@ -931,7 +931,7 @@ function calculatePlanetaryInfluence(sign, currentPositions) {
             description: generateAdvancedPlanetDescription(planetData, aspectInfluences, houseInfluence, dignityInfluence, planetPosition),
             retrograde: planetPosition.retrograde,
             house: planetPosition.house,
-            houseName: houses[planetPosition.house] ? houses[planetPosition.house].name : '未知宫位',
+            houseName: houses[planetPosition.house] ? houses[planetPosition.house].name : 'Unknown House',
             dignity: getDignityStatus(planetKey, sign),
             aspects: aspectInfluences,
             strength: categorizeInfluenceStrength(planetScore),
@@ -1280,9 +1280,9 @@ function generateAdvancedPlanetDescription(planetData, aspectInfluences, houseIn
     
     // 逆行状态描述
     if (planetPosition.retrograde) {
-        description += `（逆行）正在引导你进行深层的内省和反思，`;
+        description += `(Retrograde) is guiding you through deep introspection and reflection, `;
     } else {
-        description += `正为你带来`;
+        description += `is bringing you `;
     }
     
     // 相位影响描述
@@ -1291,29 +1291,29 @@ function generateAdvancedPlanetDescription(planetData, aspectInfluences, houseIn
     
     if (strongestAspect.strength > 0.5) {
         if (strongestAspect.nature === 'harmonious') {
-            description += `和谐的能量流动，${strongestAspect.meaning}，`;
+            description += `harmonious energy flow, ${strongestAspect.meaning}, `;
         } else if (strongestAspect.nature === 'challenging') {
-            description += `具有挑战性的动力，${strongestAspect.meaning}，`;
+            description += `challenging dynamics, ${strongestAspect.meaning}, `;
         } else {
-            description += `独特的创造性能量，${strongestAspect.meaning}，`;
+            description += `unique creative energy, ${strongestAspect.meaning}, `;
         }
     } else {
-        description += `稳定的影响力，`;
+        description += `stable influence, `;
     }
     
     // 尊贵状态描述
     if (dignityInfluence > 1.1) {
-        description += `在当前位置表现出色，发挥最佳状态。`;
+        description += `performing excellently in current position, expressing full potential.`;
     } else if (dignityInfluence < 0.9) {
-        description += `需要额外努力来发挥潜能，但仍有积极作用。`;
+        description += `requiring extra effort to unlock potential, but still has positive effects.`;
     } else {
-        description += `在${planetData.keywords.slice(0, 2).join('和')}方面表现稳定。`;
+        description += `showing stability in ${planetData.keywords.slice(0, 2).join(' and ')} areas.`;
     }
     
     // 宫位特殊影响
     if (houseInfluence > 1.2) {
         const house = houses[planetPosition.house];
-        description += ` 在${house.name}中的位置特别有利于${house.theme}。`;
+        description += ` Position in ${house.name} is particularly beneficial for ${house.theme}.`;
     }
     
     return description;
@@ -1322,23 +1322,23 @@ function generateAdvancedPlanetDescription(planetData, aspectInfluences, houseIn
 // 获取尊贵状态描述
 function getDignityStatus(planetKey, sign) {
     const planetData = planets[planetKey];
-    if (!planetData || !planetData.dignity) return '中性';
+    if (!planetData || !planetData.dignity) return 'Neutral';
     
-    if (planetData.dignity.exaltation === sign) return '擢升';
-    if (planetData.dignity.detriment === sign) return '失势';
-    if (planetData.dignity.fall === sign) return '落陷';
-    if (zodiacSigns[sign].ruler === planetKey) return '守护';
+    if (planetData.dignity.exaltation === sign) return 'Exaltation';
+    if (planetData.dignity.detriment === sign) return 'Detriment';
+    if (planetData.dignity.fall === sign) return 'Fall';
+    if (zodiacSigns[sign].ruler === planetKey) return 'Domicile';
     
-    return '客座';
+    return 'Peregrine';
 }
 
 // 分类影响力强度
 function categorizeInfluenceStrength(score) {
-    if (score > 0.8) return '极强';
-    if (score > 0.6) return '强';
-    if (score > 0.4) return '中等';
-    if (score > 0.2) return '弱';
-    return '微弱';
+    if (score > 0.8) return 'Extremely Strong';
+    if (score > 0.6) return 'Strong';
+    if (score > 0.4) return 'Moderate';
+    if (score > 0.2) return 'Weak';
+    return 'Very Weak';
 }
 
 // 生成幸运元素
@@ -1357,7 +1357,7 @@ function generateLuckyElements(sign, planetaryScore) {
     // 幸运颜色（考虑元素和月相）
     let colorPool = [...elementData.colors];
     if (moonInfluence.influence > 0.7) {
-        colorPool = colorPool.concat(['月光银', '星辰金', '夜空紫']);
+        colorPool = colorPool.concat(['Moonlight Silver', 'Stellar Gold', 'Night Sky Purple']);
     }
     const luckyColor = colorPool[Math.floor(seedValue) % colorPool.length];
     
@@ -1365,11 +1365,11 @@ function generateLuckyElements(sign, planetaryScore) {
     let stonePool = [...elementData.stones];
     if (signData.ruler in planets) {
         const rulerPlanet = planets[signData.ruler];
-        if (rulerPlanet.keywords.includes('权威')) {
-            stonePool = stonePool.concat(['紫水晶', '黄水晶']);
+        if (rulerPlanet.keywords.includes('Authority')) {
+            stonePool = stonePool.concat(['Amethyst', 'Citrine']);
         }
-        if (rulerPlanet.keywords.includes('爱情')) {
-            stonePool = stonePool.concat(['玫瑰石英', '粉水晶']);
+        if (rulerPlanet.keywords.includes('Love')) {
+            stonePool = stonePool.concat(['Rose Quartz', 'Pink Crystal']);
         }
     }
     const luckyStone = stonePool[Math.floor(seedValue * 2) % stonePool.length];
@@ -1378,10 +1378,10 @@ function generateLuckyElements(sign, planetaryScore) {
     let herbPool = [...elementData.herbs];
     const season = getSeason(today.getMonth() + 1);
     const seasonalHerbs = {
-        'spring': ['樱花', '紫罗兰', '薄荷'],
-        'summer': ['玫瑰', '茉莉', '薰衣草'],
-        'autumn': ['桂花', '菊花', '迷迭香'],
-        'winter': ['松针', '冬青', '肉桂']
+        'spring': ['Cherry Blossom', 'Violet', 'Mint'],
+        'summer': ['Rose', 'Jasmine', 'Lavender'],
+        'autumn': ['Osmanthus', 'Chrysanthemum', 'Rosemary'],
+        'winter': ['Pine Needle', 'Holly', 'Cinnamon']
     };
     herbPool = herbPool.concat(seasonalHerbs[season] || []);
     const luckyHerb = herbPool[Math.floor(seedValue * 3) % herbPool.length];
@@ -1397,21 +1397,21 @@ function generateLuckyElements(sign, planetaryScore) {
     ];
     
     // 幸运方向（考虑元素和时间）
-    const directions = ['东', '南', '西', '北', '东南', '西南', '东北', '西北'];
+    const directions = ['East', 'South', 'West', 'North', 'Southeast', 'Southwest', 'Northeast', 'Northwest'];
     const elementDirection = elementData.direction;
     let directionPool = [elementDirection];
     
     // 根据时间调整方向
     const hour = today.getHours();
-    if (hour >= 6 && hour < 12) directionPool.push('东');
-    else if (hour >= 12 && hour < 18) directionPool.push('南');
-    else if (hour >= 18 && hour < 24) directionPool.push('西');
-    else directionPool.push('北');
+    if (hour >= 6 && hour < 12) directionPool.push('East');
+    else if (hour >= 12 && hour < 18) directionPool.push('South');
+    else if (hour >= 18 && hour < 24) directionPool.push('West');
+    else directionPool.push('North');
     
     const luckyDirection = directionPool[Math.floor(seedValue * 5) % directionPool.length];
     
     // 幸运时间段
-    const timeSlots = ['早晨(6-9时)', '上午(9-12时)', '下午(12-15时)', '傍晚(15-18时)', '夜晚(18-21时)', '深夜(21-24时)'];
+    const timeSlots = ['Early Morning (6-9 AM)', 'Morning (9 AM-12 PM)', 'Afternoon (12-3 PM)', 'Evening (3-6 PM)', 'Night (6-9 PM)', 'Late Night (9 PM-12 AM)'];
     const luckyTime = timeSlots[Math.floor(seedValue * 7) % timeSlots.length];
     
     // 幸运符号或咒语
@@ -1455,33 +1455,33 @@ function calculateCompatibility(sign) {
         if (targetSign === sign) return;
         
         let compatibilityScore = 50; // 基础分数
-        let compatibilityLevel = '一般';
+        let compatibilityLevel = 'Average';
         let description = '';
         
         // 元素兼容性评分
         const elementComp = elementCompatibility[signData.element];
         if (elementComp.high.includes(targetData.element)) {
             compatibilityScore += 30;
-            description += '元素高度和谐，';
+            description += 'Elements in high harmony, ';
         } else if (elementComp.medium.includes(targetData.element)) {
             compatibilityScore += 15;
-            description += '元素相互理解，';
+            description += 'Elements understand each other, ';
         } else {
             compatibilityScore -= 10;
-            description += '元素需要磨合，';
+            description += 'Elements need adjustment, ';
         }
         
         // 质量兼容性评分
         const qualityComp = qualityCompatibility[signData.quality];
         if (qualityComp.high.includes(targetData.quality)) {
             compatibilityScore += 20;
-            description += '行为模式互补';
+            description += 'behavioral patterns complement each other';
         } else if (qualityComp.medium.includes(targetData.quality)) {
             compatibilityScore += 10;
-            description += '行为模式相似';
+            description += 'behavioral patterns are similar';
         } else {
             compatibilityScore -= 5;
-            description += '行为模式有差异';
+            description += 'behavioral patterns have differences';
         }
         
         // 主宰行星的影响
@@ -1493,11 +1493,11 @@ function calculateCompatibility(sign) {
         compatibilityScore += specialBonus;
         
         // 确定兼容性等级
-        if (compatibilityScore >= 85) compatibilityLevel = '天作之合';
-        else if (compatibilityScore >= 75) compatibilityLevel = '高度匹配';
-        else if (compatibilityScore >= 60) compatibilityLevel = '良好匹配';
-        else if (compatibilityScore >= 45) compatibilityLevel = '需要努力';
-        else compatibilityLevel = '充满挑战';
+        if (compatibilityScore >= 85) compatibilityLevel = 'Perfect Match';
+        else if (compatibilityScore >= 75) compatibilityLevel = 'Highly Compatible';
+        else if (compatibilityScore >= 60) compatibilityLevel = 'Good Match';
+        else if (compatibilityScore >= 45) compatibilityLevel = 'Needs Effort';
+        else compatibilityLevel = 'Challenging';
         
         compatibility.push({
             sign: targetData.name,
@@ -1568,13 +1568,13 @@ function generateCompatibilityAdvice(sign1, sign2, score) {
     const signData2 = zodiacSigns[sign2];
     
     if (score >= 75) {
-        return `你们的${signData1.element}元素与${signData2.element}元素形成完美和谐，建议多发挥各自优势，互相支持成长。`;
+        return `Your ${signData1.element} element forms perfect harmony with ${signData2.element} element. It's recommended to leverage each other's strengths and support mutual growth.`;
     } else if (score >= 60) {
-        return `你们有良好的基础，建议多沟通理解，欣赏彼此的不同特质。`;
+        return `You have a good foundation. It's recommended to communicate and understand more, appreciating each other's different qualities.`;
     } else if (score >= 45) {
-        return `需要更多耐心和包容，关注共同兴趣，避免在价值观上的冲突。`;
+        return `More patience and tolerance are needed. Focus on common interests and avoid conflicts in values.`;
     } else {
-        return `虽然挑战较大，但如果真心相爱，可以通过学习和成长来克服差异。`;
+        return `Although the challenges are significant, if you truly love each other, you can overcome differences through learning and growth.`;
     }
 }
 
@@ -1584,7 +1584,7 @@ async function getHoroscope() {
     const selectedSign = select.value;
     
     if (!selectedSign) {
-        alert('请选择一个星座！');
+        alert('Please select a zodiac sign!');
         return;
     }
     
@@ -1592,9 +1592,9 @@ async function getHoroscope() {
     const resultDiv = document.getElementById('result');
     resultDiv.innerHTML = `
         <div class="loading">
-            <div style="margin-bottom: 1rem;">🌟 正在获取最新的天象数据...</div>
+            <div style="margin-bottom: 1rem;">🌟 Retrieving latest celestial data...</div>
             <div style="font-size: 0.9rem; color: #666;">
-                正在连接专业天文数据库，为您计算最精确的星座运势
+                Connecting to professional astronomical database to calculate your most precise horoscope
             </div>
         </div>
     `;
@@ -1622,13 +1622,13 @@ async function getHoroscope() {
         displayHoroscope(horoscope);
         
     } catch (error) {
-        console.error('运势计算失败:', error);
+        console.error('Horoscope calculation failed:', error);
         
         // 出错时显示友好的错误信息并尝试本地计算
         resultDiv.innerHTML = `
             <div class="error">
-                <h3>⚠️ 数据获取遇到问题</h3>
-                <p>正在尝试本地计算...</p>
+                <h3>⚠️ Data Retrieval Issue</h3>
+                <p>Attempting local calculation...</p>
             </div>
         `;
         
@@ -1641,9 +1641,9 @@ async function getHoroscope() {
                 console.error('本地计算也失败:', localError);
                 resultDiv.innerHTML = `
                     <div class="error">
-                        <h3>❌ 计算失败</h3>
-                        <p>抱歉，当前无法获取运势数据。请稍后再试。</p>
-                        <button onclick="getHoroscope()" style="margin-top: 1rem;">🔄 重新尝试</button>
+                        <h3>❌ Calculation Failed</h3>
+                        <p>Sorry, unable to retrieve horoscope data at this time. Please try again later.</p>
+                        <button onclick="getHoroscope()" style="margin-top: 1rem;">🔄 Try Again</button>
                     </div>
                 `;
             }
@@ -1660,13 +1660,13 @@ function displayHoroscope(horoscope) {
             <div class="horoscope-header">
                 <h2>${horoscope.symbol} ${horoscope.sign} - ${horoscope.date}</h2>
                 <div class="overall-score">
-                    <span class="score-label">综合运势</span>
+                    <span class="score-label">Overall Fortune</span>
                     <span class="score-value ${horoscope.overallScore >= 80 ? 'excellent' : horoscope.overallScore >= 60 ? 'good' : 'average'}">
                         ${Math.round(horoscope.overallScore)}/100
                     </span>
                 </div>
                 <div class="lifecycle-phase">
-                    <span class="phase-label">生命周期</span>
+                    <span class="phase-label">Life Cycle</span>
                     <span class="phase-value">${horoscope.lifecyclePhase.phase}</span>
                 </div>
             </div>
@@ -1675,82 +1675,82 @@ function displayHoroscope(horoscope) {
                 <div class="main-description">
                     <h3>${horoscope.lifeTheme}</h3>
                     <div class="sign-info">
-                        <span class="info-item"><strong>元素:</strong> ${horoscope.element}</span>
-                        <span class="info-item"><strong>性质:</strong> ${horoscope.quality}</span>
-                        <span class="info-item"><strong>主宰:</strong> ${horoscope.rulerSymbol} ${horoscope.ruler}</span>
+                        <span class="info-item"><strong>Element:</strong> ${horoscope.element}</span>
+                        <span class="info-item"><strong>Quality:</strong> ${horoscope.quality}</span>
+                        <span class="info-item"><strong>Ruler:</strong> ${horoscope.rulerSymbol} ${horoscope.ruler}</span>
                     </div>
-                    <p><strong>核心特质:</strong> ${horoscope.traits.join(' • ')}</p>
-                    <p><strong>成长挑战:</strong> ${horoscope.shadow.join(' • ')}</p>
+                    <p><strong>Core Traits:</strong> ${horoscope.traits.join(' • ')}</p>
+                    <p><strong>Growth Challenges:</strong> ${horoscope.shadow.join(' • ')}</p>
                     <p class="description">${horoscope.description}</p>
                     <div class="lifecycle-description">
-                        <p><strong>当前生命阶段:</strong> ${horoscope.lifecyclePhase.description}</p>
-                        <p><strong>阶段指导:</strong> ${horoscope.lifecyclePhase.guidance}</p>
+                        <p><strong>Current Life Phase:</strong> ${horoscope.lifecyclePhase.description}</p>
+                        <p><strong>Phase Guidance:</strong> ${horoscope.lifecyclePhase.guidance}</p>
                     </div>
                 </div>
                 
                 <div class="moon-phase-section">
-                    <h3>${horoscope.moonPhase.symbol} 当前月相: ${horoscope.moonPhase.name}</h3>
+                    <h3>${horoscope.moonPhase.symbol} Current Moon Phase: ${horoscope.moonPhase.name}</h3>
                     <div class="moon-info">
-                        <p><strong>月相能量:</strong> ${horoscope.moonPhase.energy}</p>
-                        <p><strong>关键词:</strong> ${horoscope.moonPhase.keywords.join(' • ')}</p>
-                        <p><strong>最适合:</strong> ${horoscope.moonPhase.bestFor.join(' • ')}</p>
+                        <p><strong>Lunar Energy:</strong> ${horoscope.moonPhase.energy}</p>
+                        <p><strong>Keywords:</strong> ${horoscope.moonPhase.keywords.join(' • ')}</p>
+                        <p><strong>Best For:</strong> ${horoscope.moonPhase.bestFor.join(' • ')}</p>
                     </div>
                 </div>
                 
                 <div class="lucky-elements">
-                    <h3>✨ 今日幸运元素</h3>
+                    <h3>✨ Today's Lucky Elements</h3>
                     <div class="lucky-grid">
                         <div class="lucky-item">
                             <div class="lucky-icon">🎨</div>
-                            <span class="lucky-text">幸运颜色: ${horoscope.luckyElements.color}</span>
+                            <span class="lucky-text">Lucky Color: ${horoscope.luckyElements.color}</span>
                         </div>
                         <div class="lucky-item">
                             <div class="lucky-icon">💎</div>
-                            <span class="lucky-text">幸运宝石: ${horoscope.luckyElements.stone}</span>
+                            <span class="lucky-text">Lucky Stone: ${horoscope.luckyElements.stone}</span>
                         </div>
                         <div class="lucky-item">
                             <div class="lucky-icon">🌿</div>
-                            <span class="lucky-text">幸运植物: ${horoscope.luckyElements.herb}</span>
+                            <span class="lucky-text">Lucky Plant: ${horoscope.luckyElements.herb}</span>
                         </div>
                         <div class="lucky-item">
                             <div class="lucky-icon">🔢</div>
-                            <span class="lucky-text">主幸运数字: ${horoscope.luckyElements.number}</span>
+                            <span class="lucky-text">Primary Lucky Number: ${horoscope.luckyElements.number}</span>
                         </div>
                         <div class="lucky-item">
                             <div class="lucky-icon">📊</div>
-                            <span class="lucky-text">次要数字: ${horoscope.luckyElements.secondaryNumbers.join(', ')}</span>
+                            <span class="lucky-text">Secondary Numbers: ${horoscope.luckyElements.secondaryNumbers.join(', ')}</span>
                         </div>
                         <div class="lucky-item">
                             <div class="lucky-icon">🧭</div>
-                            <span class="lucky-text">幸运方向: ${horoscope.luckyElements.direction}</span>
+                            <span class="lucky-text">Lucky Direction: ${horoscope.luckyElements.direction}</span>
                         </div>
                         <div class="lucky-item">
                             <div class="lucky-icon">⏰</div>
-                            <span class="lucky-text">幸运时段: ${horoscope.luckyElements.time}</span>
+                            <span class="lucky-text">Lucky Time: ${horoscope.luckyElements.time}</span>
                         </div>
                         <div class="lucky-item">
                             <div class="lucky-icon">${horoscope.luckyElements.symbol}</div>
-                            <span class="lucky-text">护身符号: ${horoscope.luckyElements.symbol}</span>
+                            <span class="lucky-text">Protection Symbol: ${horoscope.luckyElements.symbol}</span>
                         </div>
                         <div class="lucky-item">
                             <div class="lucky-icon">⚡</div>
-                            <span class="lucky-text">幸运金属: ${horoscope.luckyElements.metal}</span>
+                            <span class="lucky-text">Lucky Metal: ${horoscope.luckyElements.metal}</span>
                         </div>
                     </div>
                 </div>
                 
                 <div class="planetary-influences">
-                    <h3>🪐 行星影响分析</h3>
+                    <h3>🪐 Planetary Influence Analysis</h3>
                     <div class="harmony-indicators">
                         <div class="harmony-item">
-                            <span>元素和谐度:</span>
+                            <span>Elemental Harmony:</span>
                             <div class="harmony-bar">
                                 <div class="harmony-fill" style="width: ${(horoscope.elementalHarmony || 0) * 100}%"></div>
                             </div>
                             <span>${Math.round((horoscope.elementalHarmony || 0) * 100)}%</span>
                         </div>
                         <div class="harmony-item">
-                            <span>质量协调度:</span>
+                            <span>Quality Coordination:</span>
                             <div class="harmony-bar">
                                 <div class="harmony-fill" style="width: ${(horoscope.qualityInteraction || 0) * 100}%"></div>
                             </div>
@@ -1762,21 +1762,21 @@ function displayHoroscope(horoscope) {
     
     // 添加行星影响
     Object.entries(horoscope.planetaryInfluences).forEach(([planetName, influence]) => {
-        const strengthClass = (influence.strength || '中等').toLowerCase().replace(/[^a-z]/g, '');
+        const strengthClass = (influence.strength || 'Moderate').toLowerCase().replace(/[^a-z]/g, '');
         html += `
             <div class="planet-item ${strengthClass}">
                 <div class="planet-header">
                     <span class="planet-name">${planetName}</span>
-                    <span class="influence-strength ${strengthClass}">${influence.strength || '中等'}</span>
+                    <span class="influence-strength ${strengthClass}">${influence.strength || 'Moderate'}</span>
                     ${influence.retrograde ? '<span class="retrograde-indicator">⟲</span>' : ''}
                 </div>
                 <div class="planet-details">
                     <div class="planet-keywords">${influence.keywords.join(' • ')}</div>
-                    <div class="planet-house">宫位: ${influence.houseName}</div>
-                    <div class="planet-dignity">尊贵: ${influence.dignity || '中性'}</div>
+                    <div class="planet-house">House: ${influence.houseName}</div>
+                    <div class="planet-dignity">Dignity: ${influence.dignity || 'Neutral'}</div>
                     ${influence.aspects && influence.aspects.length > 0 ? `
                         <div class="planet-aspects">
-                            主要相位: ${influence.aspects.slice(0, 2).map(aspect => 
+                            Major Aspects: ${influence.aspects.slice(0, 2).map(aspect => 
                                 `${aspect.symbol || ''} ${aspect.name}`).join(', ')}
                         </div>
                     ` : ''}
@@ -1792,22 +1792,34 @@ function displayHoroscope(horoscope) {
                 
                 ${horoscope.celestialEvents && horoscope.celestialEvents.length > 0 ? `
                 <div class="celestial-events">
-                    <h3>🌌 当前天象事件</h3>
-                    <div class="events-grid">
-                        ${horoscope.celestialEvents.map(event => `
-                            <div class="event-item">
-                                <h4>${event.type}</h4>
-                                <p class="event-description">${event.description}</p>
-                                <p class="event-significance"><strong>意义:</strong> ${event.significance}</p>
-                                <p class="event-advice"><strong>建议:</strong> ${event.advice}</p>
-                            </div>
-                        `).join('')}
+                    <h3>🌌 Current Celestial Events</h3>
+                    <div class="celestial-events-table">
+                        <table class="events-table">
+                            <thead>
+                                <tr>
+                                    <th>Event Type</th>
+                                    <th>Detailed Description</th>
+                                    <th>Astrological Significance</th>
+                                    <th>Practical Advice</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${horoscope.celestialEvents.map(event => `
+                                    <tr class="event-row">
+                                        <td class="event-type">${event.type}</td>
+                                        <td class="event-description">${event.description}</td>
+                                        <td class="event-significance">${event.significance}</td>
+                                        <td class="event-advice">${event.advice}</td>
+                                    </tr>
+                                `).join('')}
+                            </tbody>
+                        </table>
                     </div>
                 </div>
                 ` : ''}
                 
                 <div class="compatibility">
-                    <h3>💕 星座配对分析 (前6名)</h3>
+                    <h3>💕 Zodiac Compatibility Analysis (Top 6)</h3>
                     <div class="compatibility-grid">
     `;
     
@@ -1819,7 +1831,7 @@ function displayHoroscope(horoscope) {
                 <div class="match-header">
                     <span class="rank">#${index + 1}</span>
                     <span class="compatible-sign">${match.symbol || ''} ${match.sign}</span>
-                    <span class="compatibility-score">${match.score || 0}分</span>
+                    <span class="compatibility-score">${match.score || 0} pts</span>
                 </div>
                 <div class="match-level">${match.compatibility}</div>
                 <div class="match-description">${match.description || ''}</div>
@@ -1833,7 +1845,7 @@ function displayHoroscope(horoscope) {
                 </div>
                 
                 <div class="daily-advice">
-                    <h3>🔮 今日占星建议</h3>
+                    <h3>🔮 Daily Astrological Advice</h3>
                     <div class="advice-list">
     `;
     
@@ -1847,9 +1859,9 @@ function displayHoroscope(horoscope) {
                 </div>
                 
                 <div class="body-connection">
-                    <h3>🫀 身心连接</h3>
-                    <p><strong>对应身体部位:</strong> ${horoscope.bodyParts.join(' • ')}</p>
-                    <p class="body-advice">今日特别关注这些部位的健康，适当进行相关的护理和锻炼。</p>
+                    <h3>🫀 Mind-Body Connection</h3>
+                    <p><strong>Associated Body Parts:</strong> ${horoscope.bodyParts.join(' • ')}</p>
+                    <p class="body-advice">Pay special attention to the health of these areas today, and engage in appropriate care and exercise.</p>
                 </div>
             </div>
         </div>
@@ -1932,36 +1944,36 @@ function addInteractiveElements() {
 // 增强的颜色代码映射
 function getColorCode(colorName) {
     const colorMap = {
-        '红色': '#ff4757',
-        '烈焰红': '#e74c3c',
-        '粉红': '#ff6b9d',
-        '橙色': '#ffa502',
-        '太阳橙': '#f39c12',
-        '黄色': '#ffdd59',
-        '活力黄': '#f1c40f',
-        '金色': '#f39c12',
-        '热情金': '#d4af37',
-        '绿色': '#26de81',
-        '森林绿': '#27ae60',
-        '大地棕': '#8b4513',
-        '稳重米': '#deb887',
-        '沉静黑': '#2c3e50',
-        '蓝色': '#3742fa',
-        '天空蓝': '#3498db',
-        '深海蓝': '#2980b9',
-        '云朵白': '#ecf0f1',
-        '清新银': '#bdc3c7',
-        '智慧紫': '#9b59b6',
-        '神秘紫': '#8e44ad',
-        '珍珠银': '#95a5a6',
-        '月光白': '#f8f9fa',
-        '月光银': '#c0c0c0',
-        '星辰金': '#ffd700',
-        '夜空紫': '#483d8b',
-        '白色': '#ffffff',
-        '黑色': '#2f3542',
-        '银色': '#95a5a6',
-        '褐色': '#8b4513'
+        'Red': '#ff4757',
+        'Fiery Red': '#e74c3c',
+        'Pink': '#ff6b9d',
+        'Orange': '#ffa502',
+        'Solar Orange': '#f39c12',
+        'Yellow': '#ffdd59',
+        'Vibrant Yellow': '#f1c40f',
+        'Gold': '#f39c12',
+        'Passionate Gold': '#d4af37',
+        'Green': '#26de81',
+        'Forest Green': '#27ae60',
+        'Earth Brown': '#8b4513',
+        'Stable Beige': '#deb887',
+        'Quiet Black': '#2c3e50',
+        'Blue': '#3742fa',
+        'Sky Blue': '#3498db',
+        'Deep Sea Blue': '#2980b9',
+        'Cloud White': '#ecf0f1',
+        'Fresh Silver': '#bdc3c7',
+        'Wisdom Purple': '#9b59b6',
+        'Mysterious Purple': '#8e44ad',
+        'Pearl Silver': '#95a5a6',
+        'Moonlight White': '#f8f9fa',
+        'Moonlight Silver': '#c0c0c0',
+        'Stellar Gold': '#ffd700',
+        'Night Sky Purple': '#483d8b',
+        'White': '#ffffff',
+        'Black': '#2f3542',
+        'Silver': '#95a5a6',
+        'Brown': '#8b4513'
     };
     return colorMap[colorName] || '#666666';
 }
@@ -2054,7 +2066,7 @@ function calculateAstrologicalHoroscope(sign, positions) {
     return {
         sign: signData.name,
         symbol: signData.symbol,
-        date: new Date().toLocaleDateString('zh-CN'),
+        date: new Date().toLocaleDateString('en-US'),
         overallScore: overallScore,
         description: signData.description,
         planetaryInfluences: planetaryData.influences,
@@ -2082,29 +2094,29 @@ function generateDailyAdvice(sign, planetaryData, overallScore) {
     let advice = [];
     const signData = zodiacSigns[sign];
     
-    // 基础运势建议
+    // Basic fortune advice
     if (overallScore >= 85) {
-        advice.push('🌟 今天是你的超级幸运日！宇宙能量与你完美共振，大胆追求你的梦想吧！');
+        advice.push('🌟 Today is your super lucky day! Cosmic energy resonates perfectly with you. Boldly pursue your dreams!');
     } else if (overallScore >= 70) {
-        advice.push('✨ 运势强劲，是展现才华和推进重要计划的绝佳时机。');
+        advice.push('✨ Strong fortune ahead. An excellent time to showcase talents and advance important plans.');
     } else if (overallScore >= 55) {
-        advice.push('🌙 运势平稳，保持积极乐观的心态，稳步前进。');
+        advice.push('🌙 Stable fortune. Maintain a positive and optimistic mindset, moving forward steadily.');
     } else if (overallScore >= 40) {
-        advice.push('⚠️ 今天需要更加谨慎，避免冲动决定，多倾听内心声音。');
+        advice.push('⚠️ Extra caution needed today. Avoid impulsive decisions and listen more to your inner voice.');
     } else {
-        advice.push('🧘‍♀️ 今天适合内省和休息，为下一个上升期积蓄能量。');
+        advice.push('🧘‍♀️ Today is suitable for introspection and rest, accumulating energy for the next upward cycle.');
     }
     
-    // 基于月相给出建议
+    // Moon phase based advice
     const moonPhase = planetaryData.moonPhase;
-    if (moonPhase.name === '新月') {
-        advice.push(`🌑 ${moonPhase.name}能量：${moonPhase.bestFor.join('、')}的最佳时机。种下意图的种子，等待发芽。`);
-    } else if (moonPhase.name === '满月') {
-        advice.push(`🌕 ${moonPhase.name}能量：${moonPhase.bestFor.join('、')}的高峰期。情感丰富，适合完成重要事务。`);
-    } else if (moonPhase.name.includes('上')) {
-        advice.push(`🌓 ${moonPhase.name}能量：${moonPhase.bestFor.join('、')}的行动期。勇敢迈出第一步。`);
+    if (moonPhase.name === 'New Moon') {
+        advice.push(`🌑 ${moonPhase.name} Energy: Optimal time for ${moonPhase.bestFor.join(', ')}. Plant the seeds of intention and await their sprouting.`);
+    } else if (moonPhase.name === 'Full Moon') {
+        advice.push(`🌕 ${moonPhase.name} Energy: Peak period for ${moonPhase.bestFor.join(', ')}. Rich emotions, perfect for completing important matters.`);
+    } else if (moonPhase.name.includes('Waxing')) {
+        advice.push(`🌓 ${moonPhase.name} Energy: Action period for ${moonPhase.bestFor.join(', ')}. Courageously take the first step.`);
     } else {
-        advice.push(`🌗 ${moonPhase.name}能量：${moonPhase.bestFor.join('、')}的反思期。智慧来自于放下。`);
+        advice.push(`🌗 ${moonPhase.name} Energy: Reflection period for ${moonPhase.bestFor.join(', ')}. Wisdom comes from letting go.`);
     }
     
     // 基于最强行星影响给出建议
@@ -2117,51 +2129,51 @@ function generateDailyAdvice(sign, planetaryData, overallScore) {
         const planetInfo = strongestPlanet[1];
         
         switch (planetName) {
-            case '太阳':
-                advice.push('☉ 太阳能量强盛：展现你的领导力和自信，今天是发光发热的日子。');
+            case 'Sun':
+                advice.push('☉ Strong Solar Energy: Showcase your leadership and confidence. Today is a day to shine bright.');
                 break;
-            case '月亮':
-                advice.push('☽ 月亮能量敏感：相信你的直觉，关注内心感受和家庭关系。');
+            case 'Moon':
+                advice.push('☽ Sensitive Lunar Energy: Trust your intuition, focus on inner feelings and family relationships.');
                 break;
-            case '水星':
-                advice.push('☿ 水星能量活跃：沟通交流是重点，学习新知识会有意外收获。');
+            case 'Mercury':
+                advice.push('☿ Active Mercury Energy: Communication is key. Learning new knowledge will bring unexpected rewards.');
                 break;
-            case '金星':
-                advice.push('♀ 金星能量和谐：关注人际关系和美的事物，爱情运势特别好。');
+            case 'Venus':
+                advice.push('♀ Harmonious Venus Energy: Focus on relationships and beautiful things. Love fortune is especially good.');
                 break;
-            case '火星':
-                advice.push('♂ 火星能量充沛：行动力强盛，但要控制冲动，将激情导向正确方向。');
+            case 'Mars':
+                advice.push('♂ Abundant Mars Energy: Action power is strong, but control impulses and direct passion in the right direction.');
                 break;
-            case '木星':
-                advice.push('♃ 木星能量扩展：适合制定宏伟计划，拓展视野，学习新的哲学思想。');
+            case 'Jupiter':
+                advice.push('♃ Expansive Jupiter Energy: Perfect for making grand plans, broadening horizons, learning new philosophical ideas.');
                 break;
-            case '土星':
-                advice.push('♄ 土星能量稳定：专注于长期目标，承担责任，建立持久的结构。');
+            case 'Saturn':
+                advice.push('♄ Stable Saturn Energy: Focus on long-term goals, take responsibility, build lasting structures.');
                 break;
-            case '天王星':
-                advice.push('♅ 天王星能量革新：拥抱变化，尝试创新，突破常规思维模式。');
+            case 'Uranus':
+                advice.push('♅ Revolutionary Uranus Energy: Embrace change, try innovation, break conventional thinking patterns.');
                 break;
-            case '海王星':
-                advice.push('♆ 海王星能量灵性：适合艺术创作、冥想或帮助他人的活动。');
+            case 'Neptune':
+                advice.push('♆ Spiritual Neptune Energy: Perfect for artistic creation, meditation, or activities helping others.');
                 break;
-            case '冥王星':
-                advice.push('♇ 冥王星能量转化：深度变革的时期，勇敢面对内心的阴影。');
+            case 'Pluto':
+                advice.push('♇ Transformative Pluto Energy: A period of deep transformation. Courageously face inner shadows.');
                 break;
         }
         
         // 逆行特殊建议
         if (planetInfo.retrograde) {
-            advice.push(`⟲ ${planetName}逆行影响：这是回顾、反思和重新评估的时期，避免急于做出重大决定。`);
+            advice.push(`⟲ ${planetName} Retrograde Influence: This is a time for review, reflection, and re-evaluation. Avoid making hasty major decisions.`);
         }
     }
     
-    // 基于星座元素给出建议
+    // Zodiac element based advice
     const element = signData.element;
     const elementAdvice = {
-        'fire': '🔥 火元素提醒：保持热情但避免过度冲动，将你的创造力转化为实际行动。',
-        'earth': '🌍 土元素提醒：脚踏实地，专注于实际的目标，你的坚持会带来丰厚回报。',
-        'air': '🌬️ 风元素提醒：多与他人交流思想，你的智慧和沟通能力是今天的财富。',
-        'water': '💧 水元素提醒：倾听内心的声音，情感的深度是你力量的源泉。'
+        'fire': '🔥 Fire Element Reminder: Maintain enthusiasm but avoid excessive impulsiveness. Transform your creativity into practical action.',
+        'earth': '🌍 Earth Element Reminder: Stay grounded, focus on practical goals. Your persistence will bring rich rewards.',
+        'air': '🌬️ Air Element Reminder: Communicate ideas with others more. Your wisdom and communication skills are today\'s wealth.',
+        'water': '💧 Water Element Reminder: Listen to your inner voice. Emotional depth is the source of your power.'
     };
     advice.push(elementAdvice[element]);
     
@@ -2170,10 +2182,10 @@ function generateDailyAdvice(sign, planetaryData, overallScore) {
     const month = now.getMonth() + 1;
     const day = now.getDate();
     
-    // 节气建议
+    // Seasonal transition advice
     if ((month === 3 && day >= 20) || (month === 6 && day >= 21) || 
         (month === 9 && day >= 23) || (month === 12 && day >= 22)) {
-        advice.push('🌸 节气能量：今天是天地能量转换的特殊日子，特别适合制定新的人生计划。');
+        advice.push('🌸 Seasonal Energy: Today is a special day of energy transformation between heaven and earth, particularly suitable for making new life plans.');
     }
     
     return advice;
@@ -2198,10 +2210,10 @@ function calculateCelestialEvents(positions) {
                 
                 if (normalizedDiff <= 5) { // 5度内视为合相
                     events.push({
-                        type: '行星合相',
-                        description: `${planets[planet1]?.name || planet1}与${planets[planet2]?.name || planet2}形成紧密合相`,
-                        significance: '能量融合，影响力加强',
-                        advice: '关注这两个行星代表的生活领域，可能有重要发展'
+                        type: 'Planetary Conjunction',
+                        description: `${planets[planet1]?.name || planet1} forms a tight conjunction with ${planets[planet2]?.name || planet2}`,
+                        significance: 'Energy fusion, enhanced influence',
+                        advice: 'Pay attention to the life areas represented by these two planets, there may be important developments'
                     });
                 }
             }
@@ -2212,10 +2224,10 @@ function calculateCelestialEvents(positions) {
     const retrogradeCount = Object.values(positions).filter(pos => pos?.retrograde).length;
     if (retrogradeCount >= 3) {
         events.push({
-            type: '多行星逆行',
-            description: `当前有${retrogradeCount}颗行星处于逆行状态`,
-            significance: '集体反思期，重新评估期',
-            advice: '避免匆忙决定，多花时间回顾和整理过去的经验'
+            type: 'Multiple Planet Retrograde',
+            description: `Currently ${retrogradeCount} planets are in retrograde state`,
+            significance: 'Collective reflection period, re-evaluation time',
+            advice: 'Avoid hasty decisions, spend more time reviewing and organizing past experiences'
         });
     }
     
@@ -2223,10 +2235,10 @@ function calculateCelestialEvents(positions) {
     const moonPhase = getCurrentMoonPhase();
     if (moonPhase === 'fullMoon' && positions.moon) {
         events.push({
-            type: '满月高能',
-            description: '满月能量达到顶峰',
-            significance: '情感、直觉和创造力的高峰期',
-            advice: '利用这股强大的能量完成重要项目，但要注意情绪管理'
+            type: 'Full Moon High Energy',
+            description: 'Full moon energy reaches its peak',
+            significance: 'Peak period for emotions, intuition and creativity',
+            advice: 'Use this powerful energy to complete important projects, but pay attention to emotional management'
         });
     }
     
@@ -2238,35 +2250,35 @@ function calculateLifecycleInfluence(sign, positions) {
     const signData = zodiacSigns[sign];
     const ruler = positions[signData.ruler];
     
-    if (!ruler) return { phase: '稳定期', description: '当前处于相对稳定的发展阶段' };
+    if (!ruler) return { phase: 'Stable Period', description: 'Currently in a relatively stable development phase', guidance: 'Keep an open mind and be ready to embrace life\'s changes.' };
     
     const rulerHouse = ruler.house;
     const isRetrograde = ruler.retrograde;
     
-    let phase = '成长期';
+    let phase = 'Growth Period';
     let description = '';
     
-    // 基于主宰行星宫位判断生命阶段
+    // Determine life phase based on ruling planet house position
     if (rulerHouse <= 3) {
-        phase = isRetrograde ? '内省期' : '新生期';
+        phase = isRetrograde ? 'Introspection Period' : 'New Birth Period';
         description = isRetrograde ? 
-            '适合深度自我探索，重新认识自己的时期' : 
-            '充满新可能性，适合开始新项目的活跃期';
+            'Suitable for deep self-exploration and re-knowing yourself' : 
+            'Full of new possibilities, an active period suitable for starting new projects';
     } else if (rulerHouse <= 6) {
-        phase = isRetrograde ? '调整期' : '建设期';
+        phase = isRetrograde ? 'Adjustment Period' : 'Building Period';
         description = isRetrograde ? 
-            '需要调整现有的计划和方向，优化工作方式' : 
-            '稳步建设和发展的时期，专注于技能提升';
+            'Need to adjust existing plans and directions, optimize working methods' : 
+            'A period of steady building and development, focusing on skill enhancement';
     } else if (rulerHouse <= 9) {
-        phase = isRetrograde ? '释放期' : '扩展期';
+        phase = isRetrograde ? 'Release Period' : 'Expansion Period';
         description = isRetrograde ? 
-            '放下不再适合的关系和模式，为新发展让路' : 
-            '向外拓展，建立新的合作关系和社会连接';
+            'Let go of relationships and patterns that no longer serve, making way for new developments' : 
+            'Expanding outward, establishing new cooperative relationships and social connections';
     } else {
-        phase = isRetrograde ? '转化期' : '成就期';
+        phase = isRetrograde ? 'Transformation Period' : 'Achievement Period';
         description = isRetrograde ? 
-            '深层次的转化正在发生，为下一个人生阶段准备' : 
-            '收获前期努力的成果，在社会中发挥更大影响力';
+            'Deep transformation is occurring, preparing for the next life stage' : 
+            'Harvesting the fruits of previous efforts, exerting greater influence in society';
     }
     
     return {
@@ -2276,21 +2288,21 @@ function calculateLifecycleInfluence(sign, positions) {
     };
 }
 
-// 生成生命周期指导
+// Generate lifecycle guidance
 function generateLifecycleGuidance(phase) {
     const guidance = {
-        '新生期': '勇敢尝试新事物，设定清晰的目标，为未来投资。',
-        '内省期': '花时间了解自己，清理内心的杂念，准备内在的成长。',
-        '建设期': '专注于技能发展，建立稳固的基础，耐心积累经验。',
-        '调整期': '灵活应对变化，修正方向，优化现有的生活方式。',
-        '扩展期': '积极社交，建立有意义的连接，拓展人生的可能性。',
-        '释放期': '勇敢放下过去，为新的机会创造空间，轻装前行。',
-        '成就期': '享受成功的果实，同时承担更大的责任，指导他人。',
-        '转化期': '拥抱深层次的改变，为人生的下一个篇章做准备。',
-        '稳定期': '保持现状，稳定发展，为未来的突破积蓄力量。'
+        'New Birth Period': 'Bravely try new things, set clear goals, and invest in the future.',
+        'Introspection Period': 'Take time to understand yourself, clear mental clutter, and prepare for inner growth.',
+        'Building Period': 'Focus on skill development, establish solid foundations, and patiently accumulate experience.',
+        'Adjustment Period': 'Flexibly respond to changes, correct direction, and optimize existing lifestyle.',
+        'Expansion Period': 'Actively socialize, build meaningful connections, and expand life possibilities.',
+        'Release Period': 'Bravely let go of the past, create space for new opportunities, and travel light.',
+        'Achievement Period': 'Enjoy the fruits of success while taking on greater responsibilities and guiding others.',
+        'Transformation Period': 'Embrace deep changes and prepare for the next chapter of life.',
+        'Stable Period': 'Maintain the status quo, develop steadily, and accumulate strength for future breakthroughs.'
     };
     
-    return guidance[phase] || '保持开放的心态，随时准备迎接生活的变化。';
+    return guidance[phase] || 'Keep an open mind and be ready to embrace life\'s changes.';
 }
 
 // 计算当前主导行星
@@ -2333,7 +2345,7 @@ function getCurrentDominantPlanet() {
         symbol: strongestPlanet.symbol,
         influence: maxInfluence
     } : {
-        name: '太阳',
+        name: 'Sun',
         symbol: '☉',
         influence: 1.0
     };
@@ -2394,43 +2406,43 @@ function getCurrentCosmicEnergy() {
     return Math.round(finalEnergy * 100); // 转换为百分比
 }
 
-// 简化的农历计算（基础版本）
+// Simplified lunar calendar calculation (basic version)
 function getLunarDate() {
     const now = new Date();
     const year = now.getFullYear();
     const month = now.getMonth() + 1;
     const day = now.getDate();
     
-    // 简化的农历计算，这里使用近似算法
-    // 实际应用中应该使用完整的农历转换库
+    // Simplified lunar calculation using approximation algorithm
+    // In real applications, should use complete lunar conversion library
     const baseYear = 1900;
     const daysFromBase = Math.floor((now - new Date(1900, 0, 31)) / (1000 * 60 * 60 * 24));
     
-    // 农历月份名称
-    const lunarMonths = ['正月', '二月', '三月', '四月', '五月', '六月', 
-                        '七月', '八月', '九月', '十月', '冬月', '腊月'];
+    // Lunar month names
+    const lunarMonths = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 
+                        'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
     
-    // 农历日期名称
-    const lunarDays = ['初一', '初二', '初三', '初四', '初五', '初六', '初七', '初八', '初九', '初十',
-                      '十一', '十二', '十三', '十四', '十五', '十六', '十七', '十八', '十九', '二十',
-                      '廿一', '廿二', '廿三', '廿四', '廿五', '廿六', '廿七', '廿八', '廿九', '三十'];
+    // Lunar day ordinals
+    const lunarDays = ['1st', '2nd', '3rd', '4th', '5th', '6th', '7th', '8th', '9th', '10th',
+                      '11th', '12th', '13th', '14th', '15th', '16th', '17th', '18th', '19th', '20th',
+                      '21st', '22nd', '23rd', '24th', '25th', '26th', '27th', '28th', '29th', '30th'];
     
-    // 简单的农历近似计算
-    const lunarCycle = 29.53; // 农历月平均长度
+    // Simple lunar approximation calculation
+    const lunarCycle = 29.53; // Average lunar month length
     const monthsFromBase = Math.floor(daysFromBase / lunarCycle);
     const lunarYear = Math.floor(monthsFromBase / 12) + baseYear;
     const lunarMonth = (monthsFromBase % 12);
     const lunarDay = Math.floor((daysFromBase % lunarCycle)) + 1;
     
-    const lunarMonthName = lunarMonths[lunarMonth] || '正月';
-    const lunarDayName = lunarDays[Math.min(lunarDay - 1, 29)] || '初一';
+    const lunarMonthName = lunarMonths[lunarMonth] || 'Jan';
+    const lunarDayName = lunarDays[Math.min(lunarDay - 1, 29)] || '1st';
     
-    return `${lunarMonthName}${lunarDayName}`;
+    return `Lunar ${lunarMonthName} ${lunarDayName}`;
 }
 
-// 更新页面头部的宇宙信息显示
+// Update cosmic information display in page header
 function updateCosmicInfo() {
-    // 更新日期信息
+    // Update date information
     const currentDateElement = document.getElementById('currentDate');
     const lunarDateElement = document.getElementById('lunarDate');
     const weekDayElement = document.getElementById('weekDay');
@@ -2441,14 +2453,14 @@ function updateCosmicInfo() {
         const month = now.getMonth() + 1;
         const day = now.getDate();
         
-        // 格式化公历日期
-        const formattedDate = `${year}年${month}月${day}日`;
+        // Format Gregorian date
+        const formattedDate = `${month}/${day}/${year}`;
         
-        // 获取星期
-        const weekDays = ['日', '一', '二', '三', '四', '五', '六'];
-        const weekDay = `星期${weekDays[now.getDay()]}`;
+        // Get weekday
+        const weekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        const weekDay = weekDays[now.getDay()];
         
-        // 获取农历日期
+        // Get lunar date
         const lunarDate = getLunarDate();
         
         if (currentDateElement) {
@@ -2462,46 +2474,46 @@ function updateCosmicInfo() {
         }
     }
     
-    // 更新月相信息
+    // Update moon phase information
     const moonPhaseElement = document.getElementById('currentMoonPhase');
     if (moonPhaseElement) {
         const currentPhase = getCurrentMoonPhase();
         const moonPhases = {
-            'newMoon': '🌑 新月',
-            'waxingCrescent': '🌒 娥眉月',
-            'firstQuarter': '🌓 上弦月',
-            'waxingGibbous': '🌔 盈凸月',
-            'fullMoon': '🌕 满月',
-            'waningGibbous': '🌖 亏凸月',
-            'lastQuarter': '🌗 下弦月',
-            'waningCrescent': '🌘 残月'
+            'newMoon': '🌑 New Moon',
+            'waxingCrescent': '🌒 Waxing Crescent',
+            'firstQuarter': '🌓 First Quarter',
+            'waxingGibbous': '🌔 Waxing Gibbous',
+            'fullMoon': '🌕 Full Moon',
+            'waningGibbous': '🌖 Waning Gibbous',
+            'lastQuarter': '🌗 Last Quarter',
+            'waningCrescent': '🌘 Waning Crescent'
         };
-        moonPhaseElement.textContent = moonPhases[currentPhase] || '🌔 盈凸月';
+        moonPhaseElement.textContent = moonPhases[currentPhase] || '🌔 Waxing Gibbous';
     }
     
-    // 更新主导行星信息
+    // Update dominant planet information
     const dominantPlanetElement = document.getElementById('dominantPlanet');
     if (dominantPlanetElement) {
         const dominantPlanet = getCurrentDominantPlanet();
         dominantPlanetElement.textContent = `${dominantPlanet.symbol} ${dominantPlanet.name}`;
     }
     
-    // 更新能量指数
+    // Update energy index
     const cosmicEnergyElement = document.getElementById('cosmicEnergy');
     if (cosmicEnergyElement) {
         const energyLevel = getCurrentCosmicEnergy();
         let energyStatus = '';
         
         if (energyLevel >= 80) {
-            energyStatus = '极强 ⚡';
+            energyStatus = 'Extremely High ⚡';
         } else if (energyLevel >= 65) {
-            energyStatus = '强 🔥';
+            energyStatus = 'High 🔥';
         } else if (energyLevel >= 50) {
-            energyStatus = '中等 ⭐';
+            energyStatus = 'Moderate ⭐';
         } else if (energyLevel >= 35) {
-            energyStatus = '平稳 🌙';
+            energyStatus = 'Stable 🌙';
         } else {
-            energyStatus = '低调 💤';
+            energyStatus = 'Low 💤';
         }
         
         cosmicEnergyElement.textContent = `${energyLevel}% ${energyStatus}`;

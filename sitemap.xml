@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+    
+    <!-- Homepage - Constellation Inspiration -->
+    <url>
+        <loc>https://constellation-mystique.com/</loc>
+        <lastmod>2025-01-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.0</priority>
+        <image:image>
+            <image:loc>https://constellation-mystique.com/images/constellation-inspiration.jpg</image:loc>
+            <image:title>Constellation Inspiration - Astrology & Celestial Guidance</image:title>
+            <image:caption>Find inspiration through constellation wisdom and celestial guidance</image:caption>
+        </image:image>
+    </url>
+    
+    <!-- Constellation Wisdom & About Page -->
+    <url>
+        <loc>https://constellation-mystique.com/pages/about.html</loc>
+        <lastmod>2025-01-15</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+        <image:image>
+            <image:loc>https://constellation-mystique.com/images/constellation-wisdom.jpg</image:loc>
+            <image:title>Constellation Wisdom & Astrology Knowledge</image:title>
+            <image:caption>Explore ancient constellation wisdom and astrological insights</image:caption>
+        </image:image>
+    </url>
+    
+    <!-- Constellation Inspiration Guide -->
+    <url>
+        <loc>https://constellation-mystique.com/pages/guide.html</loc>
+        <lastmod>2025-01-15</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+        <image:image>
+            <image:loc>https://constellation-mystique.com/images/cosmic-guidance-tutorial.jpg</image:loc>
+            <image:title>Constellation Inspiration Guide - Cosmic Guidance Tutorial</image:title>
+            <image:caption>Learn how to find inspiration through constellation wisdom</image:caption>
+        </image:image>
+    </url>
+    
+    <!-- Zodiac Constellation Inspiration Pages -->
+    <url>
+        <loc>https://constellation-mystique.com/constellation-inspiration/aries</loc>
+        <lastmod>2025-01-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.9</priority>
+        <image:image>
+            <image:loc>https://constellation-mystique.com/images/aries-constellation-inspiration.jpg</image:loc>
+            <image:title>Aries Constellation Inspiration & Cosmic Guidance</image:title>
+            <image:caption>Find inspiration through Aries constellation wisdom and stellar patterns</image:caption>
+        </image:image>
+    </url>
+    
+    <url>
+        <loc>https://constellation-mystique.com/constellation-inspiration/taurus</loc>
+        <lastmod>2025-01-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.9</priority>
+        <image:image>
+            <image:loc>https://constellation-mystique.com/images/taurus-constellation-inspiration.jpg</image:loc>
+            <image:title>Taurus Constellation Inspiration & Earth Energy</image:title>
+            <image:caption>Discover Taurus constellation wisdom for grounding and stability</image:caption>
+        </image:image>
+    </url>
+    
+    <url>
+        <loc>https://constellation-mystique.com/constellation-inspiration/gemini</loc>
+        <lastmod>2025-01-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.9</priority>
+        <image:image>
+            <image:loc>https://constellation-mystique.com/images/gemini-constellation-inspiration.jpg</image:loc>
+            <image:title>Gemini Constellation Inspiration & Mental Clarity</image:title>
+            <image:caption>Find inspiration through Gemini constellation for communication and learning</image:caption>
+        </image:image>
+    </url>
+    
+    <url>
+        <loc>https://constellation-mystique.com/constellation-inspiration/cancer</loc>
+        <lastmod>2025-01-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.9</priority>
+        <image:image>
+            <image:loc>https://constellation-mystique.com/images/cancer-constellation-inspiration.jpg</image:loc>
+            <image:title>Cancer Constellation Inspiration & Emotional Wisdom</image:title>
+            <image:caption>Discover Cancer constellation insights for emotional healing and intuition</image:caption>
+        </image:image>
+    </url>
+    
+    <url>
+        <loc>https://constellation-mystique.com/constellation-inspiration/leo</loc>
+        <lastmod>2025-01-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.9</priority>
+        <image:image>
+            <image:loc>https://constellation-mystique.com/images/leo-constellation-inspiration.jpg</image:loc>
+            <image:title>Leo Constellation Inspiration & Creative Fire</image:title>
+            <image:caption>Unleash Leo constellation energy for creativity and self-expression</image:caption>
+        </image:image>
+    </url>
+    
+    <url>
+        <loc>https://constellation-mystique.com/constellation-inspiration/virgo</loc>
+        <lastmod>2025-01-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.9</priority>
+        <image:image>
+            <image:loc>https://constellation-mystique.com/images/virgo-constellation-inspiration.jpg</image:loc>
+            <image:title>Virgo Constellation Inspiration & Practical Wisdom</image:title>
+            <image:caption>Find Virgo constellation guidance for organization and personal growth</image:caption>
+        </image:image>
+    </url>
+    
+    <url>
+        <loc>https://constellation-mystique.com/constellation-inspiration/libra</loc>
+        <lastmod>2025-01-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.9</priority>
+        <image:image>
+            <image:loc>https://constellation-mystique.com/images/libra-constellation-inspiration.jpg</image:loc>
+            <image:title>Libra Constellation Inspiration & Harmony</image:title>
+            <image:caption>Discover Libra constellation wisdom for balance and relationships</image:caption>
+        </image:image>
+    </url>
+    
+    <url>
+        <loc>https://constellation-mystique.com/constellation-inspiration/scorpio</loc>
+        <lastmod>2025-01-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.9</priority>
+        <image:image>
+            <image:loc>https://constellation-mystique.com/images/scorpio-constellation-inspiration.jpg</image:loc>
+            <image:title>Scorpio Constellation Inspiration & Transformation</image:title>
+            <image:caption>Harness Scorpio constellation power for deep transformation and renewal</image:caption>
+        </image:image>
+    </url>
+    
+    <url>
+        <loc>https://constellation-mystique.com/constellation-inspiration/sagittarius</loc>
+        <lastmod>2025-01-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.9</priority>
+        <image:image>
+            <image:loc>https://constellation-mystique.com/images/sagittarius-constellation-inspiration.jpg</image:loc>
+            <image:title>Sagittarius Constellation Inspiration & Adventure</image:title>
+            <image:caption>Find Sagittarius constellation guidance for exploration and philosophy</image:caption>
+        </image:image>
+    </url>
+    
+    <url>
+        <loc>https://constellation-mystique.com/constellation-inspiration/capricorn</loc>
+        <lastmod>2025-01-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.9</priority>
+        <image:image>
+            <image:loc>https://constellation-mystique.com/images/capricorn-constellation-inspiration.jpg</image:loc>
+            <image:title>Capricorn Constellation Inspiration & Achievement</image:title>
+            <image:caption>Discover Capricorn constellation wisdom for success and discipline</image:caption>
+        </image:image>
+    </url>
+    
+    <url>
+        <loc>https://constellation-mystique.com/constellation-inspiration/aquarius</loc>
+        <lastmod>2025-01-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.9</priority>
+        <image:image>
+            <image:loc>https://constellation-mystique.com/images/aquarius-constellation-inspiration.jpg</image:loc>
+            <image:title>Aquarius Constellation Inspiration & Innovation</image:title>
+            <image:caption>Channel Aquarius constellation energy for innovation and humanitarian goals</image:caption>
+        </image:image>
+    </url>
+    
+    <url>
+        <loc>https://constellation-mystique.com/constellation-inspiration/pisces</loc>
+        <lastmod>2025-01-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.9</priority>
+        <image:image>
+            <image:loc>https://constellation-mystique.com/images/pisces-constellation-inspiration.jpg</image:loc>
+            <image:title>Pisces Constellation Inspiration & Spiritual Wisdom</image:title>
+            <image:caption>Explore Pisces constellation insights for spirituality and creativity</image:caption>
+        </image:image>
+    </url>
+    
+    <!-- Cosmic Inspiration Blog/Articles Section -->
+    <url>
+        <loc>https://constellation-mystique.com/cosmic-inspiration/daily-horoscope</loc>
+        <lastmod>2025-01-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
+        <loc>https://constellation-mystique.com/cosmic-inspiration/moon-phases</loc>
+        <lastmod>2025-01-15</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <url>
+        <loc>https://constellation-mystique.com/cosmic-inspiration/planetary-influences</loc>
+        <lastmod>2025-01-15</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <url>
+        <loc>https://constellation-mystique.com/cosmic-inspiration/zodiac-compatibility</loc>
+        <lastmod>2025-01-15</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    
+    <!-- Constellation Wisdom Resources -->
+    <url>
+        <loc>https://constellation-mystique.com/constellation-wisdom/stellar-patterns</loc>
+        <lastmod>2025-01-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    
+    <url>
+        <loc>https://constellation-mystique.com/constellation-wisdom/cosmic-timing</loc>
+        <lastmod>2025-01-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    
+    <url>
+        <loc>https://constellation-mystique.com/constellation-wisdom/celestial-events</loc>
+        <lastmod>2025-01-15</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+</urlset> 

@@ -1,5 +1,5 @@
-// 天文数据API工具类
-// 集成多个数据源，提供最准确的实时天象数据
+// Astronomical Data API Utility Class
+// Integrates multiple data sources to provide the most accurate real-time celestial data
 
 class AstronomicalDataManager {
     constructor() {
@@ -9,79 +9,79 @@ class AstronomicalDataManager {
         this.fallbackToLocal = true;
     }
 
-    // 获取当前所有天体位置
+    // Get current positions of all celestial bodies
     async getCurrentPlanetaryPositions() {
         const cacheKey = 'current_positions';
         const now = Date.now();
         
-        // 检查缓存
+        // Check cache
         if (this.cache.has(cacheKey)) {
             const cached = this.cache.get(cacheKey);
             if (now - cached.timestamp < this.config.cache.duration) {
-                console.log('使用缓存的天体位置数据');
+                console.log('Using cached celestial position data');
                 return cached.data;
             }
         }
 
         try {
-            // 尝试从API获取数据
+            // Try to fetch data from APIs
             const positions = await this.fetchFromAPIs();
             
-            // 缓存数据
+            // Cache data
             this.cache.set(cacheKey, {
                 data: positions,
                 timestamp: now
             });
             
             this.lastUpdate = now;
-            console.log('已更新天体位置数据', new Date(now));
+            console.log('Updated celestial position data', new Date(now));
             return positions;
             
         } catch (error) {
-            console.warn('API获取失败，使用本地计算:', error.message);
+            console.warn('API fetch failed, using local calculations:', error.message);
             return this.getLocalCalculatedPositions();
         }
     }
 
-    // 从API源获取数据
+    // Fetch data from API sources
     async fetchFromAPIs() {
         const now = new Date();
         const positions = {};
 
-        // 首先尝试主要API源
+        // First try primary API sources
         for (const source of this.config.primarySources) {
             try {
-                console.log(`尝试从 ${source.name} 获取数据...`);
+                console.log(`Trying to fetch data from ${source.name}...`);
                 const data = await this.fetchFromSource(source, now);
                 if (data && this.validateData(data)) {
-                    console.log(`成功从 ${source.name} 获取数据`);
+                    console.log(`Successfully fetched data from ${source.name}`);
                     return data;
                 }
             } catch (error) {
-                console.warn(`${source.name} 获取失败:`, error.message);
+                console.warn(`${source.name} fetch failed:`, error.message);
                 continue;
             }
         }
 
-        // 尝试备用源
+        // Try fallback sources
         for (const source of this.config.fallbackSources) {
             try {
-                console.log(`尝试备用源 ${source.name}...`);
+                console.log(`Trying fallback source ${source.name}...`);
                 const data = await this.fetchFromSource(source, now);
                 if (data && this.validateData(data)) {
-                    console.log(`从备用源 ${source.name} 获取数据成功`);
+                    console.log(`Successfully fetched data from fallback source ${source.name}`);
                     return data;
                 }
             } catch (error) {
-                console.warn(`备用源 ${source.name} 失败:`, error.message);
+                console.warn(`Fallback source ${source.name} failed:`, error.message);
                 continue;
             }
         }
 
-        throw new Error('所有API源都无法获取数据');
+        throw new Error('All API sources failed to provide data');
     }
 
-    // 从特定源获取数据
+    // Fetch data from specific source
     async fetchFromSource(source, date) {
         switch (source.type) {
             case 'nasa_jpl':
@@ -93,18 +93,18 @@ class AstronomicalDataManager {
             case 'timeanddate':
                 return await this.fetchFromTimeAndDate(date);
             default:
-                throw new Error(`未知的数据源类型: ${source.type}`);
+                throw new Error(`Unknown data source type: ${source.type}`);
         }
     }
 
-    // NASA JPL Horizons API (模拟实现)
+    // NASA JPL Horizons API (mock implementation)
     async fetchFromNASA(date) {
-        // 这里是模拟的NASA API调用
-        // 实际应用中需要根据NASA API文档实现
+        // This is a mock NASA API call
+        // In real applications, implement according to NASA API documentation
         const response = await this.simulateAPICall('NASA', {
             format: 'json',
             command: 'EPHEM',
-            center: '399', // 地球
+            center: '399', // Earth
             start_time: date.toISOString(),
             stop_time: date.toISOString(),
             step_size: '1d'
@@ -113,7 +113,7 @@ class AstronomicalDataManager {
         return this.parseNASAResponse(response);
     }
 
-    // Swiss Ephemeris API (模拟实现)
+    // Swiss Ephemeris API (mock implementation)
     async fetchFromSwissEph(date) {
         const response = await this.simulateAPICall('SwissEph', {
             date: date.toISOString(),
@@ -124,39 +124,39 @@ class AstronomicalDataManager {
         return this.parseSwissEphResponse(response);
     }
 
-    // USNO API (模拟实现)
+    // USNO API (mock implementation)
     async fetchFromUSNO(date) {
         const response = await this.simulateAPICall('USNO', {
             date: date.toISOString().split('T')[0],
-            coords: '39.9526,116.3026', // 北京坐标作为默认
-            tz: 8
+            coords: '40.7589,-73.9851', // New York coordinates as default
+            tz: -5
         });
 
         return this.parseUSNOResponse(response);
     }
 
-    // TimeAndDate API (模拟实现)
+    // TimeAndDate API (mock implementation)
     async fetchFromTimeAndDate(date) {
         const response = await this.simulateAPICall('TimeAndDate', {
             iso: date.toISOString(),
-            lang: 'zh',
+            lang: 'en',
             verbosetime: 1
         });
 
         return this.parseTimeAndDateResponse(response);
     }
 
-    // 模拟API调用 (实际应用中替换为真实的fetch调用)
+    // Simulate API call (replace with real fetch calls in actual applications)
     async simulateAPICall(source, params) {
-        // 模拟网络延迟
+        // Simulate network delay
         await new Promise(resolve => setTimeout(resolve, 500 + Math.random() * 1000));
         
-        // 模拟偶尔的API失败
+        // Simulate occasional API failures
         if (Math.random() < 0.1) {
-            throw new Error(`${source} API 暂时不可用`);
+            throw new Error(`${source} API temporarily unavailable`);
         }
 
-        // 返回模拟的成功响应，实际中会有真实的天体数据
+        // Return mock successful response, would contain real celestial data in practice
         return {
             status: 'success',
             data: this.generateMockAstronomicalData(),
@@ -165,18 +165,18 @@ class AstronomicalDataManager {
         };
     }
 
-    // 生成模拟天文数据（用于演示）
+    // Generate mock astronomical data (for demonstration)
     generateMockAstronomicalData() {
         const now = new Date();
         const positions = {};
         
         this.config.celestialBodies.forEach(body => {
             const basePosition = this.getApproximatePosition(body, now);
-            const randomVariation = (Math.random() - 0.5) * 2; // ±1度的随机变化
+            const randomVariation = (Math.random() - 0.5) * 2; // ±1 degree random variation
             
             positions[body] = {
                 longitude: (basePosition + randomVariation + 360) % 360,
-                latitude: (Math.random() - 0.5) * 10, // 纬度变化较小
+                latitude: (Math.random() - 0.5) * 10, // Smaller latitude variation
                 distance: this.getApproximateDistance(body),
                 velocity: this.getApproximateVelocity(body),
                 retrograde: this.isRetrograde(body, now),
@@ -187,12 +187,12 @@ class AstronomicalDataManager {
         return positions;
     }
 
-    // 获取近似位置（基于简化的天文算法）
+    // Get approximate position (based on simplified astronomical algorithms)
     getApproximatePosition(body, date) {
         const daysSinceEpoch = (date.getTime() - new Date('2000-01-01').getTime()) / (1000 * 60 * 60 * 24);
         
         const meanMotions = {
-            sun: 0.9856,    // 度/天
+            sun: 0.9856,    // degrees/day
             moon: 13.1764,
             mercury: 4.0923,
             venus: 1.6022,
@@ -200,114 +200,149 @@ class AstronomicalDataManager {
             jupiter: 0.0831,
             saturn: 0.0335,
             uranus: 0.0117,
-            neptune: 0.0060,
-            pluto: 0.0039
+            neptune: 0.0059,
+            pluto: 0.0040
         };
 
         const epochPositions = {
-            sun: 280, moon: 218, mercury: 252, venus: 181,
-            mars: 355, jupiter: 34, saturn: 50, uranus: 314,
-            neptune: 304, pluto: 238
+            sun: 280.47,
+            moon: 218.32,
+            mercury: 252.25,
+            venus: 181.98,
+            mars: 355.43,
+            jupiter: 34.35,
+            saturn: 50.08,
+            uranus: 314.05,
+            neptune: 304.35,
+            pluto: 238.96
         };
 
-        const meanMotion = meanMotions[body] || 0.1;
+        const meanMotion = meanMotions[body] || 0;
         const epochPosition = epochPositions[body] || 0;
         
         return (epochPosition + meanMotion * daysSinceEpoch) % 360;
     }
 
-    // 获取近似距离
+    // Get approximate distance (AU)
     getApproximateDistance(body) {
         const distances = {
-            sun: 1.0, moon: 0.00257, mercury: 0.387, venus: 0.723,
-            mars: 1.524, jupiter: 5.203, saturn: 9.537, uranus: 19.191,
-            neptune: 30.069, pluto: 39.482
+            sun: 1.0,
+            moon: 0.00257,
+            mercury: 0.39,
+            venus: 0.72,
+            mars: 1.52,
+            jupiter: 5.20,
+            saturn: 9.54,
+            uranus: 19.19,
+            neptune: 30.07,
+            pluto: 39.48
         };
         return distances[body] || 1.0;
     }
 
-    // 获取近似速度
+    // Get approximate velocity (degrees/day)
     getApproximateVelocity(body) {
         const velocities = {
-            sun: 0.9856, moon: 13.1764, mercury: 4.0923, venus: 1.6022,
-            mars: 0.5240, jupiter: 0.0831, saturn: 0.0335, uranus: 0.0117,
-            neptune: 0.0060, pluto: 0.0039
+            sun: 0.9856,
+            moon: 13.1764,
+            mercury: 4.0923,
+            venus: 1.6022,
+            mars: 0.5240,
+            jupiter: 0.0831,
+            saturn: 0.0335,
+            uranus: 0.0117,
+            neptune: 0.0059,
+            pluto: 0.0040
         };
-        return velocities[body] || 0.1;
+        return velocities[body] || 0;
     }
 
-    // 判断是否逆行
+    // Check if planet is retrograde
     isRetrograde(body, date) {
-        // 简化的逆行判断
-        const retroProbabilities = {
-            mercury: 0.19, venus: 0.07, mars: 0.09,
-            jupiter: 0.31, saturn: 0.36, uranus: 0.42,
-            neptune: 0.43, pluto: 0.41
+        // Simplified retrograde calculation
+        const daysSinceEpoch = (date.getTime() - new Date('2000-01-01').getTime()) / (1000 * 60 * 60 * 24);
+        const retroPeriods = {
+            mercury: 116,
+            venus: 584,
+            mars: 780,
+            jupiter: 399,
+            saturn: 378,
+            uranus: 370,
+            neptune: 367,
+            pluto: 366
         };
         
-        const probability = retroProbabilities[body] || 0;
-        const dayOfYear = Math.floor((date.getTime() - new Date(date.getFullYear(), 0, 1).getTime()) / (1000 * 60 * 60 * 24));
+        const period = retroPeriods[body];
+        if (!period) return false;
         
-        // 基于年中位置的简化逆行周期
-        return Math.sin(2 * Math.PI * dayOfYear / 365 * (probability * 3)) > 0.3;
+        const cyclePosition = (daysSinceEpoch % period) / period;
+        return cyclePosition > 0.4 && cyclePosition < 0.6;
     }
 
-    // 获取近似星等
+    // Get approximate magnitude
     getApproximateMagnitude(body) {
         const magnitudes = {
-            sun: -26.7, moon: -12.6, mercury: -1.9, venus: -4.6,
-            mars: -2.9, jupiter: -2.9, saturn: 0.7, uranus: 5.7,
-            neptune: 8.0, pluto: 15.1
+            sun: -26.7,
+            moon: -12.6,
+            mercury: -0.4,
+            venus: -4.6,
+            mars: -2.9,
+            jupiter: -2.9,
+            saturn: 0.4,
+            uranus: 5.7,
+            neptune: 7.8,
+            pluto: 14.0
         };
-        return magnitudes[body] || 10;
+        return magnitudes[body] || 0;
     }
 
-    // 解析不同API的响应格式
+    // Parse NASA response
     parseNASAResponse(response) {
-        // 将NASA API格式转换为统一格式
+        // Implementation for parsing NASA API response
         return this.normalizePositionData(response.data);
     }
 
+    // Parse Swiss Ephemeris response  
     parseSwissEphResponse(response) {
         return this.normalizePositionData(response.data);
     }
 
+    // Parse USNO response
     parseUSNOResponse(response) {
         return this.normalizePositionData(response.data);
     }
 
+    // Parse TimeAndDate response
     parseTimeAndDateResponse(response) {
         return this.normalizePositionData(response.data);
     }
 
-    // 标准化位置数据格式
+    // Normalize position data to standard format
     normalizePositionData(rawData) {
         const normalized = {};
         
-        for (const [body, data] of Object.entries(rawData)) {
+        Object.entries(rawData).forEach(([body, data]) => {
             normalized[body] = {
-                degree: data.longitude || data.lon || 0,
-                latitude: data.latitude || data.lat || 0,
-                distance: data.distance || data.dist || 1,
-                retrograde: data.velocity < 0 || data.retrograde || false,
+                degree: data.longitude || 0,
+                retrograde: data.retrograde || false,
                 house: Math.floor((data.longitude || 0) / 30) + 1,
-                intensity: data.magnitude ? (10 - Math.abs(data.magnitude)) / 10 : 1,
+                intensity: data.intensity || 1.0,
+                distance: data.distance || 1.0,
                 velocity: data.velocity || 0,
                 magnitude: data.magnitude || 0
             };
-        }
+        });
         
         return normalized;
     }
 
-    // 验证数据有效性
+    // Validate data quality
     validateData(data) {
         if (!data || typeof data !== 'object') return false;
         
-        // 检查是否包含必要的天体
         const requiredBodies = ['sun', 'moon', 'mercury', 'venus', 'mars'];
         for (const body of requiredBodies) {
-            if (!data[body] || typeof data[body].degree !== 'number') {
+            if (!data[body] || typeof data[body].longitude !== 'number') {
                 return false;
             }
         }
@@ -315,41 +350,42 @@ class AstronomicalDataManager {
         return true;
     }
 
-    // 当API失败时，回退到本地计算
+    // Get locally calculated positions (fallback)
     getLocalCalculatedPositions() {
-        console.log('回退到本地天文计算');
-        // 这里调用原有的本地计算函数
+        console.log('Using local astronomical calculations');
+        
+        // Use the local calculation function from script.js
         if (typeof getCurrentPlanetaryPositions === 'function') {
             return getCurrentPlanetaryPositions();
-        } else {
-            // 如果本地函数不可用，返回基本的模拟数据
-            return this.generateMockAstronomicalData();
         }
+        
+        throw new Error('Local calculation function not available');
     }
 
-    // 获取数据源状态
+    // Get data source status
     getDataSourceStatus() {
         return {
             lastUpdate: this.lastUpdate,
             cacheSize: this.cache.size,
-            usingFallback: this.fallbackToLocal
+            isOnline: navigator.onLine,
+            fallbackMode: this.fallbackToLocal
         };
     }
 
-    // 清理缓存
+    // Clear cache
     clearCache() {
         this.cache.clear();
-        console.log('天文数据缓存已清理');
+        console.log('Astronomical data cache cleared');
     }
 }
 
-// 创建全局实例
-const astronomicalAPI = new AstronomicalDataManager();
+// Initialize global instance
+window.astronomicalDataManager = new AstronomicalDataManager();
 
-// 导出
+// Export
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = AstronomicalDataManager;
 } else if (typeof window !== 'undefined') {
     window.AstronomicalDataManager = AstronomicalDataManager;
-    window.astronomicalAPI = astronomicalAPI;
+    window.astronomicalAPI = window.astronomicalDataManager;
 } 
