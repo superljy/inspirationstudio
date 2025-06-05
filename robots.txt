@@ -2,27 +2,16 @@ User-agent: *
 Allow: /
 
 # Core Content
-Allow: /index.html
 Allow: /pages/
-
-# Assets and Resources
 Allow: /css/
 Allow: /js/
 Allow: /images/
-Allow: /assets/
-Allow: /fonts/
 
-# Disallow backend files and configuration
-Disallow: /config/
-Disallow: /data/
+# Disallow development and system files
 Disallow: /utils/
 Disallow: /*.json
-Disallow: /components/
-Disallow: /node_modules/
 Disallow: /.git/
 Disallow: /*.log
-Disallow: /tmp/
-Disallow: /backup/
 
 # XML Sitemap location
 Sitemap: https://www.inspirationstudio.net/sitemap.xml
@@ -36,17 +25,9 @@ User-agent: Bingbot
 Allow: /
 Crawl-delay: 1
 
-User-agent: Slurp
-Allow: /
-Crawl-delay: 2
-
-User-agent: DuckDuckBot
-Allow: /
-Crawl-delay: 1
-
 User-agent: Baiduspider
 Allow: /
-Crawl-delay: 3
+Crawl-delay: 2
 
 # Block AI crawlers that don't respect terms
 User-agent: GPTBot
@@ -58,11 +39,5 @@ Disallow: /
 User-agent: CCBot
 Disallow: /
 
-User-agent: anthropic-ai
-Disallow: /
-
-# Preferred domain and canonical information
-Host: www.inspirationstudio.net
-
-# Cache directives for better crawling
-Cache-delay: 1 
+# Preferred domain
+Host: www.inspirationstudio.net 
