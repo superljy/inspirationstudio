@@ -25,7 +25,7 @@ Disallow: /tmp/
 Disallow: /backup/
 
 # XML Sitemap location
-Sitemap: https://superljy.github.io/inspirationstudio/sitemap.xml
+Sitemap: https://www.inspirationstudio.net/sitemap.xml
 
 # Search Engine Specific Rules
 User-agent: Googlebot
@@ -62,7 +62,7 @@ User-agent: anthropic-ai
 Disallow: /
 
 # Preferred domain and canonical information
-Host: superljy.github.io
+Host: www.inspirationstudio.net
 
 # Cache directives for better crawling
 Cache-delay: 1 

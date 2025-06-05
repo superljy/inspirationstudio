@@ -3,7 +3,7 @@
     
     <!-- Homepage -->
     <url>
-        <loc>https://superljy.github.io/inspirationstudio/</loc>
+        <loc>https://www.inspirationstudio.net/</loc>
         <lastmod>2025-01-15</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
@@ -11,7 +11,7 @@
     
     <!-- About Page -->
     <url>
-        <loc>https://superljy.github.io/inspirationstudio/pages/about.html</loc>
+        <loc>https://www.inspirationstudio.net/pages/about.html</loc>
         <lastmod>2025-01-15</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
@@ -19,7 +19,7 @@
     
     <!-- Guide Page -->
     <url>
-        <loc>https://superljy.github.io/inspirationstudio/pages/guide.html</loc>
+        <loc>https://www.inspirationstudio.net/pages/guide.html</loc>
         <lastmod>2025-01-15</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.7</priority>
