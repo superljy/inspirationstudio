@@ -1,17 +1,34 @@
 User-agent: *
 Allow: /
 
-# Core Content
+# Core Content - Multi-timeframe Horoscope Platform
 Allow: /pages/
 Allow: /css/
 Allow: /js/
 Allow: /images/
 
+# High-priority horoscope features (daily, weekly, monthly)
+Allow: /pages/daily-horoscope.html
+Allow: /pages/weekly-horoscope.html
+Allow: /pages/monthly-horoscope.html
+
+# Allow important documentation for transparency
+Allow: /roadmap.md
+Allow: /CHALLENGE_SYSTEM_ENHANCEMENT_LOG.md
+
 # Disallow development and system files
 Disallow: /utils/
+Disallow: /config/
 Disallow: /*.json
 Disallow: /.git/
 Disallow: /*.log
+Disallow: /test-*
+Disallow: /*demo*
+
+# Disallow old/deprecated files that may still exist
+Disallow: /FREE_ASTROLOGY_GUIDE.md
+Disallow: /NASA_INTEGRATION_GUIDE.md
+Disallow: /LOCAL_SERVER_GUIDE.md
 
 # XML Sitemap location
 Sitemap: https://www.inspirationstudio.net/sitemap.xml
@@ -19,14 +36,23 @@ Sitemap: https://www.inspirationstudio.net/sitemap.xml
 # Search Engine Specific Rules
 User-agent: Googlebot
 Allow: /
+Allow: /pages/daily-horoscope.html
+Allow: /pages/weekly-horoscope.html
+Allow: /pages/monthly-horoscope.html
 Crawl-delay: 1
 
 User-agent: Bingbot
 Allow: /
+Allow: /pages/daily-horoscope.html
+Allow: /pages/weekly-horoscope.html
+Allow: /pages/monthly-horoscope.html
 Crawl-delay: 1
 
 User-agent: Baiduspider
 Allow: /
+Allow: /pages/daily-horoscope.html
+Allow: /pages/weekly-horoscope.html
+Allow: /pages/monthly-horoscope.html
 Crawl-delay: 2
 
 # Block AI crawlers that don't respect terms

@@ -229,28 +229,6 @@
             </div>
         </div>
     </footer>
-    <script>
-        // Astronomical API Configuration
-        window.ASTRONOMICAL_CONFIG = {
-            cache: {
-                duration: 300000 // 5 minutes in milliseconds
-            },
-            celestialBodies: ['sun', 'moon', 'mercury', 'venus', 'mars', 'jupiter', 'saturn', 'uranus', 'neptune', 'pluto'],
-            primarySources: [
-                { name: 'NASA JPL', type: 'nasa_jpl', priority: 1 },
-                { name: 'Swiss Ephemeris', type: 'swiss_ephemeris', priority: 2 }
-            ],
-            fallbackSources: [
-                { name: 'USNO', type: 'usno', priority: 3 },
-                { name: 'TimeAndDate', type: 'timeanddate', priority: 4 }
-            ]
-        };
-    </script>
-    <script src="../utils/astronomical-api.js"></script>
-    <script>
-        // Initialize astronomical API
-        const astronomicalAPI = new AstronomicalDataManager();
-    </script>
     <script src="../js/script.js"></script>
 </body>
 </html> 

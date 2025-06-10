@@ -151,41 +151,89 @@
             </div>
         </header>
 
-        <!-- Main query functionality -->
+        <!-- Main functionality menu -->
         <main role="main">
-            <section id="daily-horoscope" class="query-section">
-                <h2>Get Your Daily Zodiac Reading</h2>
-                <p class="section-description" style="margin-top: 1%;">
-                    Select your zodiac sign to receive professional astrological analysis based on current celestial movements.
-                    Our system calculates planetary positions, lunar influences, lucky elements, and other multi-dimensional information for you.
+            <section id="features-menu" class="features-section">
+                <h2>Explore Your Celestial Journey</h2>
+                <p class="section-description">
+                    Choose from our comprehensive astrological services designed to provide insights for different timeframes and life aspects.
+                    Each reading uses precise astronomical calculations and traditional astrological wisdom.
                 </p>
                 
-                <div class="horoscope-form">
-                    <label for="zodiacSelect">Please select your zodiac sign:</label>
-                    <div style="display: flex; align-items: center; justify-content: center; gap: 15px; flex-wrap: wrap;">
-                        <select id="zodiacSelect">
-                            <option value="">-- Select Zodiac Sign --</option>
-                            <option value="aries">♈ Aries (Mar 21 - Apr 19)</option>
-                            <option value="taurus">♉ Taurus (Apr 20 - May 20)</option>
-                            <option value="gemini">♊ Gemini (May 21 - Jun 21)</option>
-                            <option value="cancer">♋ Cancer (Jun 22 - Jul 22)</option>
-                            <option value="leo">♌ Leo (Jul 23 - Aug 22)</option>
-                            <option value="virgo">♍ Virgo (Aug 23 - Sep 22)</option>
-                            <option value="libra">♎ Libra (Sep 23 - Oct 23)</option>
-                            <option value="scorpio">♏ Scorpio (Oct 24 - Nov 22)</option>
-                            <option value="sagittarius">♐ Sagittarius (Nov 23 - Dec 21)</option>
-                            <option value="capricorn">♑ Capricorn (Dec 22 - Jan 19)</option>
-                            <option value="aquarius">♒ Aquarius (Jan 20 - Feb 18)</option>
-                            <option value="pisces">♓ Pisces (Feb 19 - Mar 20)</option>
-                        </select>
-                        <button onclick="getHoroscope()" class="submit-btn">🔮 Get My Reading</button>
+                <div class="features-grid">
+                    <div class="feature-card" onclick="navigateToFeature('daily')">
+                        <div class="feature-icon">🌟</div>
+                        <h3>Daily Horoscope</h3>
+                        <p>Get your personalized daily reading with planetary influences, lucky elements, and cosmic guidance for today.</p>
+                        <div class="feature-highlights">
+                            <span class="highlight">Planetary Positions</span>
+                            <span class="highlight">Lucky Elements</span>
+                            <span class="highlight">Daily Advice</span>
+                        </div>
+                        <button class="feature-btn">Get Daily Reading</button>
                     </div>
-                    <small class="help-text">The system will generate personalized astrological analysis based on current celestial movements</small>
+                    
+                    <div class="feature-card" onclick="navigateToFeature('weekly')">
+                        <div class="feature-icon">📅</div>
+                        <h3>Weekly Forecast</h3>
+                        <p>Discover your week ahead with trend analysis, key planetary aspects, and optimal timing for important activities.</p>
+                        <div class="feature-highlights">
+                            <span class="highlight">Weekly Trends</span>
+                            <span class="highlight">Key Aspects</span>
+                            <span class="highlight">Best Days</span>
+                        </div>
+                        <button class="feature-btn">Get Weekly Forecast</button>
+                    </div>
+                    
+                    <div class="feature-card" onclick="navigateToFeature('monthly')">
+                        <div class="feature-icon">🌙</div>
+                        <h3>Monthly Overview</h3>
+                        <p>Plan your month with comprehensive lunar cycle analysis, major planetary transits, and long-term guidance.</p>
+                        <div class="feature-highlights">
+                            <span class="highlight">Lunar Cycles</span>
+                            <span class="highlight">Major Transits</span>
+                            <span class="highlight">Monthly Themes</span>
+                        </div>
+                        <button class="feature-btn">Get Monthly Overview</button>
+                    </div>
+                    
+                    <div class="feature-card coming-soon">
+                        <div class="feature-icon">🔮</div>
+                        <h3>Birth Chart Analysis</h3>
+                        <p>Comprehensive natal chart interpretation with detailed personality insights and life path guidance.</p>
+                        <div class="feature-highlights">
+                            <span class="highlight">Natal Chart</span>
+                            <span class="highlight">Personality Insights</span>
+                            <span class="highlight">Life Guidance</span>
+                        </div>
+                        <button class="feature-btn disabled">Coming Soon</button>
+                    </div>
+                    
+                    <div class="feature-card coming-soon">
+                        <div class="feature-icon">💕</div>
+                        <h3>Compatibility Report</h3>
+                        <p>Detailed relationship compatibility analysis between zodiac signs with practical relationship advice.</p>
+                        <div class="feature-highlights">
+                            <span class="highlight">Sign Compatibility</span>
+                            <span class="highlight">Relationship Dynamics</span>
+                            <span class="highlight">Practical Advice</span>
+                        </div>
+                        <button class="feature-btn disabled">Coming Soon</button>
+                    </div>
+                    
+                    <div class="feature-card coming-soon">
+                        <div class="feature-icon">📊</div>
+                        <h3>Lucky Calendar</h3>
+                        <p>Find the most auspicious dates for important decisions, events, and new beginnings based on your sign.</p>
+                        <div class="feature-highlights">
+                            <span class="highlight">Lucky Dates</span>
+                            <span class="highlight">Event Planning</span>
+                            <span class="highlight">Optimal Timing</span>
+                        </div>
+                        <button class="feature-btn disabled">Coming Soon</button>
+                    </div>
                 </div>
             </section>
-
-            <!-- Horoscope results display area -->
-            <section id="result" class="result hidden" role="region" aria-label="Horoscope Analysis Results" aria-live="polite"></section>
 
             <!-- Astrological knowledge area -->
             <section id="astrology-knowledge" class="knowledge-section">
@@ -324,35 +372,30 @@
     </div>
 
     <!-- JavaScript Files -->
-    <script>
-        // Astronomical API Configuration
-        window.ASTRONOMICAL_CONFIG = {
-            cache: {
-                duration: 300000 // 5 minutes in milliseconds
-            },
-            celestialBodies: ['sun', 'moon', 'mercury', 'venus', 'mars', 'jupiter', 'saturn', 'uranus', 'neptune', 'pluto'],
-            primarySources: [
-                { name: 'NASA JPL', type: 'nasa_jpl', priority: 1 },
-                { name: 'Swiss Ephemeris', type: 'swiss_ephemeris', priority: 2 }
-            ],
-            fallbackSources: [
-                { name: 'USNO', type: 'usno', priority: 3 },
-                { name: 'TimeAndDate', type: 'timeanddate', priority: 4 }
-            ]
-        };
-    </script>
-    <script src="utils/astronomical-api.js"></script>
-    <script>
-        // Initialize astronomical API
-        const astronomicalAPI = new AstronomicalDataManager();
-    </script>
     <script src="js/script.js"></script>
     
-    <!-- Initialize cosmic info -->
+    <!-- Initialize cosmic info and navigation -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             updateCosmicInfo();
         });
+        
+        // Navigation function for feature cards
+        function navigateToFeature(featureType) {
+            switch(featureType) {
+                case 'daily':
+                    window.location.href = 'pages/daily-horoscope.html';
+                    break;
+                case 'weekly':
+                    window.location.href = 'pages/weekly-horoscope.html';
+                    break;
+                case 'monthly':
+                    window.location.href = 'pages/monthly-horoscope.html';
+                    break;
+                default:
+                    console.log('Feature coming soon:', featureType);
+            }
+        }
     </script>
 </body>
 </html>

@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-J6F202P1L0"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+ 
+        gtag('config', 'G-J6F202P1L0');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monthly Horoscope - Complete Astrological Overview | Constellation Mystique</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Get your comprehensive monthly horoscope with long-term trends, planetary transits, key periods, and detailed guidance. Professional astrological forecasts updated monthly.">
+    <meta name="keywords" content="monthly horoscope, astrology forecast, monthly trends, planetary transits, astrological overview, monthly prediction, zodiac monthly, long-term astrology">
+    <meta name="author" content="Constellation Mystique">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="en-US">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Monthly Horoscope - Complete Astrological Overview">
+    <meta property="og:description" content="Get your comprehensive monthly horoscope with long-term trends, planetary transits, and detailed guidance. Professional astrological forecasts updated monthly.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://constellation-mystique.com/pages/monthly-horoscope.html">
+    <meta property="og:image" content="https://constellation-mystique.com/images/monthly-horoscope.jpg">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:site_name" content="Constellation Mystique">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Monthly Horoscope - Complete Astrological Overview">
+    <meta name="twitter:description" content="Get your comprehensive monthly horoscope with long-term trends and detailed guidance.">
+    <meta name="twitter:image" content="https://constellation-mystique.com/images/monthly-horoscope.jpg">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://constellation-mystique.com/pages/monthly-horoscope.html">
+    
+    <!-- Preconnect to external domains for performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/mobile-fix.css">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Monthly Horoscope",
+        "description": "Get your comprehensive monthly horoscope with long-term trends, planetary transits, key periods, and detailed guidance.",
+        "url": "https://constellation-mystique.com/pages/monthly-horoscope.html",
+        "mainEntity": {
+            "@type": "Service",
+            "name": "Monthly Horoscope Forecast",
+            "description": "Professional monthly astrological analysis with trends, transits and comprehensive guidance",
+            "provider": {
+                "@type": "Organization",
+                "name": "Constellation Mystique"
+            }
+        }
+    }
+    </script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" role="navigation" aria-label="Main Navigation">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h1>Constellation Mystique<span class="tagline">Inspiration Through Stars</span></h1>
+            </div>
+            <div class="nav-links">
+                <a href="../index.html" class="nav-link">Home</a>
+                <a href="daily-horoscope.html" class="nav-link">Daily</a>
+                <a href="weekly-horoscope.html" class="nav-link">Weekly</a>
+                <a href="monthly-horoscope.html" class="nav-link active">Monthly</a>
+                <a href="about.html" class="nav-link">About</a>
+                <a href="guide.html" class="nav-link">Guide</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Page Header -->
+        <header class="page-header">
+            <h1>Monthly Horoscope Overview</h1>
+            <p class="page-subtitle">
+                Explore your comprehensive monthly astrological forecast with long-term trend analysis, 
+                major planetary transits, key periods for important activities, and detailed guidance 
+                to help you navigate the month ahead with cosmic wisdom and strategic planning.
+            </p>
+            <div class="current-date-display">
+                <div class="date-item">
+                    <span class="date-label">Current Month</span>
+                    <span class="date-value" id="currentMonth">Loading...</span>
+                </div>
+                <div class="date-item">
+                    <span class="date-label">Year</span>
+                    <span class="date-value" id="currentYear">Calculating...</span>
+                </div>
+                <div class="date-item">
+                    <span class="date-label">Lunar Cycles</span>
+                    <span class="date-value" id="lunarInfo">Analyzing...</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main query functionality -->
+        <main role="main">
+            <section id="monthly-horoscope" class="query-section">
+                <h2>Select Your Zodiac Sign</h2>
+                <p class="section-description">
+                    Choose your zodiac sign to receive comprehensive monthly astrological analysis including 
+                    long-term trends, major planetary transits, key periods for activities, and strategic guidance for the month ahead.
+                </p>
+                
+                <div class="horoscope-form">
+                    <label for="zodiacSelect">Please select your zodiac sign:</label>
+                    <div style="display: flex; align-items: center; justify-content: center; gap: 15px; flex-wrap: wrap;">
+                        <select id="zodiacSelect">
+                            <option value="">-- Select Zodiac Sign --</option>
+                            <option value="aries">♈ Aries (Mar 21 - Apr 19)</option>
+                            <option value="taurus">♉ Taurus (Apr 20 - May 20)</option>
+                            <option value="gemini">♊ Gemini (May 21 - Jun 21)</option>
+                            <option value="cancer">♋ Cancer (Jun 22 - Jul 22)</option>
+                            <option value="leo">♌ Leo (Jul 23 - Aug 22)</option>
+                            <option value="virgo">♍ Virgo (Aug 23 - Sep 22)</option>
+                            <option value="libra">♎ Libra (Sep 23 - Oct 23)</option>
+                            <option value="scorpio">♏ Scorpio (Oct 24 - Nov 22)</option>
+                            <option value="sagittarius">♐ Sagittarius (Nov 23 - Dec 21)</option>
+                            <option value="capricorn">♑ Capricorn (Dec 22 - Jan 19)</option>
+                            <option value="aquarius">♒ Aquarius (Jan 20 - Feb 18)</option>
+                            <option value="pisces">♓ Pisces (Feb 19 - Mar 20)</option>
+                        </select>
+                        <button onclick="getMonthlyHoroscope()" class="submit-btn">🌙 Get Monthly Overview</button>
+                    </div>
+                    <small class="help-text">Your monthly forecast includes trends, transits, key periods, themes, and comprehensive strategic guidance</small>
+                </div>
+            </section>
+
+            <!-- Monthly results display area -->
+            <section id="monthly-result" class="result hidden" role="region" aria-label="Monthly Horoscope Results" aria-live="polite"></section>
+
+            <!-- Quick Sign Selection -->
+            <section class="quick-signs">
+                <h3>Quick Sign Selection</h3>
+                <div class="signs-grid">
+                    <div class="sign-card" data-sign="aries" onclick="selectMonthlySign('aries')">
+                        <div class="sign-symbol">♈</div>
+                        <div class="sign-name">Aries</div>
+                        <div class="sign-dates">Mar 21 - Apr 19</div>
+                    </div>
+                    <div class="sign-card" data-sign="taurus" onclick="selectMonthlySign('taurus')">
+                        <div class="sign-symbol">♉</div>
+                        <div class="sign-name">Taurus</div>
+                        <div class="sign-dates">Apr 20 - May 20</div>
+                    </div>
+                    <div class="sign-card" data-sign="gemini" onclick="selectMonthlySign('gemini')">
+                        <div class="sign-symbol">♊</div>
+                        <div class="sign-name">Gemini</div>
+                        <div class="sign-dates">May 21 - Jun 21</div>
+                    </div>
+                    <div class="sign-card" data-sign="cancer" onclick="selectMonthlySign('cancer')">
+                        <div class="sign-symbol">♋</div>
+                        <div class="sign-name">Cancer</div>
+                        <div class="sign-dates">Jun 22 - Jul 22</div>
+                    </div>
+                    <div class="sign-card" data-sign="leo" onclick="selectMonthlySign('leo')">
+                        <div class="sign-symbol">♌</div>
+                        <div class="sign-name">Leo</div>
+                        <div class="sign-dates">Jul 23 - Aug 22</div>
+                    </div>
+                    <div class="sign-card" data-sign="virgo" onclick="selectMonthlySign('virgo')">
+                        <div class="sign-symbol">♍</div>
+                        <div class="sign-name">Virgo</div>
+                        <div class="sign-dates">Aug 23 - Sep 22</div>
+                    </div>
+                    <div class="sign-card" data-sign="libra" onclick="selectMonthlySign('libra')">
+                        <div class="sign-symbol">♎</div>
+                        <div class="sign-name">Libra</div>
+                        <div class="sign-dates">Sep 23 - Oct 23</div>
+                    </div>
+                    <div class="sign-card" data-sign="scorpio" onclick="selectMonthlySign('scorpio')">
+                        <div class="sign-symbol">♏</div>
+                        <div class="sign-name">Scorpio</div>
+                        <div class="sign-dates">Oct 24 - Nov 22</div>
+                    </div>
+                    <div class="sign-card" data-sign="sagittarius" onclick="selectMonthlySign('sagittarius')">
+                        <div class="sign-symbol">♐</div>
+                        <div class="sign-name">Sagittarius</div>
+                        <div class="sign-dates">Nov 23 - Dec 21</div>
+                    </div>
+                    <div class="sign-card" data-sign="capricorn" onclick="selectMonthlySign('capricorn')">
+                        <div class="sign-symbol">♑</div>
+                        <div class="sign-name">Capricorn</div>
+                        <div class="sign-dates">Dec 22 - Jan 19</div>
+                    </div>
+                    <div class="sign-card" data-sign="aquarius" onclick="selectMonthlySign('aquarius')">
+                        <div class="sign-symbol">♒</div>
+                        <div class="sign-name">Aquarius</div>
+                        <div class="sign-dates">Jan 20 - Feb 18</div>
+                    </div>
+                    <div class="sign-card" data-sign="pisces" onclick="selectMonthlySign('pisces')">
+                        <div class="sign-symbol">♓</div>
+                        <div class="sign-name">Pisces</div>
+                        <div class="sign-dates">Feb 19 - Mar 20</div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer role="contentinfo">
+            <div class="footer-content">
+                <div class="footer-main">
+                    <div class="footer-section">
+                        <h3>Constellation Mystique</h3>
+                        <p>Professional Astrological Analysis Platform</p>
+                        <p>Navigate your month with confidence through comprehensive cosmic guidance and astrological insights.</p>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h4>Services</h4>
+                        <ul>
+                            <li><a href="daily-horoscope.html">Daily Horoscope</a></li>
+                            <li><a href="weekly-horoscope.html">Weekly Forecast</a></li>
+                            <li><a href="monthly-horoscope.html">Monthly Overview</a></li>
+                            <li><a href="about.html">About Astrology</a></li>
+                            <li><a href="guide.html">User Guide</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="footer-bottom">
+                    <p class="copyright">© 2025 Constellation Mystique. All Rights Reserved.</p>
+                    <p class="disclaimer">Astrological readings are for entertainment and guidance purposes. Individual results may vary.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- JavaScript Files -->
+    <script src="../js/script.js"></script>
+    <script src="../js/monthly-horoscope-engine.js"></script>
+    
+    <!-- Page-specific JavaScript -->
+    <script>
+        // Initialize monthly horoscope engine
+        let monthlyEngine = null;
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            updateCosmicInfo();
+            updateMonthlyInfo();
+            
+            // Initialize monthly engine
+            monthlyEngine = new MonthlyHoroscopeEngine();
+            
+            // Track page view
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'page_view', {
+                    page_title: 'Monthly Horoscope',
+                    page_location: window.location.href
+                });
+            }
+        });
+        
+        function updateMonthlyInfo() {
+            const now = new Date();
+            const monthNames = ['January', 'February', 'March', 'April', 'May', 'June',
+                               'July', 'August', 'September', 'October', 'November', 'December'];
+            
+            // Update current month display
+            document.getElementById('currentMonth').textContent = monthNames[now.getMonth()];
+            
+            // Update year
+            document.getElementById('currentYear').textContent = now.getFullYear();
+            
+            // Update lunar info
+            document.getElementById('lunarInfo').textContent = getMonthlyLunarInfo();
+        }
+        
+        function getMonthlyLunarInfo() {
+            const lunarCycles = ['New Moon Phase', 'Waxing Moon Phase', 'Full Moon Phase', 'Waning Moon Phase'];
+            return lunarCycles[Math.floor(Math.random() * lunarCycles.length)];
+        }
+        
+        // Monthly horoscope function
+        async function getMonthlyHoroscope() {
+            const selectedSign = document.getElementById('zodiacSelect').value;
+            if (!selectedSign) {
+                alert('Please select your zodiac sign first.');
+                return;
+            }
+
+            if (!monthlyEngine) {
+                console.error('Monthly engine not initialized');
+                return;
+            }
+
+            // Track user interaction
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'monthly_horoscope_request', {
+                    event_category: 'engagement',
+                    event_label: selectedSign
+                });
+            }
+
+            const resultDiv = document.getElementById('monthly-result');
+            resultDiv.innerHTML = `
+                <div class="loading-message">
+                    <h3>🌙 Calculating Your Monthly Overview...</h3>
+                    <p>Analyzing planetary transits and long-term trends for ${selectedSign.charAt(0).toUpperCase() + selectedSign.slice(1)}</p>
+                    <div class="loading-spinner"></div>
+                </div>
+            `;
+            resultDiv.style.display = 'block';
+            resultDiv.classList.remove('hidden');
+
+            try {
+                const monthlyHoroscope = await monthlyEngine.calculateMonthlyHoroscope(selectedSign);
+                displayMonthlyHoroscope(monthlyHoroscope);
+            } catch (error) {
+                console.error('Monthly horoscope calculation failed:', error);
+                resultDiv.innerHTML = `
+                    <div class="error">
+                        <h3>❌ Calculation Failed</h3>
+                        <p>Sorry, unable to retrieve monthly horoscope data at this time. Please try again later.</p>
+                        <button onclick="getMonthlyHoroscope()" style="margin-top: 1rem;">🔄 Try Again</button>
+                    </div>
+                `;
+            }
+        }
+        
+        function displayMonthlyHoroscope(horoscope) {
+            const resultDiv = document.getElementById('monthly-result');
+            
+            let html = `
+                <div class="monthly-horoscope-result">
+                    <div class="monthly-header">
+                        <h2>${getSignSymbol(horoscope.sign)} ${horoscope.sign.charAt(0).toUpperCase() + horoscope.sign.slice(1)} - ${horoscope.monthName} ${horoscope.year}</h2>
+                        <div class="monthly-period">
+                            <span class="period-label">Month Period</span>
+                            <span class="period-value">${formatMonthDate(horoscope.monthStart)} - ${formatMonthDate(horoscope.monthEnd)}</span>
+                        </div>
+                        <div class="overall-monthly-score">
+                            <span class="score-label">Monthly Fortune</span>
+                            <span class="score-value ${getScoreClass(horoscope.overallScore.overall)}">
+                                ${horoscope.overallScore.overall}/100
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="monthly-content">
+                        <!-- Long-term Trends -->
+                        <div class="monthly-trends">
+                            <h3>📊 Long-term Trends</h3>
+                            <div class="monthly-trends-grid">
+                                <div class="trend-item">
+                                    <div class="trend-icon">💕</div>
+                                    <div class="trend-info">
+                                        <span class="trend-label">Love & Relationships</span>
+                                        <div class="trend-bar">
+                                            <div class="trend-fill" style="width: ${horoscope.overallScore.love}%"></div>
+                                        </div>
+                                        <span class="trend-score">${horoscope.overallScore.love}%</span>
+                                    </div>
+                                </div>
+                                <div class="trend-item">
+                                    <div class="trend-icon">💼</div>
+                                    <div class="trend-info">
+                                        <span class="trend-label">Career & Success</span>
+                                        <div class="trend-bar">
+                                            <div class="trend-fill" style="width: ${horoscope.overallScore.career}%"></div>
+                                        </div>
+                                        <span class="trend-score">${horoscope.overallScore.career}%</span>
+                                    </div>
+                                </div>
+                                <div class="trend-item">
+                                    <div class="trend-icon">💰</div>
+                                    <div class="trend-info">
+                                        <span class="trend-label">Wealth & Finance</span>
+                                        <div class="trend-bar">
+                                            <div class="trend-fill" style="width: ${horoscope.overallScore.wealth}%"></div>
+                                        </div>
+                                        <span class="trend-score">${horoscope.overallScore.wealth}%</span>
+                                    </div>
+                                </div>
+                                <div class="trend-item">
+                                    <div class="trend-icon">🏥</div>
+                                    <div class="trend-info">
+                                        <span class="trend-label">Health & Vitality</span>
+                                        <div class="trend-bar">
+                                            <div class="trend-fill" style="width: ${horoscope.overallScore.health}%"></div>
+                                        </div>
+                                        <span class="trend-score">${horoscope.overallScore.health}%</span>
+                                    </div>
+                                </div>
+                                <div class="trend-item">
+                                    <div class="trend-icon">🌱</div>
+                                    <div class="trend-info">
+                                        <span class="trend-label">Personal Growth</span>
+                                        <div class="trend-bar">
+                                            <div class="trend-fill" style="width: ${horoscope.overallScore.personal}%"></div>
+                                        </div>
+                                        <span class="trend-score">${horoscope.overallScore.personal}%</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Monthly Themes -->
+                        <div class="monthly-themes">
+                            <h3>🎯 Monthly Themes</h3>
+                            <div class="themes-monthly-list">
+            `;
+            
+            (horoscope.themes || []).forEach(theme => {
+                html += `
+                    <div class="theme-monthly-item">
+                        <h4>${theme.theme || 'Monthly Theme'}</h4>
+                        <p>${theme.description || 'Focus on personal growth and development this month.'}</p>
+                        <div class="theme-areas">
+                            <span class="areas-label">Focus Areas:</span>
+                            <div class="areas-tags">
+                                ${theme.areas ? theme.areas.map(area => `<span class="area-tag">${area}</span>`).join('') : '<span class="area-tag">Growth</span><span class="area-tag">Balance</span>'}
+                            </div>
+                        </div>
+                        <div class="influence-bar">
+                            <div class="influence-fill" style="width: ${(theme.influence || 0.5) * 100}%"></div>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            html += `
+                            </div>
+                        </div>
+                        
+                        <!-- Monthly Forecast -->
+                        <div class="monthly-forecast">
+                            <h3>🔮 Detailed Monthly Forecast</h3>
+                            <div class="forecast-sections">
+                                <div class="forecast-section">
+                                    <h4>🌟 Overall Outlook</h4>
+                                    <p>${horoscope.forecast.overall}</p>
+                                </div>
+                                <div class="forecast-section">
+                                    <h4>💖 Love & Relationships</h4>
+                                    <p>${horoscope.forecast.love}</p>
+                                </div>
+                                <div class="forecast-section">
+                                    <h4>💼 Career & Professional</h4>
+                                    <p>${horoscope.forecast.career}</p>
+                                </div>
+                                <div class="forecast-section">
+                                    <h4>💰 Financial Outlook</h4>
+                                    <p>${horoscope.forecast.wealth}</p>
+                                </div>
+                                <div class="forecast-section">
+                                    <h4>🏥 Health & Wellness</h4>
+                                    <p>${horoscope.forecast.health}</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Monthly Guidance -->
+                        <div class="monthly-guidance">
+                            <h3>💫 Strategic Monthly Guidance</h3>
+                            <div class="guidance-list">
+            `;
+            
+            (horoscope.guidance || ['Focus on personal growth and building strong foundations this month']).forEach(guidance => {
+                html += `<div class="guidance-item">${guidance}</div>`;
+            });
+            
+            html += `
+                            </div>
+                        </div>
+                        
+                        <!-- Opportunities & Challenges -->
+                        <div class="monthly-opportunities-challenges">
+                            <div class="opportunities-section">
+                                <h4>🌟 Key Opportunities</h4>
+                                <div class="opportunities-list">
+            `;
+            
+            (horoscope.opportunities || ['Career advancement potential', 'Financial growth opportunities']).forEach(opportunity => {
+                html += `<div class="opportunity-item">${opportunity}</div>`;
+            });
+            
+            html += `
+                                </div>
+                            </div>
+                            <div class="challenges-section">
+                                <h4>⚠️ Potential Challenges</h4>
+                                <div class="challenges-list">
+            `;
+            
+            (horoscope.challenges || ['Minor communication delays', 'Need for patience in some areas']).forEach(challenge => {
+                html += `<div class="challenge-item">${challenge}</div>`;
+            });
+            
+            html += `
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Monthly Lucky Elements -->
+                        <div class="monthly-lucky-elements">
+                            <h3>🍀 Monthly Lucky Elements</h3>
+                            <div class="lucky-monthly-grid">
+                                <div class="lucky-monthly-item">
+                                    <div class="lucky-icon">🎨</div>
+                                    <span class="lucky-text">Colors: ${horoscope.luckyElements?.colors?.join(', ') || 'Blue, Silver'}</span>
+                                </div>
+                                <div class="lucky-monthly-item">
+                                    <div class="lucky-icon">🔢</div>
+                                    <span class="lucky-text">Numbers: ${horoscope.luckyElements?.numbers?.join(', ') || '7, 14, 28'}</span>
+                                </div>
+                                <div class="lucky-monthly-item">
+                                    <div class="lucky-icon">💎</div>
+                                    <span class="lucky-text">Gemstones: ${horoscope.luckyElements?.gemstones?.join(', ') || 'Crystal, Moonstone'}</span>
+                                </div>
+                                <div class="lucky-monthly-item">
+                                    <div class="lucky-icon">🏛️</div>
+                                    <span class="lucky-text">Metals: ${horoscope.luckyElements?.metals?.join(', ') || 'Silver, Copper'}</span>
+                                </div>
+                                <div class="lucky-monthly-item">
+                                    <div class="lucky-icon">📅</div>
+                                    <span class="lucky-text">Best Days: ${horoscope.luckyElements?.days?.join(', ') || 'Tuesday, Friday, Sunday'}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            
+            resultDiv.innerHTML = html;
+        }
+        
+        // Quick sign selection for monthly
+        function selectMonthlySign(signName) {
+            const selectElement = document.getElementById('zodiacSelect');
+            selectElement.value = signName;
+            
+            // Visual feedback
+            document.querySelectorAll('.sign-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            document.querySelector(`[data-sign="${signName}"]`).classList.add('selected');
+            
+            // Auto-generate monthly horoscope
+            getMonthlyHoroscope();
+            
+            // Track quick selection usage
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'monthly_quick_selection', {
+                    event_category: 'engagement',
+                    event_label: signName
+                });
+            }
+        }
+        
+        // Helper functions
+        function getSignSymbol(sign) {
+            const symbols = {
+                aries: '♈', taurus: '♉', gemini: '♊', cancer: '♋',
+                leo: '♌', virgo: '♍', libra: '♎', scorpio: '♏',
+                sagittarius: '♐', capricorn: '♑', aquarius: '♒', pisces: '♓'
+            };
+            return symbols[sign] || '⭐';
+        }
+        
+        function formatMonthDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+        }
+        
+        function getScoreClass(score) {
+            if (score >= 80) return 'excellent';
+            if (score >= 60) return 'good';
+            return 'average';
+        }
+    </script>
+</body>
+</html> 

@@ -1602,20 +1602,8 @@ async function getHoroscope() {
     resultDiv.classList.remove('hidden');
     
     try {
-        // 使用新的API系统获取天体位置数据
-        let planetaryPositions;
-        
-        if (typeof astronomicalAPI !== 'undefined') {
-            console.log('使用增强的天文API系统获取数据...');
-            planetaryPositions = await astronomicalAPI.getCurrentPlanetaryPositions();
-            
-            // 显示数据源信息
-            const status = astronomicalAPI.getDataSourceStatus();
-            console.log('天文数据状态:', status);
-        } else {
-            console.log('API系统不可用，使用本地计算...');
-            planetaryPositions = getCurrentPlanetaryPositions();
-        }
+        // 使用本地计算获取天体位置数据
+        const planetaryPositions = getCurrentPlanetaryPositions();
         
         // 使用获取的数据计算占星运势
         const horoscope = calculateAstrologicalHoroscope(selectedSign, planetaryPositions);
@@ -1624,30 +1612,14 @@ async function getHoroscope() {
     } catch (error) {
         console.error('Horoscope calculation failed:', error);
         
-        // 出错时显示友好的错误信息并尝试本地计算
+        // 出错时显示友好的错误信息
         resultDiv.innerHTML = `
             <div class="error">
-                <h3>⚠️ Data Retrieval Issue</h3>
-                <p>Attempting local calculation...</p>
+                <h3>❌ Calculation Failed</h3>
+                <p>Sorry, unable to retrieve horoscope data at this time. Please try again later.</p>
+                <button onclick="getHoroscope()" style="margin-top: 1rem;">🔄 Try Again</button>
             </div>
         `;
-        
-        setTimeout(() => {
-            try {
-                const localPositions = getCurrentPlanetaryPositions();
-                const horoscope = calculateAstrologicalHoroscope(selectedSign, localPositions);
-                displayHoroscope(horoscope);
-            } catch (localError) {
-                console.error('本地计算也失败:', localError);
-                resultDiv.innerHTML = `
-                    <div class="error">
-                        <h3>❌ Calculation Failed</h3>
-                        <p>Sorry, unable to retrieve horoscope data at this time. Please try again later.</p>
-                        <button onclick="getHoroscope()" style="margin-top: 1rem;">🔄 Try Again</button>
-                    </div>
-                `;
-            }
-        }, 1000);
     }
 }
 
