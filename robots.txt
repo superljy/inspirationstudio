@@ -33,7 +33,7 @@ Disallow: /test-*
 Disallow: /*demo*
 
 # XML Sitemap location
-Sitemap: https://constellation-mystique.com/sitemap.xml
+Sitemap: https://www.inspirationstudio.net/sitemap.xml
 
 # Search Engine Specific Rules
 User-agent: Googlebot
@@ -83,4 +83,4 @@ User-agent: CCBot
 Disallow: /
 
 # Preferred domain
-Host: constellation-mystique.com 
+Host: www.inspirationstudio.net 
