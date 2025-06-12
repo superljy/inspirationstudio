@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-J6F202P1L0"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+ 
+        gtag('config', 'G-J6F202P1L0');
+    </script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Astrology Reading - Professional Astrological Analysis | Constellation Mystique</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Get your free astrology reading with professional astrological analysis. Discover your personality, future insights, and cosmic guidance through personalized astrology consultation.">
+    <meta name="keywords" content="free astrology reading, free horoscope reading, astrology consultation, personalized astrology, astrological analysis, cosmic guidance, spiritual reading, astrology advice">
+    <meta name="author" content="Constellation Mystique">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="en-US">
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/mobile-fix.css">
+    
+    <style>
+        /* Enhanced styling for Free Reading page */
+        .reading-features .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .feature-card {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            border: 1px solid #3d4466;
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(138, 43, 226, 0.3);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .feature-card h4 {
+            color: #ddd;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+        
+        .feature-card p {
+            color: #bbb;
+            line-height: 1.6;
+        }
+        
+        .reading-types {
+            margin: 3rem 0;
+            padding: 2rem;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 100%);
+            border-radius: 12px;
+            border: 1px solid #3d4466;
+        }
+        
+        .types-list {
+            display: grid;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .type-item {
+            background: rgba(61, 68, 102, 0.2);
+            border-radius: 8px;
+            padding: 1.5rem;
+            border-left: 4px solid #8a2be2;
+        }
+        
+        .type-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .type-header h4 {
+            color: #ddd;
+            margin: 0;
+            font-size: 1.1rem;
+        }
+        
+        .type-duration {
+            background: #8a2be2;
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        .testimonials {
+            margin: 3rem 0;
+            padding: 2rem;
+            background: rgba(61, 68, 102, 0.1);
+            border-radius: 12px;
+        }
+        
+        .testimonials h3 {
+            text-align: center;
+            color: #ddd;
+            margin-bottom: 2rem;
+            font-size: 1.8rem;
+        }
+        
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .testimonial {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            border: 1px solid #3d4466;
+            border-radius: 12px;
+            padding: 2rem;
+            position: relative;
+        }
+        
+        .testimonial::before {
+            content: '"';
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            font-size: 4rem;
+            color: #8a2be2;
+            font-family: serif;
+        }
+        
+        .testimonial-text {
+            color: #ddd;
+            font-style: italic;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+            padding-top: 1rem;
+        }
+        
+        .testimonial-author {
+            color: #8a2be2;
+            font-weight: bold;
+            text-align: right;
+        }
+        
+        @media (max-width: 768px) {
+            .features-grid,
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .type-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+        }
+        
+        /* Fix color inconsistency - match upper section color scheme */
+        .reading-types {
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid rgba(70, 130, 180, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .reading-types h3 {
+            color: #2c3e50;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        .type-item {
+            background: rgba(240, 248, 255, 0.7);
+            border-left: 4px solid #4682b4;
+            border-radius: 12px;
+        }
+        
+        .type-item:hover {
+            background: rgba(240, 248, 255, 0.9);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(70, 130, 180, 0.2);
+        }
+        
+        .type-header h4 {
+            color: #2c3e50;
+        }
+        
+        .type-item p {
+            color: #555;
+        }
+        
+        .type-duration {
+            background: #4682b4;
+        }
+        
+        .testimonials {
+            background: rgba(255, 255, 255, 0.95);
+            border: 1px solid rgba(70, 130, 180, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .testimonials h3 {
+            color: #2c3e50;
+        }
+        
+        .testimonial {
+            background: rgba(240, 248, 255, 0.7);
+            border: 1px solid rgba(70, 130, 180, 0.3);
+        }
+        
+        .testimonial:hover {
+            background: rgba(240, 248, 255, 0.9);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(70, 130, 180, 0.2);
+        }
+        
+        .testimonial::before {
+            color: #4682b4;
+        }
+        
+        .testimonial-text {
+            color: #555;
+        }
+        
+        .testimonial-author {
+            color: #4682b4;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" role="navigation" aria-label="Main Navigation">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h1>Constellation Mystique<span class="tagline">Inspiration Through Stars</span></h1>
+            </div>
+            <div class="nav-links">
+                <a href="../index.html" class="nav-link">🏠 Home</a>
+                <div class="nav-dropdown">
+                    <a href="#" class="nav-link dropdown-toggle">📅 Horoscope <span class="dropdown-arrow">▼</span></a>
+                    <div class="dropdown-menu">
+                        <a href="daily-horoscope.html" class="dropdown-item">📱 Daily</a>
+                        <a href="weekly-horoscope.html" class="dropdown-item">📊 Weekly</a>
+                        <a href="monthly-horoscope.html" class="dropdown-item">📖 Monthly</a>
+                    </div>
+                </div>
+                <div class="nav-dropdown">
+                    <a href="#" class="nav-link dropdown-toggle">🔮 Tools <span class="dropdown-arrow">▼</span></a>
+                    <div class="dropdown-menu">
+                        <a href="birth-chart-reading.html" class="dropdown-item">⭐ Birth Chart</a>
+                        <a href="zodiac-compatibility.html" class="dropdown-item">💕 Compatibility</a>
+                        <a href="moon-sign-calculator.html" class="dropdown-item">🌙 Moon Sign</a>
+                        <a href="free-astrology-reading.html" class="dropdown-item active">✨ Free Reading</a>
+                    </div>
+                </div>
+                <a href="astrology-for-beginners.html" class="nav-link">📚 Learn</a>
+                <a href="about.html" class="nav-link">ℹ️ About</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Page Header -->
+        <header class="page-header">
+            <h1>Free Astrology Reading</h1>
+            <p class="page-subtitle">
+                Experience the wisdom of the cosmos with our complimentary astrology reading. 
+                Get personalized insights into your personality, relationships, career path, and spiritual journey 
+                through professional astrological analysis tailored just for you.
+            </p>
+        </header>
+
+        <!-- Main free reading functionality -->
+        <main role="main">
+            <section id="free-reading-form" class="query-section">
+                <h2>Get Your Free Astrology Reading</h2>
+                <p class="section-description">
+                    Enter your birth details to receive a comprehensive free astrology reading. 
+                    Our analysis includes personality insights, current planetary influences, 
+                    relationship compatibility, and guidance for your life path.
+                </p>
+                
+                <div class="free-reading-form">
+                    <div class="form-group">
+                        <label for="fullName">Full Name:</label>
+                        <input type="text" id="fullName" placeholder="Enter your full name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="birthDate">Birth Date:</label>
+                        <input type="date" id="birthDate" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="birthTime">Birth Time (Optional):</label>
+                        <input type="time" id="birthTime">
+                        <small class="form-help">For more accurate rising sign analysis</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="birthLocation">Birth Location:</label>
+                        <input type="text" id="birthLocation" placeholder="City, Country" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="readingFocus">What would you like to focus on?</label>
+                        <select id="readingFocus" required>
+                            <option value="">-- Select Focus Area --</option>
+                            <option value="general">General Life Overview</option>
+                            <option value="love">Love & Relationships</option>
+                            <option value="career">Career & Success</option>
+                            <option value="spiritual">Spiritual Growth</option>
+                            <option value="personality">Personality Analysis</option>
+                            <option value="future">Future Trends</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button onclick="generateFreeReading()" class="submit-btn">✨ Get My Free Reading</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Free reading results display area -->
+            <section id="free-reading-result" class="result hidden" role="region" aria-label="Free Astrology Reading Results" aria-live="polite"></section>
+
+            <!-- Reading Features Section -->
+            <section class="reading-features">
+                <h3>What's Included in Your Free Reading</h3>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">⭐</div>
+                        <h4>Personality Profile</h4>
+                        <p>Detailed analysis of your sun, moon, and rising signs revealing your core personality traits and characteristics.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">💫</div>
+                        <h4>Current Influences</h4>
+                        <p>Understanding of current planetary transits and how they're affecting your life right now.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">💝</div>
+                        <h4>Love & Relationships</h4>
+                        <p>Insights into your romantic nature, relationship patterns, and compatibility factors.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🎯</div>
+                        <h4>Life Purpose</h4>
+                        <p>Guidance on your life path, natural talents, and areas where you can find fulfillment.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🌟</div>
+                        <h4>Strengths & Challenges</h4>
+                        <p>Identification of your natural gifts and areas for personal growth and development.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔮</div>
+                        <h4>Future Guidance</h4>
+                        <p>Cosmic insights and advice for navigating upcoming opportunities and challenges.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Reading Types Section -->
+            <section class="reading-types">
+                <h3>Types of Free Astrology Readings Available</h3>
+                <div class="types-list">
+                    <div class="type-item">
+                        <div class="type-header">
+                            <h4>🌅 Basic Natal Chart Reading</h4>
+                            <span class="type-duration">5-10 minutes</span>
+                        </div>
+                        <p>Overview of your sun, moon, and rising signs with basic personality insights and life themes.</p>
+                    </div>
+                    <div class="type-item">
+                        <div class="type-header">
+                            <h4>💕 Love Compatibility Reading</h4>
+                            <span class="type-duration">7-12 minutes</span>
+                        </div>
+                        <p>Analysis of your romantic nature, relationship patterns, and compatibility with different zodiac signs.</p>
+                    </div>
+                    <div class="type-item">
+                        <div class="type-header">
+                            <h4>🎭 Personality Deep Dive</h4>
+                            <span class="type-duration">10-15 minutes</span>
+                        </div>
+                        <p>Comprehensive personality analysis including strengths, challenges, motivations, and behavioral patterns.</p>
+                    </div>
+                    <div class="type-item">
+                        <div class="type-header">
+                            <h4>🔄 Current Transit Reading</h4>
+                            <span class="type-duration">8-12 minutes</span>
+                        </div>
+                        <p>Understanding of current planetary influences and how they're affecting your life circumstances.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Testimonials Section -->
+            <section class="testimonials">
+                <h3>What People Say About Our Free Readings</h3>
+                <div class="testimonials-grid">
+                    <div class="testimonial">
+                        <div class="testimonial-text">"The free reading was incredibly accurate and insightful. It helped me understand myself better and gave me clarity about my life direction."</div>
+                        <div class="testimonial-author">- Sarah M.</div>
+                    </div>
+                    <div class="testimonial">
+                        <div class="testimonial-text">"I was skeptical at first, but the reading revealed things about my personality that I'd never fully understood. It was eye-opening!"</div>
+                        <div class="testimonial-author">- Michael R.</div>
+                    </div>
+                    <div class="testimonial">
+                        <div class="testimonial-text">"The relationship insights were spot-on. It helped me understand my dating patterns and what I really need in a partner."</div>
+                        <div class="testimonial-author">- Jennifer L.</div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer role="contentinfo">
+            <div class="footer-content">
+                <div class="footer-main">
+                    <div class="footer-section">
+                        <h3>Constellation Mystique</h3>
+                        <p class="tagline-text">Professional Astrological Analysis Platform</p>
+                        <p class="description-text">Based on traditional astrological wisdom, combined with modern astronomical calculations, providing precise personal celestial interpretation and life guidance.</p>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h4>Services</h4>
+                        <ul>
+                            <li><a href="daily-horoscope.html">Daily Horoscope</a></li>
+                            <li><a href="../index.html#astrology-knowledge">Astrological Knowledge</a></li>
+                            <li><a href="about.html">About Astrology</a></li>
+                            <li><a href="guide.html">User Guide</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="footer-bottom">
+                    <p class="copyright">© 2025 Constellation Mystique. All Rights Reserved.</p>
+                    <p class="disclaimer">Astrological readings are for entertainment and guidance purposes. Individual results may vary.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- JavaScript Files -->
+    <script src="../js/free-reading.js"></script>
+    <script src="../js/cosmic-data.js"></script>
+    <script src="../js/date-utils.js"></script>
+    
+    <!-- Initialize navigation dropdown -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const dropdowns = document.querySelectorAll('.nav-dropdown');
+            
+            dropdowns.forEach(dropdown => {
+                let timeout;
+                
+                dropdown.addEventListener('mouseenter', function() {
+                    clearTimeout(timeout);
+                    this.classList.add('active');
+                });
+                
+                dropdown.addEventListener('mouseleave', function() {
+                    timeout = setTimeout(() => {
+                        this.classList.remove('active');
+                    }, 300);
+                });
+                
+                // 触摸设备支持
+                dropdown.addEventListener('click', function(e) {
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault();
+                        this.classList.toggle('active');
+                    }
+                });
+                
+                // 点击其他地方关闭下拉菜单
+                document.addEventListener('click', function(e) {
+                    if (!dropdown.contains(e.target)) {
+                        dropdown.classList.remove('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

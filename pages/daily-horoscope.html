@@ -16,7 +16,7 @@
     
     <!-- SEO Meta Tags -->
     <meta name="description" content="Get your personalized daily horoscope with accurate planetary analysis, lucky elements, and celestial guidance. Professional astrology readings updated daily based on real astronomical data.">
-    <meta name="keywords" content="daily horoscope, zodiac reading, astrology forecast, planetary positions, lucky elements, celestial guidance, astrological analysis, horoscope today">
+    <meta name="keywords" content="daily horoscope today, aries horoscope today, zodiac reading, astrology forecast, planetary positions, lucky elements, celestial guidance, astrological analysis, horoscope today, free daily horoscope, daily astrology reading">
     <meta name="author" content="Constellation Mystique">
     <meta name="robots" content="index, follow">
     <meta name="language" content="en-US">
@@ -40,8 +40,7 @@
     <link rel="canonical" href="https://constellation-mystique.com/pages/daily-horoscope.html">
     
     <!-- Preconnect to external domains for performance -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     
     <!-- CSS Files -->
     <link rel="stylesheet" href="../css/style.css">
@@ -75,12 +74,26 @@
                 <h1>Constellation Mystique<span class="tagline">Inspiration Through Stars</span></h1>
             </div>
             <div class="nav-links">
-                <a href="../index.html" class="nav-link">Home</a>
-                <a href="daily-horoscope.html" class="nav-link active">Daily</a>
-                <a href="weekly-horoscope.html" class="nav-link">Weekly</a>
-                <a href="monthly-horoscope.html" class="nav-link">Monthly</a>
-                <a href="about.html" class="nav-link">About</a>
-                <a href="guide.html" class="nav-link">Guide</a>
+                <a href="../index.html" class="nav-link">🏠 Home</a>
+                <div class="nav-dropdown">
+                    <a href="#" class="nav-link dropdown-toggle">📅 Horoscope <span class="dropdown-arrow">▼</span></a>
+                    <div class="dropdown-menu">
+                        <a href="daily-horoscope.html" class="dropdown-item active">📱 Daily</a>
+                        <a href="weekly-horoscope.html" class="dropdown-item">📊 Weekly</a>
+                        <a href="monthly-horoscope.html" class="dropdown-item">📖 Monthly</a>
+                    </div>
+                </div>
+                <div class="nav-dropdown">
+                    <a href="#" class="nav-link dropdown-toggle">🔮 Tools <span class="dropdown-arrow">▼</span></a>
+                    <div class="dropdown-menu">
+                        <a href="birth-chart-reading.html" class="dropdown-item">⭐ Birth Chart</a>
+                        <a href="zodiac-compatibility.html" class="dropdown-item">💕 Compatibility</a>
+                        <a href="moon-sign-calculator.html" class="dropdown-item">🌙 Moon Sign</a>
+                        <a href="free-astrology-reading.html" class="dropdown-item">✨ Free Reading</a>
+                    </div>
+                </div>
+                <a href="astrology-for-beginners.html" class="nav-link">📚 Learn</a>
+                <a href="about.html" class="nav-link">ℹ️ About</a>
             </div>
         </div>
     </nav>
@@ -295,6 +308,39 @@
                 });
             }
         }
+        
+        // 下拉导航增强功能
+        const dropdowns = document.querySelectorAll('.nav-dropdown');
+        
+        dropdowns.forEach(dropdown => {
+            let timeout;
+            
+            dropdown.addEventListener('mouseenter', function() {
+                clearTimeout(timeout);
+                this.classList.add('active');
+            });
+            
+            dropdown.addEventListener('mouseleave', function() {
+                timeout = setTimeout(() => {
+                    this.classList.remove('active');
+                }, 300);
+            });
+            
+            // 触摸设备支持
+            dropdown.addEventListener('click', function(e) {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    this.classList.toggle('active');
+                }
+            });
+            
+            // 点击其他地方关闭下拉菜单
+            document.addEventListener('click', function(e) {
+                if (!dropdown.contains(e.target)) {
+                    dropdown.classList.remove('active');
+                }
+            });
+        });
     </script>
 </body>
 </html> 

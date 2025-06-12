@@ -10,20 +10,14 @@
  
         gtag('config', 'G-J6F202P1L0');
     </script>
-    <script type="text/javascript">
-        var _iub = _iub || [];
-        _iub.csConfiguration = {"siteId":4062037,"cookiePolicyId":93847134,"lang":"en","storage":{"useSiteId":true}};
-        </script>
-        <script type="text/javascript" src="https://cs.iubenda.com/autoblocking/4062037.js"></script>
-        <script type="text/javascript" src="//cdn.iubenda.com/cs/gpp/stub.js"></script>
-        <script type="text/javascript" src="//cdn.iubenda.com/cs/iubenda_cs.js" charset="UTF-8" async></script>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Constellation Inspiration - Professional Astrology & Celestial Guidance | Constellation Mystique</title>
     
     <!-- SEO Meta Tags -->
     <meta name="description" content="Find inspiration through constellation wisdom. Professional astrology platform offering personalized horoscope readings, zodiac guidance, and celestial insights to inspire your life journey. Discover your cosmic potential.">
-    <meta name="keywords" content="constellation inspiration, astrology guidance, celestial wisdom, zodiac insights, horoscope inspiration, cosmic guidance, star constellation meaning, astrological inspiration, celestial inspiration, spiritual guidance">
+    <meta name="keywords" content="daily horoscope today, weekly horoscope, zodiac signs compatibility, birth chart reading, moon sign calculator, astrology houses meaning, free astrology reading, constellation meaning spiritual, astrology for beginners, aries horoscope today, constellation inspiration, astrology guidance, celestial wisdom, zodiac insights, horoscope inspiration, cosmic guidance">
     <meta name="author" content="Constellation Mystique">
     <meta name="robots" content="index, follow">
     <meta name="language" content="en-US">
@@ -51,8 +45,7 @@
     <link rel="canonical" href="https://constellation-mystique.com">
     
     <!-- Preconnect to external domains for performance -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     
     <!-- CSS Files -->
     <link rel="stylesheet" href="css/style.css">
@@ -103,9 +96,26 @@
                 <h1>Constellation Mystique<span class="tagline">Inspiration Through Stars</span></h1>
             </div>
             <div class="nav-links">
-                <a href="index.html" class="nav-link active">Home</a>
-                <a href="pages/about.html" class="nav-link">About Astrology</a>
-                <a href="pages/guide.html" class="nav-link">User Guide</a>
+                <a href="index.html" class="nav-link active">🏠 Home</a>
+                <div class="nav-dropdown">
+                    <a href="#" class="nav-link dropdown-toggle">📅 Horoscope <span class="dropdown-arrow">▼</span></a>
+                    <div class="dropdown-menu">
+                        <a href="pages/daily-horoscope.html" class="dropdown-item">📱 Daily</a>
+                        <a href="pages/weekly-horoscope.html" class="dropdown-item">📊 Weekly</a>
+                        <a href="pages/monthly-horoscope.html" class="dropdown-item">📖 Monthly</a>
+                    </div>
+                </div>
+                <div class="nav-dropdown">
+                    <a href="#" class="nav-link dropdown-toggle">🔮 Tools <span class="dropdown-arrow">▼</span></a>
+                    <div class="dropdown-menu">
+                        <a href="pages/birth-chart-reading.html" class="dropdown-item">⭐ Birth Chart</a>
+                        <a href="pages/zodiac-compatibility.html" class="dropdown-item">💕 Compatibility</a>
+                        <a href="pages/moon-sign-calculator.html" class="dropdown-item">🌙 Moon Sign</a>
+                        <a href="pages/free-astrology-reading.html" class="dropdown-item">✨ Free Reading</a>
+                    </div>
+                </div>
+                <a href="pages/astrology-for-beginners.html" class="nav-link">📚 Learn</a>
+                <a href="pages/about.html" class="nav-link">ℹ️ About</a>
             </div>
         </div>
     </nav>
@@ -204,7 +214,7 @@
                         <button class="feature-btn">Get Monthly Overview</button>
                     </div>
                     
-                    <div class="feature-card coming-soon">
+                    <div class="feature-card" onclick="navigateToFeature('birth-chart')">
                         <div class="feature-icon">🔮</div>
                         <h3>Birth Chart Analysis</h3>
                         <p>Comprehensive natal chart interpretation with detailed personality insights and life path guidance.</p>
@@ -213,10 +223,10 @@
                             <span class="highlight">Personality Insights</span>
                             <span class="highlight">Life Guidance</span>
                         </div>
-                        <button class="feature-btn disabled">Coming Soon</button>
+                        <button class="feature-btn">Get Birth Chart</button>
                     </div>
                     
-                    <div class="feature-card coming-soon">
+                    <div class="feature-card" onclick="navigateToFeature('compatibility')">
                         <div class="feature-icon">💕</div>
                         <h3>Compatibility Report</h3>
                         <p>Detailed relationship compatibility analysis between zodiac signs with practical relationship advice.</p>
@@ -225,7 +235,7 @@
                             <span class="highlight">Relationship Dynamics</span>
                             <span class="highlight">Practical Advice</span>
                         </div>
-                        <button class="feature-btn disabled">Coming Soon</button>
+                        <button class="feature-btn">Get Compatibility</button>
                     </div>
                     
                     <div class="feature-card coming-soon">
@@ -399,10 +409,60 @@
                 case 'monthly':
                     window.location.href = 'pages/monthly-horoscope.html';
                     break;
+                case 'birth-chart':
+                    window.location.href = 'pages/birth-chart-reading.html';
+                    break;
+                case 'compatibility':
+                    window.location.href = 'pages/zodiac-compatibility.html';
+                    break;
+                case 'moon-sign':
+                    window.location.href = 'pages/moon-sign-calculator.html';
+                    break;
+                case 'free-reading':
+                    window.location.href = 'pages/free-astrology-reading.html';
+                    break;
+                case 'learn':
+                    window.location.href = 'pages/astrology-for-beginners.html';
+                    break;
                 default:
                     console.log('Feature coming soon:', featureType);
             }
         }
+        
+        // 下拉导航增强功能
+        document.addEventListener('DOMContentLoaded', function() {
+            const dropdowns = document.querySelectorAll('.nav-dropdown');
+            
+            dropdowns.forEach(dropdown => {
+                let timeout;
+                
+                dropdown.addEventListener('mouseenter', function() {
+                    clearTimeout(timeout);
+                    this.classList.add('active');
+                });
+                
+                dropdown.addEventListener('mouseleave', function() {
+                    timeout = setTimeout(() => {
+                        this.classList.remove('active');
+                    }, 300);
+                });
+                
+                // 触摸设备支持
+                dropdown.addEventListener('click', function(e) {
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault();
+                        this.classList.toggle('active');
+                    }
+                });
+                
+                // 点击其他地方关闭下拉菜单
+                document.addEventListener('click', function(e) {
+                    if (!dropdown.contains(e.target)) {
+                        dropdown.classList.remove('active');
+                    }
+                });
+            });
+        });
     </script>
 </body>
 </html>

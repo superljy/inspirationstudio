@@ -99,8 +99,31 @@
             </div>
             <div class="nav-links">
                 <a href="../index.html" class="nav-link">Home</a>
-                <a href="about.html" class="nav-link">About Astrology</a>
-                <a href="guide.html" class="nav-link active">User Guide</a>
+                <div class="nav-dropdown">
+                    <a href="#" class="nav-link dropdown-toggle">Horoscopes</a>
+                    <div class="dropdown-menu">
+                        <a href="daily-horoscope.html" class="dropdown-item">Daily Horoscope</a>
+                        <a href="weekly-horoscope.html" class="dropdown-item">Weekly Horoscope</a>
+                        <a href="monthly-horoscope.html" class="dropdown-item">Monthly Horoscope</a>
+                    </div>
+                </div>
+                <div class="nav-dropdown">
+                    <a href="#" class="nav-link dropdown-toggle">Readings</a>
+                    <div class="dropdown-menu">
+                        <a href="birth-chart-reading.html" class="dropdown-item">Birth Chart</a>
+                        <a href="free-astrology-reading.html" class="dropdown-item">Free Reading</a>
+                        <a href="zodiac-compatibility.html" class="dropdown-item">Compatibility</a>
+                        <a href="moon-sign-calculator.html" class="dropdown-item">Moon Sign</a>
+                    </div>
+                </div>
+                <div class="nav-dropdown">
+                    <a href="#" class="nav-link dropdown-toggle">Learn</a>
+                    <div class="dropdown-menu">
+                        <a href="astrology-for-beginners.html" class="dropdown-item">For Beginners</a>
+                        <a href="about.html" class="dropdown-item">About Astrology</a>
+                        <a href="guide.html" class="dropdown-item active">User Guide</a>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
@@ -322,35 +345,73 @@
         </section>
     </div>
 
-    <!-- Footer -->
-    <footer role="contentinfo">
-        <div class="footer-content">
-            <div class="footer-main">
-                <div class="footer-section">
-                    <h3>Constellation Mystique</h3>
-                    <p>Inheriting Ancient Wisdom, Illuminating Life's Path</p>
-                    <p>We are committed to providing the most professional and accurate astrological analysis services</p>
+        <!-- Footer -->
+        <footer role="contentinfo">
+            <div class="footer-content">
+                <div class="footer-main">
+                    <div class="footer-section">
+                        <h3>Constellation Mystique</h3>
+                        <p class="tagline-text">Professional Astrological Analysis Platform</p>
+                        <p class="description-text">Based on traditional astrological wisdom, combined with modern astronomical calculations, providing precise personal celestial interpretation and life guidance.</p>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h4>Services</h4>
+                        <ul>
+                            <li><a href="daily-horoscope.html">Daily Horoscope</a></li>
+                            <li><a href="../index.html#astrology-knowledge">Astrological Knowledge</a></li>
+                            <li><a href="about.html">About Astrology</a></li>
+                            <li><a href="guide.html">User Guide</a></li>
+                        </ul>
+                    </div>
                 </div>
                 
-                <div class="footer-section">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="../index.html">Home</a></li>
-                        <li><a href="about.html">About Astrology</a></li>
-                        <li><a href="guide.html">User Guide</a></li>
-                    </ul>
+                <div class="footer-bottom">
+                    <p class="copyright">© 2025 Constellation Mystique. All Rights Reserved.</p>
+                    <p class="disclaimer">Astrological readings are for entertainment and guidance purposes. Individual results may vary.</p>
                 </div>
             </div>
-            
-            <div class="footer-bottom">
-                <p>&copy; 2025 Constellation Mystique. All Rights Reserved.</p>
-                <p><a href="#privacy">Privacy Policy</a> | <a href="#terms">Terms of Service</a></p>
-                <p class="disclaimer">
-                    The astrological information provided on this website is for entertainment and self-understanding purposes only and does not constitute professional advice.
-                </p>
-            </div>
-        </div>
-    </footer>
+        </footer>
+    </div>
+    
+    <!-- JavaScript Files -->
     <script src="../js/script.js"></script>
+    
+    <!-- Initialize navigation dropdown -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const dropdowns = document.querySelectorAll('.nav-dropdown');
+            
+            dropdowns.forEach(dropdown => {
+                let timeout;
+                
+                dropdown.addEventListener('mouseenter', function() {
+                    clearTimeout(timeout);
+                    this.classList.add('active');
+                });
+                
+                dropdown.addEventListener('mouseleave', function() {
+                    timeout = setTimeout(() => {
+                        this.classList.remove('active');
+                    }, 300);
+                });
+                
+                // 触摸设备支持
+                dropdown.addEventListener('click', function(e) {
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault();
+                        this.classList.toggle('active');
+                    }
+                });
+                
+                // 点击其他地方关闭下拉菜单
+                document.addEventListener('click', function(e) {
+                    if (!dropdown.contains(e.target)) {
+                        dropdown.classList.remove('active');
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html> 

@@ -1,20 +1,27 @@
 User-agent: *
 Allow: /
 
-# Core Content - Multi-timeframe Horoscope Platform
+# Core Content - Professional Astrology Platform
 Allow: /pages/
 Allow: /css/
 Allow: /js/
 Allow: /images/
 
-# High-priority horoscope features (daily, weekly, monthly)
+# High-priority SEO-optimized features
 Allow: /pages/daily-horoscope.html
 Allow: /pages/weekly-horoscope.html
 Allow: /pages/monthly-horoscope.html
+Allow: /pages/zodiac-compatibility.html
+Allow: /pages/birth-chart-reading.html
+Allow: /pages/moon-sign-calculator.html
+Allow: /pages/free-astrology-reading.html
+Allow: /pages/astrology-for-beginners.html
+
+# Individual zodiac sign pages for long-tail keywords
+Allow: /pages/*-horoscope-today.html
 
 # Allow important documentation for transparency
 Allow: /roadmap.md
-Allow: /CHALLENGE_SYSTEM_ENHANCEMENT_LOG.md
 
 # Disallow development and system files
 Disallow: /utils/
@@ -25,13 +32,8 @@ Disallow: /*.log
 Disallow: /test-*
 Disallow: /*demo*
 
-# Disallow old/deprecated files that may still exist
-Disallow: /FREE_ASTROLOGY_GUIDE.md
-Disallow: /NASA_INTEGRATION_GUIDE.md
-Disallow: /LOCAL_SERVER_GUIDE.md
-
 # XML Sitemap location
-Sitemap: https://www.inspirationstudio.net/sitemap.xml
+Sitemap: https://constellation-mystique.com/sitemap.xml
 
 # Search Engine Specific Rules
 User-agent: Googlebot
@@ -39,6 +41,11 @@ Allow: /
 Allow: /pages/daily-horoscope.html
 Allow: /pages/weekly-horoscope.html
 Allow: /pages/monthly-horoscope.html
+Allow: /pages/zodiac-compatibility.html
+Allow: /pages/birth-chart-reading.html
+Allow: /pages/moon-sign-calculator.html
+Allow: /pages/free-astrology-reading.html
+Allow: /pages/astrology-for-beginners.html
 Crawl-delay: 1
 
 User-agent: Bingbot
@@ -46,6 +53,11 @@ Allow: /
 Allow: /pages/daily-horoscope.html
 Allow: /pages/weekly-horoscope.html
 Allow: /pages/monthly-horoscope.html
+Allow: /pages/zodiac-compatibility.html
+Allow: /pages/birth-chart-reading.html
+Allow: /pages/moon-sign-calculator.html
+Allow: /pages/free-astrology-reading.html
+Allow: /pages/astrology-for-beginners.html
 Crawl-delay: 1
 
 User-agent: Baiduspider
@@ -53,6 +65,11 @@ Allow: /
 Allow: /pages/daily-horoscope.html
 Allow: /pages/weekly-horoscope.html
 Allow: /pages/monthly-horoscope.html
+Allow: /pages/zodiac-compatibility.html
+Allow: /pages/birth-chart-reading.html
+Allow: /pages/moon-sign-calculator.html
+Allow: /pages/free-astrology-reading.html
+Allow: /pages/astrology-for-beginners.html
 Crawl-delay: 2
 
 # Block AI crawlers that don't respect terms
@@ -66,4 +83,4 @@ User-agent: CCBot
 Disallow: /
 
 # Preferred domain
-Host: www.inspirationstudio.net 
+Host: constellation-mystique.com 

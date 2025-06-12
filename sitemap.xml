@@ -1,48 +1,85 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     
-    <!-- Homepage - Recently restructured with new navigation -->
+    <!-- Homepage - Updated with new SEO keywords -->
     <url>
-        <loc>https://www.inspirationstudio.net/</loc>
-        <lastmod>2024-12-20</lastmod>
+        <loc>https://constellation-mystique.com/</loc>
+        <lastmod>2025-01-15</lastmod>
         <changefreq>daily</changefreq>
         <priority>1.0</priority>
     </url>
     
     <!-- Core Horoscope Features -->
     <url>
-        <loc>https://www.inspirationstudio.net/pages/daily-horoscope.html</loc>
-        <lastmod>2024-12-20</lastmod>
+        <loc>https://constellation-mystique.com/pages/daily-horoscope.html</loc>
+        <lastmod>2025-01-15</lastmod>
         <changefreq>daily</changefreq>
         <priority>0.9</priority>
     </url>
     
     <url>
-        <loc>https://www.inspirationstudio.net/pages/weekly-horoscope.html</loc>
-        <lastmod>2024-12-20</lastmod>
+        <loc>https://constellation-mystique.com/pages/weekly-horoscope.html</loc>
+        <lastmod>2025-01-15</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     
     <url>
-        <loc>https://www.inspirationstudio.net/pages/monthly-horoscope.html</loc>
-        <lastmod>2024-12-20</lastmod>
+        <loc>https://constellation-mystique.com/pages/monthly-horoscope.html</loc>
+        <lastmod>2025-01-15</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.9</priority>
     </url>
     
-    <!-- About Page -->
+    <!-- New SEO-Optimized Pages -->
     <url>
-        <loc>https://www.inspirationstudio.net/pages/about.html</loc>
-        <lastmod>2024-12-15</lastmod>
+        <loc>https://constellation-mystique.com/pages/zodiac-compatibility.html</loc>
+        <lastmod>2025-01-15</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    
+    <url>
+        <loc>https://constellation-mystique.com/pages/birth-chart-reading.html</loc>
+        <lastmod>2025-01-15</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.9</priority>
+    </url>
+    
+    <url>
+        <loc>https://constellation-mystique.com/pages/moon-sign-calculator.html</loc>
+        <lastmod>2025-01-15</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
+        <loc>https://constellation-mystique.com/pages/free-astrology-reading.html</loc>
+        <lastmod>2025-01-15</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+    <url>
+        <loc>https://constellation-mystique.com/pages/astrology-for-beginners.html</loc>
+        <lastmod>2025-01-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    
+
+    
+    <!-- About and Guide Pages -->
+    <url>
+        <loc>https://constellation-mystique.com/pages/about.html</loc>
+        <lastmod>2025-01-15</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     
-    <!-- Guide Page -->
     <url>
-        <loc>https://www.inspirationstudio.net/pages/guide.html</loc>
-        <lastmod>2024-12-15</lastmod>
+        <loc>https://constellation-mystique.com/pages/guide.html</loc>
+        <lastmod>2025-01-15</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>

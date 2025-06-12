@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-J6F202P1L0"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+ 
+        gtag('config', 'G-J6F202P1L0');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birth Chart Reading - Natal Chart Analysis | Constellation Mystique</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Get your professional birth chart reading with detailed natal chart analysis. Discover your sun, moon, rising signs, planetary positions, and astrological houses meaning.">
+    <meta name="keywords" content="birth chart reading, natal chart analysis, astrology birth chart, sun moon rising, planetary positions, astrological houses, birth chart interpretation, natal astrology">
+    <meta name="author" content="Constellation Mystique">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="en-US">
+    <meta name="geo.region" content="US">
+    <meta name="geo.position" content="39.50;-98.35">
+    <meta name="ICBM" content="39.50, -98.35">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Birth Chart Reading - Natal Chart Analysis">
+    <meta property="og:description" content="Get your professional birth chart reading with detailed natal chart analysis. Discover your sun, moon, rising signs, and planetary positions.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://constellation-mystique.com/pages/birth-chart-reading.html">
+    <meta property="og:image" content="https://constellation-mystique.com/images/birth-chart-reading.jpg">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:site_name" content="Constellation Mystique">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@ConstellationMystique">
+    <meta name="twitter:title" content="Birth Chart Reading - Natal Chart Analysis">
+    <meta name="twitter:description" content="Get your professional birth chart reading with detailed natal chart analysis and planetary positions.">
+    <meta name="twitter:image" content="https://constellation-mystique.com/images/birth-chart-reading.jpg">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://constellation-mystique.com/pages/birth-chart-reading.html">
+    
+
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/mobile-fix.css">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Birth Chart Reading",
+        "description": "Get your professional birth chart reading with detailed natal chart analysis. Discover your sun, moon, rising signs, planetary positions, and astrological houses meaning.",
+        "url": "https://constellation-mystique.com/pages/birth-chart-reading.html",
+        "inLanguage": "en-US",
+        "keywords": "birth chart reading, natal chart analysis, astrology birth chart",
+        "mainEntity": {
+            "@type": "Service",
+            "name": "Birth Chart Reading Service",
+            "description": "Professional natal chart analysis with sun, moon, rising signs, and complete astrological interpretation",
+            "provider": {
+                "@type": "Organization",
+                "name": "Constellation Mystique"
+            }
+        }
+    }
+    </script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" role="navigation" aria-label="Main Navigation">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <h1>Constellation Mystique<span class="tagline">Inspiration Through Stars</span></h1>
+            </div>
+            <div class="nav-links">
+                <a href="../index.html" class="nav-link">🏠 Home</a>
+                <div class="nav-dropdown">
+                    <a href="#" class="nav-link dropdown-toggle">📅 Horoscope <span class="dropdown-arrow">▼</span></a>
+                    <div class="dropdown-menu">
+                        <a href="daily-horoscope.html" class="dropdown-item">📱 Daily</a>
+                        <a href="weekly-horoscope.html" class="dropdown-item">📊 Weekly</a>
+                        <a href="monthly-horoscope.html" class="dropdown-item">📖 Monthly</a>
+                    </div>
+                </div>
+                <div class="nav-dropdown">
+                    <a href="#" class="nav-link dropdown-toggle">🔮 Tools <span class="dropdown-arrow">▼</span></a>
+                    <div class="dropdown-menu">
+                        <a href="birth-chart-reading.html" class="dropdown-item active">⭐ Birth Chart</a>
+                        <a href="zodiac-compatibility.html" class="dropdown-item">💕 Compatibility</a>
+                        <a href="moon-sign-calculator.html" class="dropdown-item">🌙 Moon Sign</a>
+                        <a href="free-astrology-reading.html" class="dropdown-item">✨ Free Reading</a>
+                    </div>
+                </div>
+                <a href="astrology-for-beginners.html" class="nav-link">📚 Learn</a>
+                <a href="about.html" class="nav-link">ℹ️ About</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Page Header -->
+        <header class="page-header">
+            <h1>Birth Chart Reading & Natal Chart Analysis</h1>
+            <p class="page-subtitle">
+                Discover your complete astrological blueprint with professional birth chart reading. 
+                Get detailed analysis of your sun, moon, rising signs, planetary positions, 
+                and astrological houses to understand your personality, talents, and life path.
+            </p>
+            <div class="current-date-display">
+                <div class="date-item">
+                    <span class="date-label">Active Planets</span>
+                    <span class="date-value" id="activePlanets">Calculating...</span>
+                </div>
+                <div class="date-item">
+                    <span class="date-label">Current Aspects</span>
+                    <span class="date-value" id="currentAspects">Analyzing...</span>
+                </div>
+                <div class="date-item">
+                    <span class="date-label">Chart Energy</span>
+                    <span class="date-value" id="chartEnergy">Processing...</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main birth chart functionality -->
+        <main role="main">
+            <section id="birth-chart-form" class="query-section">
+                <h2>🌟 Create Your Personal Birth Chart</h2>
+                <div class="chart-intro">
+                    <p>Your birth chart is a cosmic blueprint that reveals your unique astrological fingerprint. By mapping the exact positions of celestial bodies at the moment of your birth, we uncover profound insights into your personality, relationships, and life path.</p>
+                </div>
+                
+                <div class="birth-chart-form">
+                    <h3>🎯 Enter Your Birth Information</h3>
+                    <div class="form-group">
+                        <label for="birthDate">📅 Birth Date</label>
+                        <input type="date" id="birthDate" required>
+                        <span class="form-help">Select your exact date of birth</span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="birthTime">⏰ Birth Time</label>
+                        <input type="time" id="birthTime" required>
+                        <span class="form-help">Enter as precise a time as possible - even minutes matter for accuracy!</span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="birthLocation">📍 Birth Location</label>
+                        <input type="text" id="birthLocation" placeholder="e.g., New York, NY, USA" required>
+                        <span class="form-help">Include city, state/province, and country for precise calculations</span>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button onclick="generateBirthChart()" class="submit-btn">✨ Generate My Birth Chart ✨</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Birth chart results display area -->
+            <section id="birth-chart-result" class="result hidden" role="region" aria-label="Birth Chart Analysis Results" aria-live="polite"></section>
+
+            <!-- Birth Chart Information Section -->
+            <section class="birth-chart-info">
+                <h3>🔮 Understanding Your Birth Chart Components</h3>
+                <div class="chart-understanding">
+                    <div class="understanding-intro">
+                        <p>Your birth chart is like a cosmic map that captures the exact moment you entered this world. Each element tells a unique story about your personality, potential, and path in life.</p>
+                    </div>
+                    
+                    <div class="info-grid">
+                        <div class="info-card">
+                            <div class="card-icon">☀️</div>
+                            <h4>Sun Sign - Your Core Self</h4>
+                            <p>Your fundamental identity, ego, and life purpose. The Sun represents your conscious self, willpower, and how you shine your unique light in the world. It's your core personality and the essence of who you are.</p>
+                        </div>
+                        
+                        <div class="info-card">
+                            <div class="card-icon">🌙</div>
+                            <h4>Moon Sign - Your Inner World</h4>
+                            <p>Your emotional nature, instinctive reactions, and subconscious patterns. The Moon reveals how you process feelings, what makes you feel secure, and your deepest emotional needs.</p>
+                        </div>
+                        
+                        <div class="info-card">
+                            <div class="card-icon">⬆️</div>
+                            <h4>Rising Sign - Your Outer Mask</h4>
+                            <p>Your ascendant sign shapes first impressions and how you present yourself to the world. It influences your appearance, mannerisms, and initial approach to new people and situations.</p>
+                        </div>
+                        
+                        <div class="info-card">
+                            <div class="card-icon">🏠</div>
+                            <h4>Houses - Life's Twelve Arenas</h4>
+                            <p>The twelve astrological houses represent different life areas where planetary energies play out. From relationships to career, each house governs specific experiences and themes.</p>
+                        </div>
+                        
+                        <div class="info-card">
+                            <div class="card-icon">📐</div>
+                            <h4>Aspects - Planetary Conversations</h4>
+                            <p>Geometric angles between planets create aspects that show how different parts of your personality interact. These cosmic conversations reveal harmony, tension, and growth opportunities.</p>
+                        </div>
+                        
+                        <div class="info-card">
+                            <div class="card-icon">🌟</div>
+                            <h4>Elements & Qualities</h4>
+                            <p>Fire, Earth, Air, and Water elements combined with Cardinal, Fixed, and Mutable qualities create your unique temperamental blend and approach to life's challenges.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="chart-significance">
+                        <h4>🎯 Why Your Birth Chart Matters</h4>
+                        <div class="significance-grid">
+                            <div class="significance-item">
+                                <span class="significance-icon">🧭</span>
+                                <div>
+                                    <h5>Self-Discovery</h5>
+                                    <p>Gain deep insights into your personality, motivations, and natural tendencies.</p>
+                                </div>
+                            </div>
+                            <div class="significance-item">
+                                <span class="significance-icon">💎</span>
+                                <div>
+                                    <h5>Discover Your Gifts</h5>
+                                    <p>Identify your natural talents, strengths, and areas of potential excellence.</p>
+                                </div>
+                            </div>
+                            <div class="significance-item">
+                                <span class="significance-icon">🛤️</span>
+                                <div>
+                                    <h5>Life Direction</h5>
+                                    <p>Understand your life purpose, career path, and spiritual journey.</p>
+                                </div>
+                            </div>
+                            <div class="significance-item">
+                                <span class="significance-icon">💕</span>
+                                <div>
+                                    <h5>Relationships</h5>
+                                    <p>Learn about your relationship patterns, compatibility, and emotional needs.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Sample Birth Chart Features -->
+            <section class="chart-features">
+                <h3>What Your Birth Chart Reading Includes</h3>
+                <div class="features-list">
+                    <div class="feature-item">
+                        <div class="feature-icon">🎯</div>
+                        <div class="feature-content">
+                            <h4>Complete Planetary Analysis</h4>
+                            <p>Detailed interpretation of all planetary positions and their meanings in your chart</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">🏠</div>
+                        <div class="feature-content">
+                            <h4>Houses Analysis</h4>
+                            <p>Comprehensive breakdown of all 12 astrological houses and their significance in your life</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">🔗</div>
+                        <div class="feature-content">
+                            <h4>Aspects & Patterns</h4>
+                            <p>Analysis of planetary aspects and special configurations in your birth chart</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">💎</div>
+                        <div class="feature-content">
+                            <h4>Strengths & Talents</h4>
+                            <p>Identification of your natural gifts, abilities, and areas of potential excellence</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">🌱</div>
+                        <div class="feature-content">
+                            <h4>Growth Areas</h4>
+                            <p>Insights into challenges and opportunities for personal development and growth</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">🎭</div>
+                        <div class="feature-content">
+                            <h4>Personality Profile</h4>
+                            <p>Deep dive into your personality traits, motivations, and behavioral patterns</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Footer Section -->
+    <footer role="contentinfo">
+        <div class="footer-content">
+            <div class="footer-main">
+                <div class="footer-section">
+                    <h3>Constellation Mystique</h3>
+                    <p class="tagline-text">Professional Astrological Analysis Platform</p>
+                    <p class="description-text">Based on traditional astrological wisdom, combined with modern astronomical calculations, providing precise personal celestial interpretation and life guidance.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="daily-horoscope.html">Daily Horoscope</a></li>
+                        <li><a href="../index.html#astrology-knowledge">Astrological Knowledge</a></li>
+                        <li><a href="about.html">About Astrology</a></li>
+                        <li><a href="guide.html">User Guide</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p class="copyright">© 2025 Constellation Mystique. All Rights Reserved.</p>
+                <p class="disclaimer">Astrological readings are for entertainment and guidance purposes. Individual results may vary.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../js/birth-chart.js"></script>
+    
+    <!-- 下拉导航增强功能 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const dropdowns = document.querySelectorAll('.nav-dropdown');
+            
+            dropdowns.forEach(dropdown => {
+                let timeout;
+                
+                dropdown.addEventListener('mouseenter', function() {
+                    clearTimeout(timeout);
+                    this.classList.add('active');
+                });
+                
+                dropdown.addEventListener('mouseleave', function() {
+                    timeout = setTimeout(() => {
+                        this.classList.remove('active');
+                    }, 300);
+                });
+                
+                // 触摸设备支持
+                dropdown.addEventListener('click', function(e) {
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault();
+                        this.classList.toggle('active');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html> 
