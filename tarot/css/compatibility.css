@@ -1,0 +1,521 @@
+/* 爱情匹配度页面样式 */
+
+.compatibility-hero {
+    background: linear-gradient(135deg, #ff6b9d 0%, #c44569 50%, #f8b500 100%);
+    padding: 100px 0 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.compatibility-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="hearts" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M10,6 C8,4 4,4 4,8 C4,12 10,18 10,18 S16,12 16,8 C16,4 12,4 10,6 Z" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23hearts)"/></svg>');
+    animation: floatPattern 8s ease-in-out infinite;
+}
+
+.compatibility-features {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+.compatibility-features .feature {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 15px 25px;
+    border-radius: 25px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    font-weight: 500;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* 表单区域 */
+.compatibility-form-section {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #f8f9ff 0%, #fff0f5 100%);
+}
+
+.form-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.form-header h2 {
+    color: #ff6b9d;
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.form-header p {
+    color: #666;
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.compatibility-form {
+    background: white;
+    border-radius: 20px;
+    padding: 50px;
+    box-shadow: 0 15px 35px rgba(255, 107, 157, 0.1);
+    border: 2px solid rgba(255, 182, 193, 0.2);
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 40px;
+    align-items: start;
+    margin-bottom: 40px;
+}
+
+.person-info {
+    background: linear-gradient(135deg, #fff0f5 0%, #fff8fa 100%);
+    padding: 30px;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 182, 193, 0.3);
+}
+
+.person-info h3 {
+    color: #ff6b9d;
+    font-size: 1.5rem;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.heart-divider {
+    font-size: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: heartbeat 2s ease-in-out infinite;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #333;
+    font-weight: 500;
+}
+
+.input-group input,
+.input-group select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 2px solid rgba(255, 182, 193, 0.3);
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: white;
+}
+
+.input-group input:focus,
+.input-group select:focus {
+    outline: none;
+    border-color: #ff6b9d;
+    box-shadow: 0 0 0 3px rgba(255, 107, 157, 0.1);
+}
+
+.relationship-status {
+    margin-bottom: 30px;
+}
+
+.relationship-status label {
+    display: block;
+    margin-bottom: 10px;
+    color: #333;
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+.relationship-status select {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid rgba(255, 182, 193, 0.3);
+    border-radius: 10px;
+    font-size: 1.1rem;
+    background: white;
+}
+
+.analyze-btn {
+    width: 100%;
+    padding: 20px;
+    background: linear-gradient(135deg, #ff6b9d 0%, #ff85a1 100%);
+    color: white;
+    border: none;
+    border-radius: 15px;
+    font-size: 1.3rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(255, 107, 157, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.analyze-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 25px rgba(255, 107, 157, 0.4);
+}
+
+.analyze-btn:active {
+    transform: translateY(0);
+}
+
+/* 结果区域 */
+.compatibility-result {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #2c1810 0%, #8b4513 50%, #2c1810 100%);
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.compatibility-result::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="stars" x="0" y="0" width="15" height="15" patternUnits="userSpaceOnUse"><circle cx="7.5" cy="7.5" r="1" fill="rgba(255,182,193,0.2)"/></pattern></defs><rect width="100" height="100" fill="url(%23stars)"/></svg>');
+    animation: twinkle 4s ease-in-out infinite;
+}
+
+.result-header {
+    text-align: center;
+    margin-bottom: 50px;
+    position: relative;
+    z-index: 2;
+}
+
+.result-header h2 {
+    color: #ffb6c1;
+    font-size: 2.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.overall-compatibility {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 50px;
+    margin-bottom: 60px;
+    position: relative;
+    z-index: 2;
+}
+
+.compatibility-circle {
+    position: relative;
+    width: 200px;
+    height: 200px;
+}
+
+.compatibility-percentage {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.compatibility-percentage span {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #ff6b9d;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.compatibility-status h3 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    color: #ffb6c1;
+}
+
+.compatibility-status p {
+    font-size: 1.2rem;
+    color: #f0c0c0;
+    max-width: 400px;
+}
+
+/* 详细分析 */
+.detailed-analysis {
+    margin-bottom: 60px;
+    position: relative;
+    z-index: 2;
+}
+
+.analysis-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.analysis-item {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 30px 25px;
+    border-radius: 15px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 182, 193, 0.3);
+    transition: all 0.3s ease;
+}
+
+.analysis-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(255, 107, 157, 0.2);
+}
+
+.analysis-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.analysis-item h4 {
+    color: #ffb6c1;
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+}
+
+.compatibility-bar {
+    width: 100%;
+    height: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+.bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #ff6b9d 0%, #ff85a1 100%);
+    border-radius: 5px;
+    transition: width 2s ease-in-out;
+}
+
+.analysis-item p {
+    color: #f0c0c0;
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+/* 关系建议 */
+.relationship-advice {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 40px;
+    border-radius: 20px;
+    margin-bottom: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 182, 193, 0.3);
+    position: relative;
+    z-index: 2;
+}
+
+.relationship-advice h3 {
+    color: #ffb6c1;
+    font-size: 2rem;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.advice-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.advice-item {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 12px;
+    border-left: 4px solid #ff6b9d;
+}
+
+.advice-item h4 {
+    color: #ffb6c1;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.advice-item p {
+    color: #f0c0c0;
+    line-height: 1.6;
+}
+
+/* 未来展望 */
+.future-prediction {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 40px;
+    border-radius: 20px;
+    margin-bottom: 40px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 182, 193, 0.3);
+    position: relative;
+    z-index: 2;
+}
+
+.future-prediction h3 {
+    color: #ffb6c1;
+    font-size: 2rem;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.prediction-timeline {
+    position: relative;
+    padding-left: 30px;
+}
+
+.prediction-timeline::before {
+    content: '';
+    position: absolute;
+    left: 15px;
+    top: 20px;
+    bottom: 20px;
+    width: 2px;
+    background: linear-gradient(to bottom, #ff6b9d, #ff85a1);
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 40px;
+    padding-left: 40px;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: -8px;
+    top: 10px;
+    width: 16px;
+    height: 16px;
+    background: #ff6b9d;
+    border-radius: 50%;
+    border: 3px solid white;
+    box-shadow: 0 0 0 3px rgba(255, 107, 157, 0.3);
+}
+
+.timeline-content h4 {
+    color: #ffb6c1;
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+}
+
+.timeline-content p {
+    color: #f0c0c0;
+    line-height: 1.6;
+    font-size: 1.1rem;
+}
+
+/* 结果操作按钮 */
+.result-actions {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 2;
+}
+
+.result-actions button {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.save-result-btn {
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+    color: white;
+    box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+}
+
+.new-test-btn {
+    background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
+    color: white;
+    box-shadow: 0 5px 15px rgba(108, 117, 125, 0.3);
+}
+
+.share-result-btn {
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+    color: white;
+    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
+}
+
+.result-actions button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* 动画效果 */
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+@keyframes floatPattern {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.8; }
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .heart-divider {
+        transform: rotate(90deg);
+        margin: 10px 0;
+    }
+    
+    .overall-compatibility {
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .compatibility-features {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+    
+    .analysis-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .result-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .compatibility-form {
+        padding: 30px 20px;
+        margin: 0 15px;
+    }
+} 

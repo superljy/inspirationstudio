@@ -1,0 +1,545 @@
+/* Celtic Cross Love Tarot Spread Styles */
+
+.celtic-hero {
+    background: linear-gradient(135deg, #2d3436 0%, #636e72 30%, #a29bfe 70%, #6c5ce7 100%);
+    /* min-height: 70vh; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.celtic-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="celtic" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M10,0 L20,10 L10,20 L0,10 Z" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/><circle cx="10" cy="10" r="8" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="0.3"/></pattern></defs><rect width="100" height="100" fill="url(%23celtic)"/></svg>') repeat;
+    animation: celticPattern 20s linear infinite;
+}
+
+@keyframes celticPattern {
+    0% { background-position: 0 0; }
+    100% { background-position: 100px 100px; }
+}
+
+.celtic-cross-layout {
+    display: grid;
+    grid-template-areas: 
+        ". outcome . . future ."
+        ". distant . . recent ."
+        "external cross-6 cross-1 cross-2 internal ."
+        ". . cross-5 cross-3 . ."
+        ". . cross-4 . . ."
+        ". foundation . . self .";
+    grid-template-columns: repeat(6, 120px);
+    grid-template-rows: repeat(6, 140px);
+    gap: 20px;
+    max-width: 900px;
+    margin: 3rem auto;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 25px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    position: relative;
+}
+
+.celtic-cross-layout::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(108, 92, 231, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+}
+
+.celtic-card {
+    width: 120px;
+    height: 180px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    color: white;
+    cursor: pointer;
+    transition: all 0.4s ease;
+    border: 3px solid transparent;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.celtic-card:hover {
+    border-color: #fd79a8;
+    transform: translateY(-8px) scale(1.05);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+}
+
+.celtic-card.revealed {
+    background: linear-gradient(135deg, #fd79a8 0%, #e84393 100%);
+    border-color: #e84393;
+    animation: cardReveal 0.8s ease-out;
+}
+
+.celtic-card.cross-center {
+    background: linear-gradient(135deg, #ffeaa7 0%, #fdcb6e 100%);
+    border: 4px solid #e17055;
+    transform: scale(1.1);
+}
+
+.celtic-card.cross-center:hover {
+    transform: scale(1.15) translateY(-5px);
+}
+
+/* Position specific cards */
+.card-position-1 { grid-area: cross-1; }
+.card-position-2 { grid-area: cross-2; }
+.card-position-3 { grid-area: cross-3; }
+.card-position-4 { grid-area: cross-4; }
+.card-position-5 { grid-area: cross-5; }
+.card-position-6 { grid-area: cross-6; }
+.card-position-7 { grid-area: self; }
+.card-position-8 { grid-area: external; }
+.card-position-9 { grid-area: internal; }
+.card-position-10 { grid-area: outcome; }
+
+/* Alternative layouts for smaller screens */
+@media (max-width: 1024px) {
+    .celtic-cross-layout {
+        grid-template-columns: repeat(4, 100px);
+        grid-template-rows: repeat(8, 120px);
+        gap: 15px;
+        grid-template-areas: 
+            ". outcome outcome ."
+            "distant . . recent"
+            "external cross-6 cross-1 cross-2"
+            ". . cross-5 cross-3"
+            ". . cross-4 ."
+            ". foundation foundation ."
+            ". self self ."
+            "internal . . future";
+    }
+    
+    .celtic-card {
+        width: 100px;
+        height: 150px;
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .celtic-cross-layout {
+        grid-template-columns: repeat(3, 90px);
+        grid-template-rows: repeat(10, 110px);
+        gap: 10px;
+        grid-template-areas: 
+            ". outcome ."
+            "distant recent future"
+            ". cross-6 ."
+            "external cross-1 cross-2"
+            ". cross-5 cross-3"
+            ". cross-4 ."
+            ". foundation ."
+            ". self ."
+            ". internal ."
+            ". . .";
+    }
+    
+    .celtic-card {
+        width: 90px;
+        height: 130px;
+        font-size: 1.8rem;
+    }
+}
+
+.position-label {
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(44, 62, 80, 0.9);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.7rem;
+    font-weight: 500;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.celtic-card:hover .position-label {
+    opacity: 1;
+}
+
+.position-description {
+    text-align: center;
+    margin-top: 1rem;
+    color: #2d3436;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    max-width: 140px;
+}
+
+.celtic-instructions {
+    background: linear-gradient(135deg, #fff5f5 0%, #ffe8f0 100%);
+    padding: 2rem;
+    border-radius: 20px;
+    margin: 2rem auto;
+    max-width: 800px;
+    text-align: center;
+}
+
+.instruction-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.instruction-step {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.step-number {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #fd79a8 0%, #e84393 100%);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin: 0 auto 1rem;
+}
+
+.step-title {
+    color: #e84393;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.step-description {
+    color: #636e72;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.celtic-interpretation {
+    display: none;
+    max-width: 1000px;
+    margin: 3rem auto;
+    padding: 2rem;
+    background: linear-gradient(135deg, #f8f9ff 0%, #fff0f8 100%);
+    border-radius: 20px;
+}
+
+.interpretation-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin: 2rem 0;
+}
+
+.interpretation-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.interpretation-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.interpretation-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.position-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+}
+
+.interpretation-title {
+    color: #2d3436;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.interpretation-text {
+    color: #636e72;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.card-meaning {
+    background: linear-gradient(135deg, #fd79a8 0%, #e84393 100%);
+    color: white;
+    padding: 1rem;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    line-height: 1.5;
+}
+
+.reveal-all-btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 1.5rem 4rem;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.3rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 2rem auto;
+    display: block;
+    box-shadow: 0 8px 20px rgba(118, 75, 162, 0.3);
+}
+
+.reveal-all-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(118, 75, 162, 0.5);
+}
+
+.reveal-all-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.cross-symbolism {
+    background: linear-gradient(135deg, #2d3436 0%, #636e72 100%);
+    color: white;
+    padding: 3rem 2rem;
+    border-radius: 20px;
+    margin: 3rem auto;
+    max-width: 800px;
+    text-align: center;
+}
+
+.symbolism-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.symbolism-item {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1.5rem;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+}
+
+.symbolism-item h4 {
+    color: #ffeaa7;
+    margin-bottom: 1rem;
+}
+
+.love-guidance {
+    background: linear-gradient(135deg, #00b894 0%, #00a085 100%);
+    color: white;
+    padding: 2rem;
+    border-radius: 15px;
+    margin: 2rem 0;
+    text-align: center;
+}
+
+.guidance-points {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.guidance-point {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: 8px;
+    backdrop-filter: blur(5px);
+}
+
+.guidance-point h5 {
+    color: #ffeaa7;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.guidance-point p {
+    font-size: 0.85rem;
+    line-height: 1.4;
+    opacity: 0.9;
+}
+
+@keyframes cardReveal {
+    0% { 
+        transform: rotateY(180deg) scale(0.8); 
+        opacity: 0; 
+    }
+    50% { 
+        transform: rotateY(90deg) scale(0.9); 
+        opacity: 0.5; 
+    }
+    100% { 
+        transform: rotateY(0deg) scale(1); 
+        opacity: 1; 
+    }
+}
+
+@keyframes pulseGlow {
+    0%, 100% { 
+        box-shadow: 0 8px 20px rgba(232, 67, 147, 0.3); 
+    }
+    50% { 
+        box-shadow: 0 8px 30px rgba(232, 67, 147, 0.6); 
+    }
+}
+
+.celtic-card.selected {
+    animation: pulseGlow 2s ease-in-out infinite;
+}
+
+/* Question setting styles */
+.question-setting {
+    background: white;
+    padding: 2rem;
+    border-radius: 20px;
+    margin: 2rem auto;
+    max-width: 600px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.question-input {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    font-size: 1rem;
+    resize: vertical;
+    min-height: 100px;
+    transition: border-color 0.3s ease;
+}
+
+.question-input:focus {
+    outline: none;
+    border-color: #e84393;
+    box-shadow: 0 0 0 3px rgba(232, 67, 147, 0.1);
+}
+
+.question-suggestions {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.suggestion-btn {
+    background: linear-gradient(135deg, #fff5f5 0%, #ffe8f0 100%);
+    border: 2px solid #fd79a8;
+    color: #e84393;
+    padding: 0.8rem 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    text-align: left;
+}
+
+.suggestion-btn:hover {
+    background: linear-gradient(135deg, #fd79a8 0%, #e84393 100%);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.begin-reading-btn {
+    background: linear-gradient(135deg, #fd79a8 0%, #e84393 100%);
+    color: white;
+    padding: 1rem 3rem;
+    border: none;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 2rem auto;
+    display: block;
+}
+
+.begin-reading-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(232, 67, 147, 0.4);
+}
+
+/* Progress indicator */
+.reading-progress {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.reading-progress h2, .reading-progress p {
+    color: #c44569;
+}
+
+.progress-step {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: #ddd;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    transition: all 0.3s ease;
+}
+
+.progress-step.active {
+    background: linear-gradient(135deg, #fd79a8 0%, #e84393 100%);
+    transform: scale(1.1);
+}
+
+.progress-step.completed {
+    background: linear-gradient(135deg, #00b894 0%, #00a085 100%);
+}
+
+.progress-line {
+    width: 60px;
+    height: 3px;
+    background: #ddd;
+    transition: all 0.3s ease;
+}
+
+.progress-line.active {
+    background: linear-gradient(90deg, #fd79a8 0%, #e84393 100%);
+} 

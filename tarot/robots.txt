@@ -1,0 +1,20 @@
+User-agent: *
+Allow: /
+
+# Specific directories
+Allow: /pages/
+Allow: /css/
+Allow: /js/
+Allow: /images/
+
+# Sitemap location
+Sitemap: https://yourdomain.com/tarot/sitemap.xml
+
+# Crawl delay (optional - 1 second delay between requests)
+Crawl-delay: 1
+
+# Block any temporary or private files
+Disallow: /temp/
+Disallow: /backup/
+Disallow: /*.tmp
+Disallow: /*.log 

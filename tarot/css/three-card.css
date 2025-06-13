@@ -1,0 +1,690 @@
+/* 三张牌爱情占卜页面样式 */
+
+.three-card-hero {
+    background: linear-gradient(135deg, #6a1b9a 0%, #ab47bc 50%, #e1bee7 100%);
+    padding: 100px 0 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.three-card-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="diamonds" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M10,2 L18,10 L10,18 L2,10 Z" fill="rgba(255,255,255,0.08)"/></pattern></defs><rect width="100" height="100" fill="url(%23diamonds)"/></svg>');
+    animation: diamondShine 12s ease-in-out infinite;
+}
+
+.hero-features {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+.feature-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.15);
+    padding: 10px 20px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    font-weight: 500;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.feature-icon {
+    font-size: 1.2rem;
+}
+
+/* 三张牌介绍区域 */
+.three-card-intro {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #f8f9ff 0%, #f3e5f5 100%);
+}
+
+.intro-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.intro-content h2 {
+    color: #6a1b9a;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.intro-content p {
+    color: #666;
+    font-size: 1.2rem;
+    line-height: 1.8;
+    margin-bottom: 50px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.card-meanings {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.meaning-card {
+    background: white;
+    padding: 40px 30px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(106, 27, 154, 0.1);
+    border: 2px solid rgba(171, 71, 188, 0.1);
+    text-align: center;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.meaning-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(171, 71, 188, 0.1), transparent);
+    transform: rotate(-45deg);
+    transition: all 0.6s ease;
+    opacity: 0;
+}
+
+.meaning-card:hover::before {
+    opacity: 1;
+    transform: rotate(-45deg) translateY(100%);
+}
+
+.meaning-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(106, 27, 154, 0.15);
+    border-color: rgba(171, 71, 188, 0.3);
+}
+
+.card-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.meaning-card h3 {
+    color: #6a1b9a;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.meaning-card p {
+    color: #666;
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+/* 占卜区域 */
+.three-card-reading {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #2c1810 0%, #4a148c 50%, #2c1810 100%);
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.three-card-reading::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="stars" x="0" y="0" width="25" height="25" patternUnits="userSpaceOnUse"><circle cx="12.5" cy="12.5" r="1.5" fill="rgba(255,255,255,0.1)"/><circle cx="6" cy="6" r="0.8" fill="rgba(255,255,255,0.15)"/><circle cx="19" cy="19" r="0.8" fill="rgba(255,255,255,0.12)"/></pattern></defs><rect width="100" height="100" fill="url(%23stars)"/></svg>');
+    animation: starTwinkle 10s ease-in-out infinite;
+}
+
+.reading-header {
+    text-align: center;
+    margin-bottom: 50px;
+    position: relative;
+    z-index: 2;
+}
+
+.reading-header h2 {
+    color: #e1bee7;
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.reading-header p {
+    color: #ce93d8;
+    font-size: 1.2rem;
+}
+
+/* 许愿区域 */
+.wish-section {
+    position: relative;
+    z-index: 2;
+}
+
+.wish-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 50px 40px;
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(225, 190, 231, 0.2);
+}
+
+.wish-card h3 {
+    color: #e1bee7;
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+.wish-card p {
+    color: #ce93d8;
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+}
+
+.wish-examples {
+    text-align: left;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 20px;
+    border-radius: 15px;
+    margin: 30px 0;
+}
+
+.wish-examples p {
+    color: #e1bee7;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.wish-examples ul {
+    list-style: none;
+    padding: 0;
+}
+
+.wish-examples li {
+    color: #ce93d8;
+    margin-bottom: 10px;
+    padding-left: 20px;
+    position: relative;
+}
+
+.wish-examples li::before {
+    content: '💫';
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.start-reading-btn {
+    background: linear-gradient(135deg, #6a1b9a 0%, #ab47bc 100%);
+    color: white;
+    border: none;
+    padding: 20px 40px;
+    border-radius: 30px;
+    font-size: 1.3rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 25px rgba(106, 27, 154, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.start-reading-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(106, 27, 154, 0.4);
+}
+
+.btn-sparkle {
+    margin-left: 10px;
+    animation: sparkle 2s ease-in-out infinite;
+}
+
+/* 抽牌区域 */
+.card-selection {
+    position: relative;
+    z-index: 2;
+}
+
+.selection-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.selection-header h3 {
+    color: #e1bee7;
+    font-size: 2rem;
+    margin-bottom: 15px;
+}
+
+.selection-header p {
+    color: #ce93d8;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+.selection-progress {
+    color: #ba68c8;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.card-deck {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 15px;
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.deck-card {
+    width: 100px;
+    height: 160px;
+    background: linear-gradient(135deg, #4a148c 0%, #6a1b9a 50%, #4a148c 100%);
+    border-radius: 12px;
+    border: 3px solid #e1bee7;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.deck-card::before {
+    content: '✨';
+    font-size: 1.5rem;
+    color: #e1bee7;
+}
+
+.deck-card:hover {
+    transform: translateY(-8px) scale(1.05);
+    box-shadow: 0 12px 25px rgba(225, 190, 231, 0.3);
+    border-color: #ce93d8;
+}
+
+.deck-card.selected {
+    background: linear-gradient(135deg, #e1bee7 0%, #ce93d8 100%);
+    color: #4a148c;
+    transform: translateY(-15px) scale(1.1);
+    box-shadow: 0 15px 30px rgba(225, 190, 231, 0.5);
+}
+
+.deck-card.selected::before {
+    content: '💎';
+    color: #4a148c;
+}
+
+.reveal-cards-btn {
+    background: linear-gradient(135deg, #ab47bc 0%, #e1bee7 100%);
+    color: #4a148c;
+    border: none;
+    padding: 18px 35px;
+    border-radius: 25px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 20px rgba(171, 71, 188, 0.3);
+    display: block;
+    margin: 40px auto 0;
+}
+
+.reveal-cards-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 25px rgba(171, 71, 188, 0.4);
+}
+
+/* 结果显示区域 */
+.reading-result {
+    position: relative;
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 40px;
+    margin-top: 50px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(225, 190, 231, 0.3);
+}
+
+.result-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.result-header h3 {
+    color: #6a1b9a;
+    font-size: 2.2rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+}
+
+.result-header p {
+    color: #ab47bc;
+    font-size: 1.2rem;
+}
+
+/* 三张牌显示 */
+.three-cards-display {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-bottom: 40px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.result-card {
+    text-align: center;
+    background: linear-gradient(135deg, #f3e5f5 0%, #fff8fa 100%);
+    padding: 25px 20px;
+    border-radius: 15px;
+    border: 2px solid rgba(106, 27, 154, 0.2);
+    transition: all 0.3s ease;
+}
+
+.result-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(106, 27, 154, 0.15);
+}
+
+.card-position-label {
+    color: #6a1b9a;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.revealed-tarot-card {
+    width: 150px;
+    height: 250px;
+    background: white;
+    border-radius: 12px;
+    border: 3px solid #ab47bc;
+    margin: 0 auto 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 20px rgba(106, 27, 154, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.card-name {
+    color: #6a1b9a;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.card-brief-meaning {
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* 解读区域 */
+.interpretation-section,
+.love-advice {
+    background: linear-gradient(135deg, #f8f9ff 0%, #f3e5f5 100%);
+    padding: 30px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    border: 1px solid rgba(106, 27, 154, 0.1);
+}
+
+.interpretation-section h4,
+.love-advice h4 {
+    color: #6a1b9a;
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.interpretation-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+.card-interpretation {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    border-left: 5px solid #ab47bc;
+    box-shadow: 0 5px 15px rgba(106, 27, 154, 0.1);
+}
+
+.card-interpretation h5 {
+    color: #6a1b9a;
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+}
+
+.card-interpretation p {
+    color: #555;
+    line-height: 1.7;
+    font-size: 1.1rem;
+}
+
+.advice-content {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(106, 27, 154, 0.1);
+}
+
+.advice-content p {
+    color: #555;
+    line-height: 1.8;
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+}
+
+.advice-content ul {
+    list-style: none;
+    padding: 0;
+}
+
+.advice-content li {
+    color: #666;
+    margin-bottom: 12px;
+    padding-left: 25px;
+    position: relative;
+    line-height: 1.6;
+}
+
+.advice-content li::before {
+    content: '💖';
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+/* 操作按钮 */
+.result-actions {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 40px;
+}
+
+.result-actions button {
+    padding: 15px 30px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.save-result-btn {
+    background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+    color: white;
+    box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+}
+
+.new-reading-btn {
+    background: linear-gradient(135deg, #6a1b9a 0%, #ab47bc 100%);
+    color: white;
+    box-shadow: 0 5px 15px rgba(106, 27, 154, 0.3);
+}
+
+.share-result-btn {
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+    color: white;
+    box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
+}
+
+.result-actions button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* 相关占卜推荐 */
+.related-readings {
+    padding: 80px 0;
+    background: linear-gradient(135deg, #f8f9ff 0%, #f3e5f5 100%);
+}
+
+.related-readings h2 {
+    text-align: center;
+    color: #6a1b9a;
+    font-size: 2.5rem;
+    margin-bottom: 50px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.reading-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.reading-card {
+    background: white;
+    padding: 30px 25px;
+    border-radius: 15px;
+    text-decoration: none;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(106, 27, 154, 0.1);
+    border: 2px solid rgba(171, 71, 188, 0.1);
+    transition: all 0.3s ease;
+    color: inherit;
+}
+
+.reading-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(106, 27, 154, 0.15);
+    border-color: rgba(171, 71, 188, 0.3);
+    text-decoration: none;
+    color: inherit;
+}
+
+.reading-card .card-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.reading-card h3 {
+    color: #6a1b9a;
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+}
+
+.reading-card p {
+    color: #666;
+    line-height: 1.5;
+    font-size: 0.95rem;
+}
+
+/* 动画效果 */
+@keyframes diamondShine {
+    0%, 100% { transform: translateX(-100px); }
+    50% { transform: translateX(calc(100vw + 100px)); }
+}
+
+@keyframes starTwinkle {
+    0%, 100% { opacity: 0.3; }
+    25% { opacity: 0.8; }
+    75% { opacity: 0.5; }
+}
+
+@keyframes sparkle {
+    0%, 100% { transform: scale(1) rotate(0deg); }
+    50% { transform: scale(1.2) rotate(180deg); }
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .hero-features {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+    }
+    
+    .card-meanings {
+        grid-template-columns: 1fr;
+    }
+    
+    .three-cards-display {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .card-deck {
+        grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    }
+    
+    .deck-card {
+        width: 80px;
+        height: 130px;
+    }
+    
+    .revealed-tarot-card {
+        width: 120px;
+        height: 200px;
+    }
+    
+    .result-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .reading-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .reading-result {
+        padding: 25px;
+        margin: 0 15px;
+    }
+} 
