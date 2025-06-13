@@ -8,7 +8,7 @@ Allow: /js/
 Allow: /images/
 
 # Sitemap location
-Sitemap: https://yourdomain.com/tarot/sitemap.xml
+Sitemap: https://tarot.inspirationstudio.net/sitemap.xml
 
 # Crawl delay (optional - 1 second delay between requests)
 Crawl-delay: 1
