@@ -192,6 +192,13 @@ overallScore = (planetaryScore * elementalHarmony * qualityInteraction * seasona
 
 ## 🔄 更新日志
 
+### v2.1.0 (2025-01)
+- 🚀 **Google Adsense集成** - 添加完整的Google Adsense支持
+- 🔗 **合作伙伴链接** - 集成外部优质网站链接
+- 📝 **ads.txt文件** - 添加Google Adsense验证文件
+- 🏷️ **SEO优化** - 添加Google Adsense元标签
+- 🌐 **全站链接** - 在所有页面footer统一添加合作伙伴链接
+
 ### v2.0.0 (2024-12)
 - ✨ 添加专业Logo和Favicon
 - 🎨 全面的移动端优化
