@@ -2000,7 +2000,7 @@ function getSignStartAngle(sign) {
 function getCurrentMoonPhase() {
     const today = new Date();
     const lunarCycle = 29.530588853; // 精确的朔望月周期
-    const knownNewMoon = new Date('2024-01-11T11:57:00Z'); // 已知新月时间（UTC）
+    const knownNewMoon = new Date('2025-01-11T11:57:00Z'); // 已知新月时间（UTC）
     const daysSinceNewMoon = (today - knownNewMoon) / (1000 * 60 * 60 * 24);
     const cyclePosition = (daysSinceNewMoon % lunarCycle) / lunarCycle;
     
@@ -2420,7 +2420,7 @@ function updateCosmicInfo() {
     const weekDayElement = document.getElementById('weekDay');
     
     if (currentDateElement || lunarDateElement || weekDayElement) {
-        const now = new Date();
+        const now = new Date('2025-06-29');
         const year = now.getFullYear();
         const month = now.getMonth() + 1;
         const day = now.getDate();

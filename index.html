@@ -94,13 +94,18 @@
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar" role="navigation" aria-label="Main Navigation">
+    <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <h1>Constellation Mystique<span class="tagline">Inspiration Through Stars</span></h1>
+                <div class="logo-icon">🌟</div>
+                <div class="logo-content">
+                    <h1>Constellation Mystique</h1>
+                    <p class="tagline">Professional Astrology Research Platform</p>
+                </div>
             </div>
             <div class="nav-links">
                 <a href="index.html" class="nav-link active">🏠 Home</a>
+                
                 <div class="nav-dropdown">
                     <a href="#" class="nav-link dropdown-toggle">📅 Horoscope <span class="dropdown-arrow">▼</span></a>
                     <div class="dropdown-menu">
@@ -109,6 +114,7 @@
                         <a href="pages/monthly-horoscope.html" class="dropdown-item">📖 Monthly</a>
                     </div>
                 </div>
+                
                 <div class="nav-dropdown">
                     <a href="#" class="nav-link dropdown-toggle">🔮 Tools <span class="dropdown-arrow">▼</span></a>
                     <div class="dropdown-menu">
@@ -118,7 +124,7 @@
                         <a href="pages/free-astrology-reading.html" class="dropdown-item">✨ Free Reading</a>
                     </div>
                 </div>
-                <a href="pages/astrology-for-beginners.html" class="nav-link">📚 Learn</a>
+                
                 <a href="pages/about.html" class="nav-link">ℹ️ About</a>
             </div>
         </div>
@@ -368,18 +374,21 @@
             <div class="footer-content">
                 <div class="footer-main">
                     <div class="footer-section">
-                        <h3>Constellation Mystique</h3>
-                        <p class="tagline-text">Professional Astrological Analysis Platform</p>
-                        <p class="description-text">Based on traditional astrological wisdom, combined with modern astronomical calculations, providing precise personal celestial interpretation and life guidance.</p>
+                        <h4>Main Services</h4>
+                        <ul>
+                            <li><a href="pages/daily-horoscope.html">Daily Horoscope</a></li>
+                            <li><a href="pages/birth-chart-reading.html">Birth Chart Reading</a></li>
+                            <li><a href="pages/zodiac-compatibility.html">Compatibility Analysis</a></li>
+                            <li><a href="pages/astrology-for-beginners.html">Astrology Learning</a></li>
+                        </ul>
                     </div>
                     
                     <div class="footer-section">
-                        <h4>Services</h4>
+                        <h4>Important Pages</h4>
                         <ul>
-                            <li><a href="#daily-horoscope">Daily Horoscope</a></li>
-                            <li><a href="#astrology-knowledge">Astrological Knowledge</a></li>
-                            <li><a href="pages/about.html">About Astrology</a></li>
-                            <li><a href="pages/guide.html">User Guide</a></li>
+                            <li><a href="pages/about.html">About Us</a></li>
+                            <li><a href="pages/contact.html">Contact Us</a></li>
+                            <li><a href="pages/privacy.html">Privacy Policy</a></li>
                         </ul>
                     </div>
                     
@@ -396,6 +405,11 @@
                 <div class="footer-bottom">
                     <p class="copyright">© 2025 Constellation Mystique. All Rights Reserved.</p>
                     <p class="disclaimer">Astrological readings are for entertainment and guidance purposes. Individual results may vary.</p>
+                    <p class="privacy-links">
+                        <a href="pages/privacy.html">Privacy Policy</a> | 
+                        <a href="pages/contact.html">Contact Us</a> | 
+                        <a href="pages/about.html">About Us</a>
+                    </p>
                 </div>
             </div>
         </footer>
@@ -403,6 +417,43 @@
 
     <!-- JavaScript Files -->
     <script src="js/script.js"></script>
+    <!-- Dropdown menu functionality -->
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Handle dropdown menus
+        const dropdowns = document.querySelectorAll('.nav-dropdown');
+        
+        dropdowns.forEach(dropdown => {
+            const toggle = dropdown.querySelector('.dropdown-toggle');
+            const menu = dropdown.querySelector('.dropdown-menu');
+            
+            // Mouse events
+            dropdown.addEventListener('mouseenter', () => {
+                menu.style.display = 'block';
+            });
+            
+            dropdown.addEventListener('mouseleave', () => {
+                menu.style.display = 'none';
+            });
+            
+            // Touch/click events for mobile
+            toggle.addEventListener('click', (e) => {
+                e.preventDefault();
+                const isOpen = menu.style.display === 'block';
+                menu.style.display = isOpen ? 'none' : 'block';
+            });
+        });
+        
+        // Close dropdowns when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.nav-dropdown')) {
+                dropdowns.forEach(dropdown => {
+                    dropdown.querySelector('.dropdown-menu').style.display = 'none';
+                });
+            }
+        });
+    });
+    </script>
     
     <!-- Initialize cosmic info and navigation -->
     <script>

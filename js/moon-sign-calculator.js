@@ -36,7 +36,7 @@ class MoonSignCalculator {
     // Get current moon phase
     getCurrentMoonPhase() {
         const now = new Date();
-        const newMoon = new Date('2024-01-11'); // Reference new moon
+        const newMoon = new Date('2025-01-11'); // Reference new moon
         const daysSinceNewMoon = Math.floor((now - newMoon) / (1000 * 60 * 60 * 24));
         const lunarCycle = 29.53;
         const phasePosition = (daysSinceNewMoon % lunarCycle) / lunarCycle;
@@ -383,7 +383,7 @@ class MoonSignCalculator {
     }
 
     getMoonPhaseForDate(date) {
-        const newMoon = new Date('2024-01-11');
+        const newMoon = new Date('2025-01-11');
         const daysSinceNewMoon = Math.floor((date - newMoon) / (1000 * 60 * 60 * 24));
         const lunarCycle = 29.53;
         const phasePosition = (daysSinceNewMoon % lunarCycle) / lunarCycle;

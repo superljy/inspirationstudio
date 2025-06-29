@@ -122,7 +122,7 @@ class DateUtils {
         const day = date.getDate();
         
         // Known new moon date (approximate)
-        const knownNewMoon = new Date(2024, 0, 11); // January 11, 2024
+        const knownNewMoon = new Date(2025, 0, 11); // January 11, 2025
         const daysSinceKnown = Math.floor((date - knownNewMoon) / (1000 * 60 * 60 * 24));
         const lunarCycle = 29.53; // Average lunar cycle in days
         const phase = (daysSinceKnown % lunarCycle) / lunarCycle;

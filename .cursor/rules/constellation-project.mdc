@@ -1,0 +1,127 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# Constellation占星网站项目规则
+
+## 项目概述
+Constellation是一个专业的占星学知识分享平台，目标是通过高质量的原创内容和个性化工具，为用户提供深度的占星学见解。当前正在进行Google AdSense优化，需要解决"内容价值低"的问题。
+
+## 项目结构
+
+### 核心文件
+- 主页面：[index.html](mdc:index.html) - 网站入口，展示核心功能和价值主张
+- 样式表：[css/style.css](mdc:css/style.css) - 主要样式文件
+- 核心脚本：[js/script.js](mdc:js/script.js) - 主要JavaScript功能
+
+### 功能页面
+- 每日运势：[pages/daily-horoscope.html](mdc:pages/daily-horoscope.html)
+- 出生图解读：[pages/birth-chart-reading.html](mdc:pages/birth-chart-reading.html)
+- 月亮星座计算：[pages/moon-sign-calculator.html](mdc:pages/moon-sign-calculator.html)
+- 星座配对：[pages/zodiac-compatibility.html](mdc:pages/zodiac-compatibility.html)
+- 免费占星阅读：[pages/free-astrology-reading.html](mdc:pages/free-astrology-reading.html)
+
+### JavaScript模块
+- 出生图分析：[js/birth-chart.js](mdc:js/birth-chart.js)
+- 月亮星座计算：[js/moon-sign-calculator.js](mdc:js/moon-sign-calculator.js)
+- 星座配对：[js/zodiac-compatibility.js](mdc:js/zodiac-compatibility.js)
+- 宇宙数据：[js/cosmic-data.js](mdc:js/cosmic-data.js)
+
+## 开发优先级
+
+### 高优先级（立即处理）
+1. **创建关键页面**：
+   - 关于我们页面（建立专业性和可信度）
+   - 联系我们页面
+   - 隐私政策页面
+
+2. **移除未完成功能**：
+   - 检查并移除所有"即将推出"或"Coming Soon"内容
+   - 修复无效链接
+
+3. **内容质量提升**：
+   - 为运势内容添加天文背景和个性化建议
+   - 创建原创深度文章（1500字+）
+
+### 中优先级
+1. **工具功能增强**：
+   - 改进[js/birth-chart.js](mdc:js/birth-chart.js)的分析深度
+   - 增加多行星交叉解读功能
+
+2. **SEO优化**：
+   - 优化meta标签
+   - 改善页面加载速度
+   - 添加结构化数据
+
+## 内容创作指南
+
+### 运势内容要求
+- **避免模板化**：每个运势都要包含具体的天文事件背景
+- **可操作性**：提供具体、实用的建议
+- **个性化**：基于不同星座特质差异化解读
+
+### 深度文章标准
+- **字数要求**：至少1500字
+- **原创性**：必须是原创内容，有独特见解
+- **专业性**：引用权威来源，体现专业背景
+- **系列化**：创建主题系列，便于用户系统学习
+
+## 技术要求
+
+### 性能优化
+- 确保[css/style.css](mdc:css/style.css)优化，减少不必要的样式
+- 优化[js/script.js](mdc:js/script.js)，避免阻塞渲染
+- 图片压缩和懒加载
+
+### 移动端适配
+- 检查[css/mobile-fix.css](mdc:css/mobile-fix.css)的响应式设计
+- 确保所有功能在移动端正常工作
+
+### 安全性
+- 实施输入验证（特别是生日信息输入）
+- 添加HTTPS支持
+- 隐私数据保护
+
+## 文件命名规范
+
+### 新建页面
+- 使用小写字母和连字符：`astrology-basics.html`
+- 深度文章放在：`pages/knowledge/`目录
+
+### JavaScript模块
+- 功能明确的命名：`enhanced-chart-analysis.js`
+- 相关功能模块化
+
+## 质量检查清单
+
+### 内容检查
+- [ ] 所有页面有原创、有价值的内容
+- [ ] 运势内容有独特分析视角
+- [ ] 工具提供个性化结果
+- [ ] 无"即将推出"内容
+
+### 技术检查
+- [ ] 所有链接正常工作
+- [ ] 页面加载速度优化
+- [ ] 移动端友好
+- [ ] 无JavaScript错误
+
+### SEO检查
+- [ ] Meta标签完整
+- [ ] 结构化数据添加
+- [ ] 内部链接优化
+- [ ] 图片alt标签
+
+## AdSense优化目标
+1. **建立E-A-T**：专业性、权威性、可信度
+2. **内容差异化**：避免同质化，提供独特价值
+3. **网站完整性**：确保所有功能完整可用
+4. **用户体验**：提供流畅、有价值的用户体验
+
+## 禁止事项
+- ❌ 使用通用的运势模板
+- ❌ 复制粘贴其他网站内容
+- ❌ 留有未完成的功能或页面
+- ❌ 忽略移动端体验
+- ❌ 缺少作者信息和联系方式
